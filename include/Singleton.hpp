@@ -18,6 +18,7 @@ public:
     }
 
 protected:
+    friend T;
     Singleton()=default;
     virtual ~Singleton() = default;
 };

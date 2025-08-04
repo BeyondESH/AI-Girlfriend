@@ -19,12 +19,28 @@
             </PendingDiffInfo>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/include/ThreadPool.h">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/include/ThreadPool.h" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/main.cpp">
           <value>
             <PendingDiffInfo>
               <option name="filePath" value="$PROJECT_DIR$/main.cpp" />
               <option name="originalContent" value="#include &lt;iostream&gt;&#10;int mian() {&#10;    return 0;&#10;}" />
               <option name="updatedContent" value="#include &lt;iostream&gt;&#10;int mian() {&#10;    return 0;&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/ThreadPool.cpp">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/ThreadPool.cpp" />
+              <option name="originalContent" value="//&#10;// Created by Beyond on 25-8-4.&#10;//&#10;&#10;#include &quot;../include/ThreadPool.h&quot;&#10;&#10;ThreadPool::ThreadPool(size_t numThreads):isStop(false){&#10;    for (int i = 0; i &lt; numThreads; ++i) {&#10;        threads.emplace_back([this]() {&#10;            while (isStop==false) {&#10;                std::function&lt;void()&gt; task;&#10;                {&#10;                    std::unique_lock&lt;std::mutex&gt; lock(mutex);&#10;                    this-&gt;cv.wait(lock,[this]() {&#10;                        return isStop || !this-&gt;tasks.empty();&#10;                    });&#10;                    if ( isStop &amp;&amp; this-&gt;tasks.empty()) {&#10;                        return;&#10;                    }&#10;                    task = std::move(this-&gt;tasks.front());&#10;                    tasks.pop();&#10;                }&#10;                task();&#10;            }&#10;        });&#10;    }&#10;}&#10;" />
+              <option name="updatedContent" value="//&#10;// Created by Beyond on 25-8-4.&#10;//&#10;&#10;#include &quot;../include/ThreadPool.h&quot;&#10;&#10;ThreadPool::ThreadPool(size_t numThreads):isStop(false){&#10;    for (int i = 0; i &lt; numThreads; ++i) {&#10;        threads.emplace_back([this]() {&#10;            while (isStop==false) {&#10;                std::function&lt;void()&gt; task;&#10;                {&#10;                    std::unique_lock&lt;std::mutex&gt; lock(mutex);&#10;                    this-&gt;cv.wait(lock,[this]() {&#10;                        return isStop || !this-&gt;tasks.empty();&#10;                    });&#10;                    if ( isStop &amp;&amp; this-&gt;tasks.empty()) {&#10;                        return;&#10;                    }&#10;                    task = std::move(this-&gt;tasks.front());&#10;                    tasks.pop();&#10;                }&#10;                task();&#10;            }&#10;        });&#10;    }&#10;}&#10;" />
             </PendingDiffInfo>
           </value>
         </entry>
