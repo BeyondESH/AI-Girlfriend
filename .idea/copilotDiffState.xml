@@ -3,6 +3,15 @@
   <component name="CopilotDiffPersistence">
     <option name="pendingDiffs">
       <map>
+        <entry key="$PROJECT_DIR$/CMakeLists.txt">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/CMakeLists.txt" />
+              <option name="originalContent" value="cmake_minimum_required(VERSION 3.31)&#10;project(AI_Girlfriend)&#10;&#10;set(CMAKE_CXX_STANDARD 20)&#10;&#10;file(GLOB HEADER_FILES &quot;include/*.h&quot; &quot;include/*.hpp&quot;)&#10;file(GLOB SOURCE_FILES &quot;src/*.cpp&quot;)&#10;set(ALL_FILES ${HEADER_FILES} ${SOURCE_FILES})&#10;&#10;## 添加头文件目录&#10;include_directories(include)&#10;&#10;# 添加库文件搜索路径&#10;list(APPEND CMAKE_PREFIX_PATH &quot;${CMAKE_CURRENT_SOURCE_DIR}/lib/cmake&quot;)&#10;&#10;# 查找PortAudio库&#10;find_package(portaudio QUIET)&#10;&#10;add_executable(AI_Girlfriend ${ALL_FILES})&#10;&#10;# 链接库文件&#10;target_link_directories(AI_Girlfriend PRIVATE lib)&#10;&#10;# 链接vosk库&#10;target_link_libraries(AI_Girlfriend vosk)&#10;&#10;# 链接PortAudio库&#10;if(portaudio_FOUND)&#10;    target_link_libraries(AI_Girlfriend portaudio)&#10;    message(STATUS &quot;Found PortAudio via CMake config&quot;)&#10;else()&#10;    # 如果find_package失败，直接链接静态库&#10;    target_link_libraries(AI_Girlfriend portaudio_static_x64)&#10;    message(STATUS &quot;Using PortAudio static library directly&quot;)&#10;endif()&#10;&#10;# Windows系统下需要链接的系统库&#10;if(WIN32)&#10;    target_link_libraries(AI_Girlfriend&#10;        winmm&#10;        ole32&#10;        oleaut32&#10;        uuid&#10;        advapi32&#10;    )&#10;endif()&#10;" />
+              <option name="updatedContent" value="cmake_minimum_required(VERSION 3.31)&#10;project(AI_Girlfriend)&#10;&#10;set(CMAKE_CXX_STANDARD 20)&#10;&#10;file(GLOB HEADER_FILES &quot;include/*.h&quot; &quot;include/*.hpp&quot;)&#10;file(GLOB SOURCE_FILES &quot;src/*.cpp&quot;)&#10;set(ALL_FILES ${HEADER_FILES} ${SOURCE_FILES})&#10;&#10;## 添加头文件目录&#10;include_directories(include)&#10;&#10;# 添加库文件搜索路径&#10;list(APPEND CMAKE_PREFIX_PATH &quot;${CMAKE_CURRENT_SOURCE_DIR}/lib/cmake&quot;)&#10;&#10;# 查找PortAudio库&#10;find_package(portaudio QUIET)&#10;&#10;add_executable(AI_Girlfriend ${ALL_FILES})&#10;&#10;# 链接库文件&#10;target_link_directories(AI_Girlfriend PRIVATE lib)&#10;&#10;# 链接vosk库&#10;target_link_libraries(AI_Girlfriend vosk)&#10;&#10;# 链接PortAudio库&#10;if(portaudio_FOUND)&#10;    target_link_libraries(AI_Girlfriend portaudio)&#10;    message(STATUS &quot;Found PortAudio via CMake config&quot;)&#10;else()&#10;    # 如果find_package失败，直接链接静态库&#10;    target_link_libraries(AI_Girlfriend portaudio_static_x64)&#10;    message(STATUS &quot;Using PortAudio static library directly&quot;)&#10;endif()&#10;&#10;# Windows系统下需要链接的系统库&#10;if(WIN32)&#10;    target_link_libraries(AI_Girlfriend&#10;        winmm&#10;        ole32&#10;        oleaut32&#10;        uuid&#10;        advapi32&#10;    )&#10;endif()" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/LIBRARY_INTEGRATION.md">
           <value>
             <PendingDiffInfo>
