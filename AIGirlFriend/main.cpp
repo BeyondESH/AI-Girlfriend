@@ -1,8 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "threadmgr.h"
-#include "test.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -14,8 +12,7 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    engine.loadFromModule("AIGirlFriend", "Main");
+    engine.loadFromModule("AIGirlfriend", "Main");
 
-    Test::test_threadMgr();
     return app.exec();
 }
