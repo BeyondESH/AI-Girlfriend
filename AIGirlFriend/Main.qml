@@ -17,15 +17,16 @@ ApplicationWindow {
             anchors.verticalCenter: parent.verticalCenter
             spacing: 20
 
-            Button {
-                id: connectButton
-                text: "连接服务器"
-                width: 150
-                height: 40
-                onClicked: {
-                    websocketMgr.sendConfig(audioMgr.sampleRate);
-                }
-            }
+            // Button {
+            //     id: connectButton
+            //     text: "连接服务器"
+            //     width: 150
+            //     height: 40
+            //     enabled: websocketMgr.isConnected
+            //     onClicked: {
+            //         websocketMgr.sendConfig(audioMgr.sampleRate);
+            //     }
+            // }
 
             Button {
                 id: playButton
@@ -33,6 +34,7 @@ ApplicationWindow {
                 width: 150
                 height: 40
                 onClicked: {
+                    websocketMgr.sendConfig()
                     audioMgr.start();
                 }
             }

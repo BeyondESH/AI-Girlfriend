@@ -19,14 +19,13 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     AudioMgr* audioMgr=new AudioMgr;
-    engine.loadFromModule("AIGirlfriend", "Main");
-    engine.rootContext()->setContextProperty("audioMgr",audioMgr);
     WebSocketMgr* websocketMgr=new WebSocketMgr;
+    engine.rootContext()->setContextProperty("audioMgr",audioMgr);
     engine.rootContext()->setContextProperty("websocketMgr",websocketMgr);
+    engine.loadFromModule("AIGirlfriend", "Main");
 
     QObject::connect(audioMgr,&AudioMgr::signal_handlePcmData,websocketMgr,&WebSocketMgr::slot_handlePcmData);
-
-    int sampleRate=audioMgr->sampleRate();
+    QObject::connect(audioMgr,&AudioMgr::signal_endRecord,websocketMgr,&WebSocketMgr::slot_endRecord);
     websocketMgr->connectAsrServer(QUrl("ws://localhost:10096"));
 
     return app.exec();

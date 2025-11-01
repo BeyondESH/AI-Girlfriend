@@ -11,13 +11,19 @@ WebSocketMgr::WebSocketMgr(QObject *parent)
     QObject::connect(this->_websocket,&QWebSocket::connected,[this](){
         qDebug()<<"websocket连接成功";
         _isConnected=true;
+        emit isConnectedChanged();
     });
     QObject::connect(_websocket,&QWebSocket::errorOccurred,[this](){
         qDebug()<<"websocket出现错误:"<<_websocket->errorString();
+        if(_isConnected){
+            _isConnected=false;
+            emit isConnectedChanged();
+        }
     });
     QObject::connect(_websocket,&QWebSocket::disconnected,[this](){
         qDebug()<<"websocket断开连接";
         _isConnected=false;
+        emit isConnectedChanged();
     });
 }
 
@@ -44,13 +50,23 @@ void WebSocketMgr::connectAsrServer(const QUrl &url)
 
 void WebSocketMgr::sendPcmData(const QByteArray &pcmData)
 {
-
+    int count=_websocket->sendBinaryMessage(pcmData);
+    qDebug()<<"发送字节数:"<<count;
 }
 
 void WebSocketMgr::send(const QString &msg)
 {
-    int cout=_websocket->sendTextMessage(msg);
-    qDebug()<<"发送字节数:"<<cout;
+    int count=_websocket->sendTextMessage(msg);
+    qDebug()<<"发送字节数:"<<count;
+}
+
+void WebSocketMgr::sendEndData()
+{
+    QJsonObject jsonObj;
+    jsonObj["is_speaking"]=false;
+    QJsonDocument doc(jsonObj);
+    QString endString=doc.toJson(QJsonDocument::Compact);
+    send(endString);
 }
 
 void WebSocketMgr::sendConfig()
@@ -89,15 +105,23 @@ void WebSocketMgr::sendConfig(const int &sampleRate)
 
 void WebSocketMgr::stop()
 {
-    _isConnected=false;
+    if(_isConnected){
+        _isConnected=false;
+        emit isConnectedChanged();
+    }
 }
 
 bool WebSocketMgr::isConnected() const
 {
-    return _isConnected.load();
+    return _isConnected;
 }
 
 void WebSocketMgr::slot_handlePcmData(const QByteArray &pcmData)
 {
+    sendPcmData(pcmData);
+}
 
+void WebSocketMgr::slot_endRecord()
+{
+    sendEndData();
 }
