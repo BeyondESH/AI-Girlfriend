@@ -7,7 +7,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
-
+#include "audiomgr.h"
 void Test::test_threadMgr()
 {
     // 获取 ThreadMgr
@@ -38,7 +38,7 @@ void Test::test_http_get()
 void Test::test_post_chat()
 {
     QJsonObject rootObj,messageObj;
-    rootObj["model"]="gpt-oss:20b-cloud";
+    rootObj["model"]="qwen3:8b";
     rootObj["stream"]=false;
     messageObj["role"]="user";
     messageObj["content"]="请以用户女友的身份回答：你吃饭了吗";
@@ -49,4 +49,10 @@ void Test::test_post_chat()
     QByteArray data=jsonDoc.toJson(QJsonDocument::Indented);
     HttpMgr *httpMgr=new HttpMgr();
     httpMgr->post(QUrl("http://localhost:11434/api/chat"),ReqId::ID_SEND_CHAT,data);
+}
+
+void Test::test_audioMgr()
+{
+    AudioMgr *audioMgr=new AudioMgr;
+    audioMgr->start();
 }
