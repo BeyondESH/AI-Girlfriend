@@ -11,13 +11,24 @@ AudioMgr::AudioMgr(QObject *parent)
         qDebug() << "无默认音频设备";
         return;
     }
-
-    QAudioFormat audioFormat=audioDevice.preferredFormat();
     // qDebug()<<audioDevice.description();
-    //设置采样率
+
+    //设置音频格式
+    QAudioFormat audioFormat;
     audioFormat.setSampleRate(16000);
+    audioFormat.setChannelCount(1);
+    audioFormat.setSampleFormat(QAudioFormat::Int16);
+
+    if(!audioDevice.isFormatSupported(audioFormat)){
+        qDebug() << "音频格式不支持";
+        audioFormat==audioDevice.preferredFormat();
+    }
     _sampleRate=audioFormat.sampleRate();
-    qDebug()<<_sampleRate;
+    qDebug() << "最终音频格式:";
+    qDebug() << "  采样率:" << audioFormat.sampleRate();
+    qDebug() << "  声道数:" << audioFormat.channelCount();
+    qDebug() << "  采样格式:" << audioFormat.sampleFormat();
+
     _audioSource=new QAudioSource(audioDevice,audioFormat);
 }
 
