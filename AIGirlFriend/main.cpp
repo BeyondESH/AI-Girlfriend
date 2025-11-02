@@ -1,10 +1,10 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-// #include "Test.h"
+#include "Test.h"
 #include "audiomgr.h"
 #include "WebSocketMgr.h"
-#include  <thread>
+#include "messagemgr.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,15 +18,19 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
-    AudioMgr* audioMgr=new AudioMgr;
-    WebSocketMgr* websocketMgr=new WebSocketMgr;
-    engine.rootContext()->setContextProperty("audioMgr",audioMgr);
-    engine.rootContext()->setContextProperty("websocketMgr",websocketMgr);
-    engine.loadFromModule("AIGirlfriend", "Main");
+    // AudioMgr* audioMgr=new AudioMgr;
+    // WebSocketMgr* websocketMgr=new WebSocketMgr;
+    // MessageMgr* messageMgr=new MessageMgr;
+    // engine.rootContext()->setContextProperty("audioMgr",audioMgr);
+    // engine.rootContext()->setContextProperty("websocketMgr",websocketMgr);
+    // engine.loadFromModule("AIGirlfriend", "Main");
 
-    QObject::connect(audioMgr,&AudioMgr::signal_handlePcmData,websocketMgr,&WebSocketMgr::slot_handlePcmData);
-    QObject::connect(audioMgr,&AudioMgr::signal_endRecord,websocketMgr,&WebSocketMgr::slot_endRecord);
-    websocketMgr->connectAsrServer(QUrl("ws://localhost:10096"));
+    // QObject::connect(audioMgr,&AudioMgr::signal_handlePcmData,websocketMgr,&WebSocketMgr::slot_handlePcmData);
+    // QObject::connect(audioMgr,&AudioMgr::signal_endRecord,websocketMgr,&WebSocketMgr::slot_endRecord);
+    // QObject::connect(websocketMgr,&WebSocketMgr::signal_handleAsrMessage,messageMgr,&MessageMgr::slots_handleAsrMessage);
 
+
+    // websocketMgr->connectAsrServer(QUrl("ws://localhost:10096"));
+    Test::test_jsonMgr();
     return app.exec();
 }

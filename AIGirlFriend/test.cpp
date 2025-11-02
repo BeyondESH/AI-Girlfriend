@@ -8,6 +8,9 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include "audiomgr.h"
+#include "jsonmgr.h"
+
+
 void Test::test_threadMgr()
 {
     // 获取 ThreadMgr
@@ -55,4 +58,16 @@ void Test::test_audioMgr()
 {
     AudioMgr *audioMgr=new AudioMgr;
     audioMgr->start();
+}
+
+void Test::test_jsonMgr()
+{
+    QJsonObject jsonObj;
+    QJsonObject jsonObj2;
+    jsonObj["role"]="user";
+    jsonObj["num"]=100;
+    jsonObj["null"];
+    jsonObj2["isSucess"]=true;
+    jsonObj["jsonObj2"]=jsonObj2;
+    JsonMgr::printJsonObject(jsonObj);
 }

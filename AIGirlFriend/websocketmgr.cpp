@@ -25,6 +25,10 @@ WebSocketMgr::WebSocketMgr(QObject *parent)
         _isConnected=false;
         emit isConnectedChanged();
     });
+
+    QObject::connect(_websocket,&QWebSocket::textMessageReceived,[this](const QString &message){
+        signal_handleAsrMessage(message);
+    });
 }
 
 WebSocketMgr::~WebSocketMgr()

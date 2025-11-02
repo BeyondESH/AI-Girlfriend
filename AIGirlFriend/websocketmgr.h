@@ -23,6 +23,7 @@ public:
 
 signals:
     void isConnectedChanged();
+    void signal_handleAsrMessage(const QString &message);
 private:
     QWebSocket* _websocket;
     bool _isConnected;

@@ -21,7 +21,7 @@ AudioMgr::AudioMgr(QObject *parent)
 
     if(!audioDevice.isFormatSupported(audioFormat)){
         qDebug() << "音频格式不支持";
-        audioFormat==audioDevice.preferredFormat();
+        audioFormat=audioDevice.preferredFormat();
     }
     _sampleRate=audioFormat.sampleRate();
     qDebug() << "最终音频格式:";
