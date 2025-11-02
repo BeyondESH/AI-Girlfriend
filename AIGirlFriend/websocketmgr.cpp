@@ -51,7 +51,7 @@ void WebSocketMgr::connectAsrServer(const QUrl &url)
 void WebSocketMgr::sendPcmData(const QByteArray &pcmData)
 {
     int count=_websocket->sendBinaryMessage(pcmData);
-    qDebug()<<"发送字节数:"<<count;
+    // qDebug()<<"发送字节数:"<<count;
 }
 
 void WebSocketMgr::send(const QString &msg)

@@ -15,8 +15,9 @@ AudioMgr::AudioMgr(QObject *parent)
     QAudioFormat audioFormat=audioDevice.preferredFormat();
     // qDebug()<<audioDevice.description();
     //设置采样率
+    audioFormat.setSampleRate(16000);
     _sampleRate=audioFormat.sampleRate();
-    // qDebug()<<sampleRate;
+    qDebug()<<_sampleRate;
     _audioSource=new QAudioSource(audioDevice,audioFormat);
 }
 
