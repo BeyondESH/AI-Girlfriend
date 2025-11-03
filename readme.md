@@ -1,618 +1,263 @@
-# AI-Girlfriend - 实时语音交互AI系统# AI-Girlfriend - 流式AI女友语音交互系统
+# AI-Girlfriend - AI女友语音交互系统
 
+一个基于 Qt6 + QML 开发的 AI 语音交互应用，实现了完整的语音识别、大语言模型对话和语音合成功能。
 
+## 📋 项目简介
 
-**项目名称：** AI-Girlfriend  **项目名称：** AI-Girlfriend  
+AI-Girlfriend 是一个智能语音交互系统，可以通过语音与 AI 女友进行自然对话。系统采用模块化设计，集成了 ASR（语音识别）、LLM（大语言模型）和 TTS（语音合成）三大核心功能。
 
-**开发者：** BeyondESH  **开发者：** BeyondESH  
+## ✨ 主要特性
 
-**开发语言：** C++ / QML  **项目类型：** 实时语音交互AI系统  
+- 🎙️ **实时语音识别**：基于 FunASR 实现高精度语音转文字
+- 💬 **智能对话**：集成 Ollama 本地大语言模型，支持多轮对话
+- 🔊 **语音合成**：TTS 语音合成功能（待集成）
+- 🎨 **现代化界面**：基于 Qt6 QML 的美观用户界面
+- ⚡ **异步处理**：多线程架构，保证界面流畅性
+- 🔌 **WebSocket 通信**：实时双向数据传输
 
-**框架：** Qt 6.10.0  **开发语言：** C++20  
+## 🛠️ 技术栈
 
-**项目状态：** 开发中 (基础框架阶段)  **项目状态：** 开发中 (第一阶段)  
+### 前端
+- **Qt 6.10.0**：跨平台应用框架
+- **QML**：声明式 UI 开发
+- **Qt Quick**：现代化 UI 组件
 
-**最后更新：** 2025年11月3日**创建时间：** 2025-08-01  
+### 后端服务
+- **FunASR**：阿里达摩院开源的语音识别服务（Docker 部署）
+- **Ollama**：本地大语言模型服务
+- **WebSocket**：实时通信协议
 
-**最后更新：** 2025-08-01 11:52:25 UTC
+### 核心组件
+- **Qt Multimedia**：音频采集与处理
+- **Qt WebSockets**：WebSocket 客户端
+- **Qt Network**：HTTP 请求处理
 
----
-
----
-
-## 📋 项目概述
-
-## 📋 项目概述
-
-AI-Girlfriend 是一个基于 Qt6 框架开发的实时语音交互AI系统。项目采用现代化的 C++ 和 QML 技术栈，实现了音频采集、WebSocket 通信、语音识别(ASR)和大语言模型(LLM)对话等核心功能，为用户提供流畅的语音交互体验。
-
-AIGirlfriend是一个基于C++的高性能实时语音交互AI女友系统，致力于提供自然、流畅的人机语音对话体验。该项目采用完全离线架构，确保用户隐私安全，同时实现端到端流式处理，达到接近真人对话的交互延迟。
-
-## ✨ 当前功能
-
-## 🎯 项目愿景
-
-### 已实现功能
-
-- ✅ **实时音频采集**：基于 Qt Multimedia 的音频录制功能（16kHz采样率，单声道，Int16格式）创建一个具有以下特性的AI伴侣系统：
-
-- ✅ **WebSocket 通信**：与 ASR 服务器的实时双向通信- **自然交互**：如真人般的语音对话体验
-
-- ✅ **语音识别集成**：支持流式 PCM 音频数据传输和识别- **情感陪伴**：理解并回应用户的情感需求
-
-- ✅ **HTTP 请求管理**：封装的 HTTP GET/POST 请求管理器，支持异步回调- **隐私保护**：完全本地运行，无数据上传
-
-- ✅ **消息管理系统**：处理 ASR 识别结果和消息流转- **个性化定制**：支持声音、外观、性格的深度定制
-
-- ✅ **配置管理**：集中式配置管理（支持 ASR、LLM、TTS 服务配置）- **多模态交互**：语音、视觉、手势的综合交互
-
-- ✅ **线程池管理**：基于 QThreadPool 的异步任务执行框架
-
-- ✅ **JSON 工具**：JSON 解析和打印工具类## 🏗️ 技术架构
-
-- ✅ **简洁的 UI 界面**：基于 QML 的用户交互界面
-
-### 核心技术栈
-
-### 开发中功能```
-
-- 🚧 **大语言模型集成**：与本地 Ollama LLM 服务对话（已有 HTTP 接口）┌─────────────────────────────────────────────────────────┐
-
-- 🚧 **语音合成(TTS)**：文本转语音输出│                    应用层                                │
-
-- 🚧 **对话历史展示**：消息记录与 UI 展示├─────────────────────────────────────────────────────────┤
-
-- 🚧 **VAD 检测**：语音活动检测优化│  主控制器  │  状态机  │  事件分发器  │  配置管理器        │
-
-├─────────────────────────────────────────────────────────┤
-
-## 🏗️ 技术架构│                   业务逻辑层                             │
-
-├─────────────────────────────────────────────────────────┤
-
-### 核心技术栈│ 音频管理 │ 语音处理 │ AI引擎 │ 渲染引擎 │ 交互管理        │
-
-├─────────────────────────────────────────────────────────┤
-
-```│                   服务层                                │
-
-┌─────────────────────────────────────────────────────┐├─────────────────────────────────────────────────────────┤
-
-│                  UI层 (QML)                         ││ 流式录音 │ VAD检测 │ ASR识别 │ LLM推理 │ TTS合成         │
-
-│         ApplicationWindow + QtQuick Controls         │├─────────────────────────────────────────────────────────┤
-
-├─────────────────────────────────────────────────────┤│                   基础设施层                             │
-
-│                  业务逻辑层 (C++)                    │├─────────────────────────────────────────────────────────┤
-
-│  AudioMgr │ WebSocketMgr │ MessageMgr │ HttpMgr    ││ PortAudio │ Vosk │ llama.cpp │ Piper │ MediaPipe         │
-
-│  ConfigMgr │ ThreadMgr │ JsonMgr                    │└─────────────────────────────────────────────────────────┘
-
-├─────────────────────────────────────────────────────┤```
-
-│                  Qt6 框架层                          │
-
-│  Qt Quick │ Qt Multimedia │ Qt WebSockets           │### 关键技术选型
-
-│  Qt Network │ Qt Core                               │
-
-├─────────────────────────────────────────────────────┤| 模块 | 技术选择 | 版本/规格 | 选择原因 |
-
-│              外部服务 (WebSocket/HTTP)               │|------|----------|-----------|----------|
-
-│  ASR Server (ws://localhost:10096)                  │| **音频I/O** | PortAudio | v19+ | 跨平台、低延迟、稳定性好 |
-
-│  LLM Server (http://localhost:11434)                │| **语音识别** | Vosk | 0.3.45+ | 离线、中文支持、流式处理 |
-
-│  TTS Server (待集成)                                │| **AI推理** | llama.cpp | latest | 高效CPU推理、模型量化 |
-
-└─────────────────────────────────────────────────────┘| **语音合成** | Piper | v1.2+ | 高质量中文女声、自然度好 |
-
-```| **视觉处理** | MediaPipe | v0.10+ | 实时人脸/手势检测 |
-
-| **3D渲染** | OpenGL/VRM | 4.6+/1.0 | 跨平台、虚拟角色标准 |
-
-### 核心模块说明
-
-## 🎪 核心功能模块
-
-#### 1. AudioMgr（音频管理器）
-
-- 功能：实时音频流采集和管理### 1. 实时语音交互
-
-- 技术：QAudioSource, QAudioFormat- **流式音频采集**：< 50ms延迟的实时录音
-
-- 特性：- **智能VAD检测**：自适应语音活动检测
-
-  - 16kHz 采样率- **流式语音识别**：实时中文语音转文字
-
-  - 单声道- **本地AI对话**：基于大模型的智能回复
-
-  - Int16 采样格式- **自然语音合成**：高质量中文女声TTS
-
-  - 实时 PCM 数据流输出
-
-### 2. 视觉交互系统
-
-#### 2. WebSocketMgr（WebSocket管理器）- **实时人脸检测**：基于MediaPipe的面部识别
-
-- 功能：与 ASR 服务器的实时通信- **表情分析**：52个ARKit标准表情单元
-
-- 技术：QWebSocket- **视线追踪**：检测用户注视方向
-
-- 特性：- **手势识别**：支持常见手势指令
-
-  - 自动连接管理- **情感识别**：基于面部表情的情感状态分析
-
-  - 配置信息发送
-
-  - PCM 数据流式传输### 3. AI大脑系统
-
-  - 识别结果接收- **本地大模型**：支持Qwen、ChatGLM等中文模型
-
-- **对话记忆**：上下文感知的长期记忆
-
-#### 3. MessageMgr（消息管理器）- **性格系统**：可配置的AI性格特征
-
-- 功能：处理和管理对话消息- **情感引擎**：情感状态的识别和表达
-
-- 结构：Message 结构体（role, text, isFinal, timestamp）
-
-- 特性：### 4. 数字人渲染
-
-  - 消息分类（用户/AI）- **3D角色渲染**：基于VRM标准的虚拟角色
-
-  - 最终结果标记- **实时面部驱动**：用户表情到角色的实时映射
-
-  - 时间戳记录- **唇形同步**：语音与口型的精确同步
-
-- **情感动画**：基于对话内容的情感表达
-
-#### 4. HttpMgr（HTTP管理器）
-
-- 功能：HTTP GET/POST 请求封装### 5. 个性化定制
-
-- 技术：QNetworkAccessManager- **声音克隆**：基于少量样本的声音定制
-
-- 特性：- **外观定制**：角色模型、服装、发型的自定义
-
-  - 异步请求处理- **性格调整**：对话风格、兴趣爱好的个性化
-
-  - 请求 ID 跟踪- **记忆管理**：个人化的对话历史和偏好记忆
-
-  - 错误码处理
-
-  - 信号槽机制## 📊 技术指标
-
-
-
-#### 5. ConfigMgr（配置管理器）### 性能目标
-
-- 功能：统一配置管理（单例模式）- **端到端延迟**：< 500ms (语音输入→AI回复→语音输出)
-
-- 配置项：- **音频延迟**：< 100ms (采集→处理→播放)
-
-  - ASR 服务器地址- **帧率**：60fps (3D渲染)
-
-  - LLM 服务器地址和模型名称- **内存占用**：< 4GB (包含所有模型)
-
-  - TTS 服务器地址- **CPU占用**：< 30% (4核心处理器)
-
-  - 用户信息（UID, 用户名, 密码）
-
-### 质量指标
-
-#### 6. ThreadMgr（线程管理器）- **语音识别准确率**：> 95% (安静环境)
-
-- 功能：异步任务执行- **语音合成自然度**：MOS > 4.0
-
-- 技术：QThreadPool, QFuture, QPromise- **对话相关性**：> 90% (基于用户反馈)
-
-- 特性：- **表情驱动精度**：< 5% 误差
-
-  - 有返回值任务支持- **系统稳定性**：> 99.9% 运行时间
-
-  - 无返回值任务支持
-
-  - 线程池自动管理## 🛠️ 开发规划
-
-
-
-## 📁 项目结构### 第一阶段：基础语音交互 (当前)
-
-- [x] 实时音频流采集
-
-```- [ ] 语音活动检测 (VAD)
-
-AI-Girlfriend/- [ ] 流式语音识别
-
-├── AIGirlfriend/              # 主项目目录- [ ] 基础AI对话
-
-│   ├── main.cpp               # 程序入口- [ ] 语音合成输出
-
-│   ├── Main.qml               # QML 主界面
-
-│   ├── CMakeLists.txt         # CMake 构建配置### 第二阶段：视觉交互
-
-│   │- [ ] 摄像头集成
-
-│   ├── audiomgr.h/cpp         # 音频管理器- [ ] 人脸检测与跟踪
-
-│   ├── websocketmgr.h/cpp     # WebSocket 管理器- [ ] 表情分析
-
-│   ├── messagemgr.h/cpp       # 消息管理器- [ ] 手势识别
-
-│   ├── httpmgr.h/cpp          # HTTP 管理器- [ ] 多模态融合
-
-│   ├── configmgr.h/cpp        # 配置管理器
-
-│   ├── threadmgr.h/cpp        # 线程管理器### 第三阶段：AI增强
-
-│   ├── jsonmgr.h/cpp          # JSON 工具类- [ ] 本地大模型集成
-
-│   ├── global.h/cpp           # 全局定义- [ ] 长期记忆系统
-
-│   │- [ ] 情感引擎
-
-│   ├── test.h/cpp             # 测试用例- [ ] 性格系统
-
-│   │
-
-│   └── build/                 # 构建输出目录### 第四阶段：数字人渲染
-
-│       └── Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/- [ ] 3D角色系统
-
-│- [ ] 实时面部驱动
-
-└── readme.md                  # 项目文档- [ ] 唇形同步
-
-```- [ ] 场景渲染
-
-
-
-## 🎯 工作流程### 第五阶段：个性化定制
-
-- [ ] 声音克隆
-
-### 语音识别流程- [ ] 角色编辑器
-
-- [ ] 性格配置
-
-```- [ ] 记忆管理
-
-1. 用户点击"开始录制"
-
-   ↓## 🔧 系统要求
-
-2. WebSocketMgr 发送配置信息到 ASR 服务器
-
-   ↓### 最低配置
-
-3. AudioMgr 开始采集音频- **操作系统**：Ubuntu 20.04+ / Windows 10+ / macOS 12+
-
-   ↓- **处理器**：4核心 2.0GHz (Intel i5 / AMD Ryzen 5)
-
-4. PCM 数据通过信号 signal_handlePcmData 发送- **内存**：8GB RAM
-
-   ↓- **存储**：5GB 可用空间 (SSD推荐)
-
-5. WebSocketMgr 接收并通过 WebSocket 发送到服务器- **音频**：支持的麦克风和扬声器
-
-   ↓- **摄像头**：720p分辨率 (可选)
-
-6. 服务器返回识别结果（流式或最终）
-
-   ↓### 推荐配置
-
-7. MessageMgr 接收并处理识别文本- **处理器**：8核心 3.0GHz+ (Intel i7 / AMD Ryzen 7)
-
-   ↓- **内存**：16GB RAM
-
-8. 用户点击"结束录制"- **存储**：10GB SSD空间
-
-   ↓- **显卡**：支持OpenGL 4.6+ (集成显卡可用)
-
-9. WebSocketMgr 发送结束标记- **音频**：专业音频接口 (低延迟)
-
-```- **摄像头**：1080p 30fps
-
-
-
-### LLM 对话流程（计划中）## 🎨 创新特性
-
-
-
-```### 1. 端到端流式处理
-
-1. 收到完整的用户语音文本- 全链路实时优化，从音频采集到输出的极低延迟
-
-   ↓- 管道式处理架构，支持并行计算和异步处理
-
-2. 构建对话请求 JSON
-
-   ↓### 2. 完全离线运行
-
-3. HttpMgr POST 到 LLM 服务器- 所有AI模型本地部署，无需网络连接
-
-   ↓- 用户数据完全本地化，确保隐私安全
-
-4. 接收 AI 回复
-
-   ↓### 3. 多模态情感交互
-
-5. 解析 JSON 响应- 语音、表情、手势的综合情感识别
-
-   ↓- 自然的多模态反馈和表达
-
-6. 更新消息列表
-
-   ↓### 4. 深度个性化
-
-7. 调用 TTS 合成语音（待实现）- 基于机器学习的用户偏好学习
-
-```- 可定制的声音、外观、性格三位一体
-
-
-
-## 🔧 系统要求### 5. 工业级稳定性
-
-- C++实现的高性能底层架构
-
-### 开发环境- 完整的错误处理和恢复机制
-
-- **操作系统**：Windows 10/11- 模块化设计便于维护和扩展
-
-- **Qt 版本**：Qt 6.10.0
-
-- **编译器**：MSVC2022 64-bit## 📈 商业价值
-
-- **CMake**：3.16+
-
-- **C++ 标准**：C++17+### 目标用户群体
-
-- **技术爱好者**：对AI和语音技术感兴趣的开发者
-
-### 运行时依赖- **隐私重视者**：不愿使用云端AI服务的用户
-
-- **ASR 服务**：需要运行在 ws://localhost:10096- **孤独群体**：需要情感陪伴的个人用户
-
-- **LLM 服务**：Ollama 运行在 http://localhost:11434- **研究机构**：语音交互和AI研究的学术机构
-
-- **音频设备**：麦克风和扬声器- **企业客户**：需要定制化AI助手的企业
-
-
-
-### Qt 模块依赖### 技术优势
-
-```cmake- **性能优异**：C++实现的高性能实时处理
-
-- Qt6::Quick- **隐私保护**：完全本地化的数据处理
-
-- Qt6::Core- **可扩展性**：模块化架构便于功能扩展
-
-- Qt6::Multimedia- **开源友好**：基于开源技术栈，便于二次开发
-
-- Qt6::WebSockets
-
-- Qt6::Network## 🚀 项目意义
+## 📦 项目结构
 
 ```
-
-AIGirlfriend不仅是一个技术项目，更是对未来人机交互模式的探索。项目致力于：
+AIGirlfriend/
+├── audiomgr.h/cpp          # 音频管理模块（录音、PCM 数据采集）
+├── websocketmgr.h/cpp      # WebSocket 管理模块（ASR 连接）
+├── httpmgr.h/cpp           # HTTP 请求管理模块（LLM 接口）
+├── messagemgr.h/cpp        # 消息管理模块（对话历史）
+├── configmgr.h/cpp         # 配置管理模块（服务器配置）
+├── threadmgr.h/cpp         # 线程池管理模块（异步任务）
+├── jsonmgr.h/cpp           # JSON 工具类（调试输出）
+├── global.h/cpp            # 全局定义（请求 ID、错误码）
+├── main.cpp                # 应用程序入口
+├── Main.qml                # 主界面
+└── CMakeLists.txt          # CMake 构建配置
+```
 
 ## 🚀 快速开始
 
-1. **推动离线AI技术**：证明复杂AI应用可以完全本地化运行
+### 环境要求
 
-### 1. 环境准备2. **保护用户隐私**：在AI时代提供隐私保护的交互方案
+- **Qt 6.10.0+**（需要 Multimedia、WebSockets 模块）
+- **CMake 3.16+**
+- **MSVC 2022**（Windows）或 GCC/Clang（Linux/macOS）
+- **Docker**（用于部署 FunASR 服务）
+- **Ollama**（本地运行大语言模型）
 
-3. **降低技术门槛**：让普通用户也能享受高质量的AI服务
+### 1. 部署 FunASR 语音识别服务
 
-确保已安装：4. **促进技术创新**：在实时语音、计算机视觉、AI推理等领域的综合创新
-
-- Qt 6.10.0 或更高版本
-
-- CMake 3.16+## 📞 联系方式
-
-- MSVC2022 或其他 C++ 编译器
-
-**开发者：** BeyondESH  
-
-### 2. 启动外部服务**项目地址：** [待公开]  
-
-**技术交流：** [待建立]  
-
-#### ASR 服务**更新日志：** [待维护]
+使用 Docker 部署 FunASR：
 
 ```bash
+# 拉取 FunASR 镜像
+docker pull registry.cn-hangzhou.aliyuncs.com/funasr_repo/funasr:funasr-runtime-sdk-cpu-0.4.5
 
-# 启动 ASR WebSocket 服务器（端口 10096）---
-
-# 具体启动命令取决于您的 ASR 服务实现
-
+# 运行 FunASR 服务（CPU 版本）
+docker run -p 10096:10095 -it --privileged=true \
+  registry.cn-hangzhou.aliyuncs.com/funasr_repo/funasr:funasr-runtime-sdk-cpu-0.4.5
 ```
 
-#### LLM 服务（Ollama）
+服务启动后，WebSocket 地址为：`ws://localhost:10096`
+
+### 2. 安装 Ollama 并下载模型
+
 ```bash
-# 安装 Ollama
-# 下载模型（如 qwen3:8b）
+# 安装 Ollama（参考官网：https://ollama.ai）
+# Windows: 下载安装包直接安装
+
+# 下载 Qwen 模型
 ollama pull qwen3:8b
-
-# Ollama 默认运行在 http://localhost:11434
 ```
 
-### 3. 构建项目
+Ollama API 地址：`http://localhost:11434/api/chat`
 
-使用 Qt Creator：
-1. 打开 `AIGirlfriend/CMakeLists.txt`
-2. 配置构建套件（Desktop Qt 6.10.0 MSVC2022 64bit）
-3. 点击构建按钮
+### 3. 编译项目
 
-使用命令行：
 ```bash
-cd AIGirlfriend
-mkdir build
-cd build
+# 克隆项目
+git clone https://gitee.com/BeyondESH/AI-Girlfriend.git
+cd AI-Girlfriend/AIGirlfriend
+
+# 创建构建目录
+mkdir build && cd build
+
+# 配置 CMake
 cmake ..
-cmake --build .
+
+# 编译
+cmake --build . --config Debug
 ```
 
-### 4. 运行程序
+### 4. 运行应用
 
 ```bash
-cd build
+# Windows
+.\Debug\appAIGirlfriend.exe
+
+# Linux/macOS
 ./appAIGirlfriend
 ```
 
-或在 Qt Creator 中直接运行。
+## 💡 使用说明
 
-## 📊 测试用例
+1. **启动服务**：确保 FunASR 和 Ollama 服务已启动
+2. **连接服务器**：应用启动时自动连接 ASR 服务器
+3. **开始录音**：点击"开始录制"按钮开始说话
+4. **结束录音**：点击"结束录制"按钮，系统将识别语音并返回文本
+5. **查看结果**：在控制台查看识别结果和 AI 回复
 
-项目包含多个测试用例（test.h/cpp）：
+## 🔧 配置说明
+
+### 音频配置
+
+当前音频格式配置（`audiomgr.cpp`）：
+- **采样率**：16000 Hz
+- **声道数**：单声道（Mono）
+- **采样格式**：Int16
+- **编码格式**：PCM
+
+### 服务器配置
+
+在 `configmgr.h` 中定义了默认配置：
 
 ```cpp
-// 测试线程管理器
-Test::test_threadMgr();
+// ASR 服务器地址
+static constexpr const char* DEFAULT_ASR_URL = "ws://localhost:10096";
 
-// 测试 HTTP GET 请求
-Test::test_http_get();
+// LLM 服务器地址
+static constexpr const char* DEFAULT_LLM_URL = "http://localhost:11434/api/chat";
 
-// 测试 LLM 对话
-Test::test_post_chat();
-
-// 测试 JSON 工具
-Test::test_jsonMgr();
+// 默认模型
+static constexpr const char* DEFAULT_MODEL = "qwen3:8b";
 ```
 
-在 `main.cpp` 中取消注释相应的测试函数即可运行。
+### FunASR 配置
 
-## 🛠️ 开发计划
+WebSocket 连接参数（`websocketmgr.cpp`）：
 
-### Phase 1: 基础框架 ✅（当前）
-- [x] Qt 项目搭建
+```json
+{
+  "mode": "2pass",
+  "wav_name": "realtime_recording",
+  "is_speaking": true,
+  "wav_format": "pcm",
+  "chunk_size": [5, 10, 5],
+  "audio_fs": 16000,
+  "itn": true
+}
+```
+
+## 📊 模块说明
+
+### AudioMgr（音频管理）
+- 音频设备初始化和格式配置
+- 实时音频数据采集
+- PCM 数据流处理
+- 信号：`signal_handlePcmData`、`signal_endRecord`
+
+### WebSocketMgr（WebSocket 管理）
+- ASR 服务器连接管理
+- 实时发送 PCM 音频数据
+- 接收识别结果
+- 信号：`signal_handleAsrMessage`
+
+### HttpMgr（HTTP 管理）
+- 与 Ollama LLM 服务通信
+- 支持 GET/POST 请求
+- 异步请求处理
+- 信号：`signals_http_finished`
+
+### MessageMgr（消息管理）
+- 处理 ASR 识别结果
+- 管理对话历史（待完善）
+- 消息结构定义
+
+### ConfigMgr（配置管理）
+- 单例模式管理全局配置
+- 支持用户信息和服务器配置
+- Qt 属性绑定支持
+
+### ThreadMgr（线程池管理）
+- 异步任务提交
+- 支持有返回值和无返回值任务
+- 基于 QThreadPool 实现
+
+## 🎯 开发路线
+
+### 已完成 ✅
 - [x] 音频采集模块
-- [x] WebSocket 通信
+- [x] WebSocket 通信（ASR）
+- [x] FunASR 语音识别集成
 - [x] HTTP 请求封装
-- [x] 配置管理
-- [x] 基础 UI
+- [x] Ollama LLM 对话集成
+- [x] 基础 UI 界面
+- [x] 配置管理系统
 
-### Phase 2: 完整语音交互 🚧
-- [ ] VAD 语音活动检测
-- [ ] ASR 流式识别优化
-- [ ] LLM 对话集成
-- [ ] TTS 语音合成
-- [ ] 消息历史展示
-- [ ] 完整的对话循环
+### 开发中 🚧
+- [ ] TTS 语音合成集成
+- [ ] 对话历史管理
+- [ ] 完善 UI 交互
+- [ ] 消息展示界面
+- [ ] 流式对话显示
 
-### Phase 3: UI/UX 优化
-- [ ] 更美观的界面设计
-- [ ] 对话气泡展示
-- [ ] 实时录音动画
-- [ ] 音量可视化
-- [ ] 设置页面
-
-### Phase 4: 高级功能
-- [ ] 对话历史持久化
-- [ ] 多轮对话上下文
+### 计划中 📋
+- [ ] 用户配置界面
+- [ ] 多语言支持
+- [ ] 语音唤醒功能
+- [ ] 对话上下文管理
 - [ ] 情感分析
-- [ ] 语音情感表达
-- [ ] 个性化配置
+- [ ] 语音情绪识别
+- [ ] 自定义 AI 人设
+- [ ] 对话数据持久化
 
-### Phase 5: 性能优化
-- [ ] 延迟优化
-- [ ] 内存管理
-- [ ] 多线程优化
-- [ ] 资源池管理
+## 🔍 常见问题
 
-## 🐛 已知问题
+### Q: 无法连接 ASR 服务器？
+A: 请确保 Docker 容器正在运行，端口映射正确（10096:10095）
 
-- [ ] 音频采集停止时可能存在短暂延迟
-- [ ] WebSocket 断线重连机制需完善
-- [ ] 错误处理需要更详细的日志
-- [ ] UI 响应需要状态反馈
+### Q: 录音没有声音？
+A: 检查系统麦克风权限，确保选择了正确的音频输入设备
 
-## 🎨 技术亮点
+### Q: Ollama 请求失败？
+A: 确保 Ollama 服务已启动，并且已下载对应的模型（qwen3:8b）
 
-1. **信号槽机制**：充分利用 Qt 的信号槽实现模块解耦
-2. **异步处理**：ThreadMgr 支持异步任务，避免 UI 阻塞
-3. **单例模式**：ConfigMgr 使用单例确保配置一致性
-4. **模板编程**：ThreadMgr 使用 C++ 模板支持泛型任务
-5. **QML 集成**：C++ 后端与 QML 前端无缝对接
+### Q: 编译错误？
+A: 检查 Qt 版本是否为 6.10.0+，确保安装了 Multimedia 和 WebSockets 模块
 
-## 📚 核心代码示例
+## 🤝 贡献
 
-### 音频采集
-```cpp
-AudioMgr* audioMgr = new AudioMgr;
-connect(audioMgr, &AudioMgr::signal_handlePcmData, 
-        this, &MyClass::handlePcmData);
-audioMgr->start();  // 开始录音
-```
-
-### WebSocket 通信
-```cpp
-WebSocketMgr* ws = new WebSocketMgr;
-ws->connectAsrServer(QUrl("ws://localhost:10096"));
-ws->sendConfig();  // 发送配置
-```
-
-### HTTP 请求
-```cpp
-HttpMgr* http = new HttpMgr;
-QByteArray data = createJsonData();
-http->post(QUrl("http://localhost:11434/api/chat"), 
-           ReqId::ID_SEND_CHAT, data);
-```
-
-### 配置管理
-```cpp
-ConfigMgr& config = ConfigMgr::instance();
-config.setAsrServerUrl("ws://localhost:10096");
-QString url = config.asrServerUrl();
-```
-
-## 📈 性能指标
-
-当前性能（开发环境）：
-- **音频延迟**：~50ms
-- **WebSocket 延迟**：~10ms
-- **内存占用**：~80MB
-- **CPU 占用**：录音时 < 5%
-
-目标性能：
-- **端到端延迟**：< 500ms（语音→识别→LLM→合成→播放）
-- **音频延迟**：< 100ms
-- **帧率**：60fps（UI）
-- **内存占用**：< 200MB
-
-## 🤝 贡献指南
-
-欢迎贡献代码、报告问题或提出建议！
-
-### 代码规范
-- 使用驼峰命名法
-- 私有成员以下划线 `_` 开头
-- 信号以 `signal_` 开头
-- 槽函数以 `slot_` 或 `slots_` 开头
-- 添加适当的注释
-
-### 提交规范
-- 清晰的 commit 信息
-- 每个 commit 专注于单一功能
-- 测试后再提交
+欢迎提交 Issue 和 Pull Request！
 
 ## 📄 许可证
 
-[待定]
+本项目采用 MIT 许可证，详见 [LICENSE](LICENSE) 文件。
 
-## 📞 联系方式
+## 🙏 致谢
 
-**开发者：** BeyondESH  
-**项目地址：** https://gitee.com/BeyondESH/AI-Girlfriend  
+- [FunASR](https://github.com/alibaba-damo-academy/FunASR) - 阿里达摩院语音识别服务
+- [Ollama](https://ollama.ai) - 本地大语言模型运行平台
+- [Qt](https://www.qt.io) - 跨平台应用开发框架
+
+## 📧 联系方式
+
+- Gitee: [@BeyondESH](https://gitee.com/BeyondESH)
+- 项目地址: https://gitee.com/BeyondESH/AI-Girlfriend
 
 ---
 
-*最后更新：2025年11月3日*  
-*当前版本：v0.1-alpha*
+⭐ 如果这个项目对你有帮助，欢迎 Star！
