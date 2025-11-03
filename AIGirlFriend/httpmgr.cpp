@@ -2,11 +2,12 @@
 #include <QDebug>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonArray>
 
 HttpMgr::HttpMgr(QObject *parent)
     : QObject{parent},_networkAccessMgr(new QNetworkAccessManager(this))
 {
-    connect(this,&HttpMgr::signals_http_finished,this,&HttpMgr::slots_http_finished);
+    connect(this,&HttpMgr::signal_http_finished,this,&HttpMgr::slot_http_finished);
 }
 
 void HttpMgr::get(const QUrl &url,ReqId id)
@@ -17,11 +18,11 @@ void HttpMgr::get(const QUrl &url,ReqId id)
     connect(reply,&QNetworkReply::finished,[reply,id,this](){
         if(reply->error()!=QNetworkReply::NoError){
             QString errorString=reply->errorString();
-            emit signals_http_finished(errorString,id,ErrorCode::ERROR_NETWORK);
+            emit signal_http_finished(errorString,id,ErrorCode::ERROR_NETWORK);
             return;
         }
         QString data=reply->readAll();
-        emit signals_http_finished(data,id,ErrorCode::SUCCESS);
+        emit signal_http_finished(data,id,ErrorCode::SUCCESS);
         reply->deleteLater();
     });
 }
@@ -34,16 +35,16 @@ void HttpMgr::post(const QUrl &url, ReqId id,QByteArray &data)
     connect(reply,&QNetworkReply::finished,[reply,id,this](){
         if(reply->error()!=QNetworkReply::NoError){
             QString errorString=reply->errorString();
-            emit signals_http_finished(errorString,id,ErrorCode::ERROR_NETWORK);
+            emit signal_http_finished(errorString,id,ErrorCode::ERROR_NETWORK);
             return;
         }
         QString data=reply->readAll();
-        emit signals_http_finished(data,id,ErrorCode::SUCCESS);
+        emit signal_http_finished(data,id,ErrorCode::SUCCESS);
         reply->deleteLater();
     });
 }
 
-void HttpMgr::slots_http_finished(QString data,ReqId id,ErrorCode ec)
+void HttpMgr::slot_http_finished(QString data,ReqId id,ErrorCode ec)
 {
     if(ec!=ErrorCode::SUCCESS){
         qWarning()<<"Network Error:"<<data;
@@ -55,6 +56,7 @@ void HttpMgr::slots_http_finished(QString data,ReqId id,ErrorCode ec)
             QJsonObject jsonObj=jsonDoc.object();
             QString content=jsonObj["message"].toObject()["content"].toString();
             qDebug().noquote()<<"她说:"<<content;
+            emit signal_llmResponse_finished();
             return;
         }
         case ReqId::ID_TEST:{
@@ -62,4 +64,22 @@ void HttpMgr::slots_http_finished(QString data,ReqId id,ErrorCode ec)
             return;
         }
     }
+}
+
+void HttpMgr::slot_signal_sendllmMessage(const QString &text)
+{
+    QJsonObject rootObj,messageObj;
+    rootObj["model"]="qwen3:8b";
+    rootObj["stream"]=false;
+    rootObj["think"]=false;
+    messageObj["role"]="user";
+    QString content="请以用户女友的身份回答:"+text;
+    messageObj["content"]=content;
+    QJsonArray messageArray;
+    messageArray.append(messageObj);
+    rootObj["messages"]=messageArray;
+    QJsonDocument jsonDoc(rootObj);
+    QByteArray data=jsonDoc.toJson(QJsonDocument::Indented);
+    HttpMgr *httpMgr=new HttpMgr();
+    httpMgr->post(QUrl("http://localhost:11434/api/chat"),ReqId::ID_SEND_CHAT,data);
 }

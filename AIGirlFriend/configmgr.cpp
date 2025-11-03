@@ -8,6 +8,11 @@ ConfigMgr &ConfigMgr::instance()
 
 ConfigMgr::ConfigMgr() {}
 
+ConfigMgr::~ConfigMgr()
+{
+
+}
+
 QString ConfigMgr::ttsServerUrl() const
 {
     return _ttsServerUrl;

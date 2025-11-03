@@ -17,9 +17,11 @@ public:
 private:
     QNetworkAccessManager * _networkAccessMgr;
 signals:
-    void signals_http_finished(QString data,ReqId id, ErrorCode ec);
-private slots:
-    void slots_http_finished(QString data,ReqId id,ErrorCode ec);
+    void signal_http_finished(QString data,ReqId id, ErrorCode ec);
+    void signal_llmResponse_finished();
+public slots:
+    void slot_http_finished(QString data,ReqId id,ErrorCode ec);
+    void slot_signal_sendllmMessage(const QString& text);
 };
 
 #endif // HTTPMGR_H
