@@ -31,6 +31,7 @@ qt_add_qml_module(appAIGirlfriend
         SOURCES websocketmgr.h websocketmgr.cpp
         SOURCES messagemgr.h messagemgr.cpp
         SOURCES jsonmgr.h jsonmgr.cpp
+        SOURCES configmgr.h configmgr.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

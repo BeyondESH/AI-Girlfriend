@@ -1,10 +1,16 @@
 #include "messagemgr.h"
+#include <QDebug>
 
 MessageMgr::MessageMgr(QObject *parent)
     : QObject{parent}
 {}
 
-void MessageMgr::slots_handleAsrMessage(const QString &message)
+MessageMgr::~MessageMgr()
 {
 
+}
+
+void MessageMgr::slots_handleAsrMessage(const QString &message)
+{
+    qDebug().noquote()<<message;
 }

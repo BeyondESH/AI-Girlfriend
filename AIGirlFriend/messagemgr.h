@@ -18,7 +18,7 @@ class MessageMgr : public QObject
     Q_OBJECT
 public:
     explicit MessageMgr(QObject *parent = nullptr);
-
+    ~MessageMgr();
 signals:
 
 public slots:

@@ -69,5 +69,7 @@ void Test::test_jsonMgr()
     jsonObj["null"];
     jsonObj2["isSucess"]=true;
     jsonObj["jsonObj2"]=jsonObj2;
-    JsonMgr::printJsonObject(jsonObj);
+    QJsonDocument doc(jsonObj);
+    QString str=doc.toJson();
+    qDebug().noquote()<<str;
 }
