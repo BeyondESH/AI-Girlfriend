@@ -1,0 +1,51 @@
+#ifndef GATEWAY_H
+#define GATEWAY_H
+
+#include <QObject>
+#include <QWebSocket>
+#include <QUrl>
+#include <QNetworkAccessManager>
+
+enum ReqId{
+    SEND_ASR,
+    SEDN_TTS,
+    CHAT_LLM,
+};
+
+enum ErrorCode{
+    ERROR_NETWORK,
+    SUCCESS,
+};
+
+class GateWay : public QObject
+{
+    Q_OBJECT
+public:
+    explicit GateWay(QObject *parent = nullptr);
+    ~GateWay();
+    void wsConnect(const QUrl &url);
+    void wsConnectAsrServer(const QUrl &url=QUrl("ws://localhost:10096"));
+    void wsSendPcmData(const QByteArray &pcmData);
+    void wsSend(const QString &msg);
+    void wsSendAsrConfig();
+    void get(const QUrl & url,ReqId id);
+    void post(const QUrl &url,QByteArray &data,ReqId id);
+    void post(const QUrl &url,QHttpMultiPart *multiPart,ReqId id);
+    void sendllmMessage(const QString& text);
+    void sendttsMessage(const QString& text);
+signals:
+    void signal_connectAsrWS();
+    void signal_tts_finished(const QByteArray &data);
+public slots:
+    void slot_handlePcmData(const QByteArray &pcmData);
+    void handle_http_finished(QByteArray data,ReqId id,ErrorCode ec);
+
+    void slot_endAsrRecord();
+private:
+    QWebSocket* _websocket;
+    QNetworkAccessManager* _networkAccessMgr;
+    std::atomic_bool _wsConnected;
+};
+
+#endif // GATEWAY_H
+

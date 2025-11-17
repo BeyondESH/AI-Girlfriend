@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "mutex": "cpp",
+        "memory": "cpp",
+        "atomic": "cpp",
+        "array": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
+    }
+}

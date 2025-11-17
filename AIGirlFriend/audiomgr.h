@@ -5,6 +5,9 @@
 #include <QAudioInput>
 #include <QAudioFormat>
 #include <QAudioSource>
+#include <QMap>
+#include <QAudioSink>
+
 class AudioMgr : public QObject
 {
     Q_OBJECT
@@ -12,17 +15,32 @@ class AudioMgr : public QObject
 public:
     explicit AudioMgr(QObject *parent = nullptr);
     ~AudioMgr();
-    Q_INVOKABLE  void start();
-    Q_INVOKABLE  void stop();
+    void recordAsr();
+    void recordClone();
+    void stop();
+    void asrStop();
+    void suspend();
+    void resume();
     int sampleRate() const;
-
+    void setupPresets();
+    void stopAudioOutput();
+    void startWithConfig(const QAudioFormat &audioFormat);
+    void test();
+    QByteArray createWavHeader(qint64 pcmDataSize);
+    QAudio::State state() const;
+public slots:
+    void slot_tts_finished(const QByteArray &data);
 signals:
     void signal_handlePcmData(const QByteArray &pcmData);
-    void signal_endRecord();
+    void signal_endAsrRecord();
 private:
     QAudioSource *_audioSource;
     QIODevice * _ioDevice;
+    QAudioSink* _audioSink;
     int _sampleRate;
+    QAudioDevice _audioDevice;
+    QMap<QString,QAudioFormat> _configs;
+    QAudio::State _state;
 };
 
 #endif // AUDIOMGR_H

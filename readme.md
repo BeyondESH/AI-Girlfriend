@@ -1,6 +1,16 @@
 # AI-Girlfriend - AI女友语音交互系统
 
+> ⚠️ **重构说明**: 项目已完成架构重构，采用模块化设计。查看 [重构总结](REFACTORING_SUMMARY.md) 了解详情。
+
 一个基于 Qt6 + QML 开发的 AI 语音交互应用，实现了完整的语音识别、大语言模型对话和语音合成功能。
+
+## 📚 文档导航
+
+- **[架构设计](ARCHITECTURE.md)** - 详细的架构说明和模块职责
+- **[使用指南](USAGE.md)** - 如何使用新架构开发
+- **[迁移指南](MIGRATION.md)** - 从旧代码迁移到新架构
+- **[重构总结](REFACTORING_SUMMARY.md)** - 重构的改进和最佳实践
+- **[快速参考](QUICK_REFERENCE.md)** - 常用代码片段和API速查
 
 ## 📋 项目简介
 
@@ -36,17 +46,58 @@ AI-Girlfriend 是一个智能语音交互系统，可以通过语音与 AI 女�
 
 ```
 AIGirlfriend/
-├── audiomgr.h/cpp          # 音频管理模块（录音、PCM 数据采集）
-├── websocketmgr.h/cpp      # WebSocket 管理模块（ASR 连接）
-├── httpmgr.h/cpp           # HTTP 请求管理模块（LLM 接口）
-├── messagemgr.h/cpp        # 消息管理模块（对话历史）
-├── configmgr.h/cpp         # 配置管理模块（服务器配置）
-├── threadmgr.h/cpp         # 线程池管理模块（异步任务）
-├── jsonmgr.h/cpp           # JSON 工具类（调试输出）
-├── global.h/cpp            # 全局定义（请求 ID、错误码）
-├── main.cpp                # 应用程序入口
-├── Main.qml                # 主界面
-└── CMakeLists.txt          # CMake 构建配置
+├── core/                       # 核心架构层
+│   ├── eventbus.h/cpp          # 事件总线（发布-订阅）
+│   └── servicelocator.h/cpp    # 服务定位器（IoC容器）
+├── interfaces/                 # 接口抽象层
+│   ├── iservice.h              # 服务基类接口
+│   ├── iaudioservice.h         # 音频服务接口
+│   ├── iasrservice.h           # ASR服务接口
+│   ├── illmservice.h           # LLM服务接口
+│   └── imessageservice.h       # 消息服务接口
+├── services/                   # 服务实现层
+│   ├── audioservice.h/cpp      # 音频服务实现
+│   ├── asrservice.h/cpp        # ASR服务实现
+│   ├── llmservice.h/cpp        # LLM服务实现
+│   └── messageservice.h/cpp    # 消息服务实现
+├── threadmgr.h/cpp             # 线程池管理器
+├── configmgr.h/cpp             # 配置管理器（支持JSON）
+├── jsonmgr.h/cpp               # JSON工具类
+├── EventBus.h                  # 事件和枚举定义（State、ErrorCode、ReqId）
+├── main.cpp                    # 应用入口（服务初始化）
+├── mainwindow.h/cpp/ui         # 主窗口（纯UI控制器）
+├── config.json                 # 配置文件
+└── [legacy]                    # 旧代码（兼容保留）
+    ├── audiomgr.h/cpp
+    ├── websocketmgr.h/cpp
+    ├── httpmgr.h/cpp
+    └── messagemgr.h/cpp
+```
+
+### 架构层次图
+```
+┌─────────────────────────────────────────┐
+│          UI Layer (MainWindow)          │  ← 仅负责UI交互
+└──────────────┬──────────────────────────┘
+               │ ServiceLocator
+┌──────────────▼──────────────────────────┐
+│       Service Locator (IoC容器)         │  ← 管理服务生命周期
+└──────────────┬──────────────────────────┘
+               │
+┌──────────────▼──────────────────────────┐
+│         Service Layer (服务层)           │  ← 业务逻辑实现
+│  AudioService │ AsrService │ LlmService  │
+│  MessageService │ ConfigMgr              │
+└──────────────┬──────────────────────────┘
+               │ EventBus
+┌──────────────▼──────────────────────────┐
+│        Event Bus (事件总线)              │  ← 模块间通信
+└──────────────┬──────────────────────────┘
+               │
+┌──────────────▼──────────────────────────┐
+│    Infrastructure (基础设施层)           │  ← 工具类
+│  ThreadMgr │ ConfigMgr │ JsonMgr        │
+└─────────────────────────────────────────┘
 ```
 
 ## 🚀 快速开始
@@ -96,14 +147,33 @@ cd AI-Girlfriend/AIGirlfriend
 # 创建构建目录
 mkdir build && cd build
 
-# 配置 CMake
+# 配置 CMake（确保已安装Qt 6.10+）
 cmake ..
 
 # 编译
 cmake --build . --config Debug
 ```
 
-### 4. 运行应用
+### 4. 配置应用
+
+创建或编辑 `config.json`（与可执行文件同目录）：
+
+```json
+{
+  "user": {
+    "name": "用户名",
+    "uid": "用户ID"
+  },
+  "server": {
+    "asr_url": "ws://localhost:10096",
+    "llm_url": "http://localhost:11434/api/chat",
+    "llm_model": "qwen3:8b",
+    "tts_url": ""
+  }
+}
+```
+
+### 5. 运行应用
 
 ```bash
 # Windows
@@ -116,8 +186,157 @@ cmake --build . --config Debug
 ## 💡 使用说明
 
 1. **启动服务**：确保 FunASR 和 Ollama 服务已启动
-2. **连接服务器**：应用启动时自动连接 ASR 服务器
-3. **开始录音**：点击"开始录制"按钮开始说话
+2. **配置检查**：确认 `config.json` 中的服务器地址正确
+3. **启动应用**：运行 AIGirlFriend.exe
+4. **开始对话**：
+   - 点击"开始录制"按钮
+   - 说出你想说的话
+   - 点击"停止录制"
+   - 等待AI回复
+
+## 🏗️ 架构特性 (v2.0)
+
+### 1. 解耦架构
+- **接口抽象层**：所有服务实现接口，便于替换和测试
+- **事件驱动**：通过EventBus通信，模块间零依赖
+- **依赖注入**：ServiceLocator管理服务，支持IoC
+
+### 2. 事件总线
+```cpp
+// 发布事件
+EventBus::instance().publish(Events::AUDIO_PCM_DATA, pcmData);
+
+// 订阅事件
+EventBus::instance().subscribe(Events::ASR_RESULT, this,
+    [](const QVariant& data) {
+        QString result = data.toString();
+        // 处理识别结果
+    });
+```
+
+### 3. 服务定位器
+```cpp
+// 获取服务
+auto audioService = ServiceLocator::instance()
+    .getService<IAudioService>(ServiceIds::AUDIO_SERVICE);
+
+// 使用服务
+audioService->start();
+```
+
+## 📚 文档
+
+- [架构文档 (ARCHITECTURE.md)](ARCHITECTURE.md) - 详细的架构设计说明
+- [重构指南 (REFACTORING.md)](REFACTORING.md) - v2.0重构说明和迁移指南
+- [API文档 (API.md)](API.md) - 接口和服务API说明
+
+## 🔧 开发指南
+
+### 添加新服务
+
+1. 在 `interfaces/` 定义接口
+```cpp
+class INewService : public IService {
+public:
+    virtual void doSomething() = 0;
+};
+```
+
+2. 在 `services/` 实现服务
+```cpp
+class NewService : public QObject, public INewService {
+    Q_OBJECT
+public:
+    bool initialize() override;
+    void start() override;
+    void stop() override;
+    void doSomething() override;
+};
+```
+
+3. 注册服务（main.cpp）
+```cpp
+auto newService = std::make_shared<NewService>();
+ServiceLocator::instance().registerService<INewService>(
+    "NewService", newService);
+```
+
+### 使用事件通信
+
+```cpp
+// 定义事件类型
+namespace Events {
+    constexpr const char* NEW_EVENT = "new.event";
+}
+
+// 发布事件
+EventBus::instance().publish(Events::NEW_EVENT, data);
+
+// 订阅事件
+EventBus::instance().subscribe(Events::NEW_EVENT, this, callback);
+```
+
+## 🧪 测试
+
+```bash
+# 运行测试（如果有）
+cd build
+ctest
+```
+
+## 🐛 常见问题
+
+### Q: ASR连接失败？
+A: 检查FunASR Docker容器是否运行，端口是否正确（10096）
+
+### Q: LLM无响应？
+A: 确认Ollama服务运行，模型已下载（`ollama pull qwen3:8b`）
+
+### Q: 编译错误？
+A: 确保Qt 6.10+已正确安装，CMake能找到Qt路径
+
+### Q: 配置文件不生效？
+A: 确认 `config.json` 与可执行文件在同一目录
+
+## 🚀 路线图
+
+- [x] v1.0 基础功能实现
+- [x] v2.0 架构重构（解耦、事件驱动）
+- [ ] v2.1 TTS语音合成集成
+- [ ] v2.2 对话历史持久化（数据库）
+- [ ] v2.3 WebUI界面（QML/Web）
+- [ ] v3.0 插件系统
+- [ ] v3.1 云端部署支持
+
+## 📄 许可证
+
+本项目采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+## 👥 作者
+
+- **BeyondESH** - *初始工作* - [Gitee](https://gitee.com/BeyondESH)
+
+## 🙏 致谢
+
+- [FunASR](https://github.com/alibaba-damo-academy/FunASR) - 阿里达摩院语音识别
+- [Ollama](https://ollama.ai) - 本地大语言模型
+- [Qt Framework](https://www.qt.io) - 跨平台应用框架
+
+---
+
+**版本**: v2.0 (重构版)  
+**更新日期**: 2025-01-09  
+**项目主页**: https://gitee.com/BeyondESH/AI-Girlfriend
 4. **结束录音**：点击"结束录制"按钮，系统将识别语音并返回文本
 5. **查看结果**：在控制台查看识别结果和 AI 回复
 
