@@ -1,0 +1,6 @@
+module AI-Girlfriend
+typeinfo appAI-Girlfriend.qmltypes
+prefer :/qt/qml/AI-Girlfriend/
+Main 254.0 Main.qml
+depends QtQuick
+

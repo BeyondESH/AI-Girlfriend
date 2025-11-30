@@ -1,6 +1,0 @@
-module AIGirlFriend
-typeinfo appAIGirlFriend.qmltypes
-prefer :/qt/qml/AIGirlFriend/
-Main 254.0 Main.qml
-depends QtQuick
-

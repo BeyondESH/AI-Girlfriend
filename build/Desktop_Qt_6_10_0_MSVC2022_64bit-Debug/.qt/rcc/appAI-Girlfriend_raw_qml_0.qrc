@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qt/qml/AI-Girlfriend/">
+    <file alias="Main.qml">D:/Gitee/AI-Girlfriend/Main.qml</file>
+  </qresource>
+</RCC>
+

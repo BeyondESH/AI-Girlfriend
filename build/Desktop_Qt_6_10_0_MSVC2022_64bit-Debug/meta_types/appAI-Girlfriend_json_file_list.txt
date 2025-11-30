@@ -1,0 +1,4 @@
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAI-Girlfriend_autogen/include/../EWIEGA46WW/moc_application.cpp.json
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAI-Girlfriend_autogen/include/../EWIEGA46WW/moc_audiomgr.cpp.json
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAI-Girlfriend_autogen/include/../EWIEGA46WW/moc_configmgr.cpp.json
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAI-Girlfriend_autogen/include/../EWIEGA46WW/moc_gateway.cpp.json

@@ -1,0 +1,47 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 2,
+                            "column": 17,
+                            "durationMicroseconds": 94,
+                            "functionName": "height",
+                            "line": 13,
+                            "message": "Cannot access value for name headerLayout"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 15,
+                            "durationMicroseconds": 10,
+                            "functionName": "width",
+                            "line": 14,
+                            "message": "Cannot access value for name parent"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 6,
+                            "functionName": "fill",
+                            "line": 18,
+                            "message": "Cannot access value for name parent"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 33,
+                            "durationMicroseconds": 0,
+                            "functionName": "onAccepted",
+                            "line": 48,
+                            "message": "Could not find signal \"accepted\"."
+                        }
+                    ],
+                    "filePath": "D:/Gitee/AI-Girlfriend/Main.qml"
+                }
+            ],
+            "moduleId": "AI-Girlfriend(appAI-Girlfriend)"
+        }
+    ]
+}

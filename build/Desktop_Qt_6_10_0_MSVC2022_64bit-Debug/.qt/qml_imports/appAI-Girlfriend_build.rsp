@@ -1,0 +1,15 @@
+-rootPath
+D:/Gitee/AI-Girlfriend
+-cmake-output
+-output-file
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/qml_imports/appAI-Girlfriend_build.cmake
+-importPath
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend
+-importPath
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug
+-importPath
+C:/Qt/6.10.0/msvc2022_64/qml
+-qrcFiles
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qmake_AI-Girlfriend.qrc
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_qml_0.qrc
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_res_0.qrc

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16)
 
 project(AI-Girlfriend VERSION 0.1 LANGUAGES CXX)
 
+set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
@@ -23,7 +24,7 @@ qt_add_qml_module(appAI-Girlfriend
         SOURCES audiomgr.cpp audiomgr.h configmgr.cpp configmgr.h gateway.cpp gateway.h
         RESOURCES res.qrc
         SOURCES application.h application.cpp
-)
+        )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
