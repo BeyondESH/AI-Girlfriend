@@ -1,0 +1,27 @@
+{
+    "classes": [
+        {
+            "className": "Application",
+            "lineNumber": 8,
+            "object": true,
+            "qualifiedClassName": "Application",
+            "slots": [
+                {
+                    "access": "private",
+                    "index": 0,
+                    "lineNumber": 17,
+                    "name": "on_pushButtonRecord_clicked",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "application.h",
+    "outputRevision": 69
+}

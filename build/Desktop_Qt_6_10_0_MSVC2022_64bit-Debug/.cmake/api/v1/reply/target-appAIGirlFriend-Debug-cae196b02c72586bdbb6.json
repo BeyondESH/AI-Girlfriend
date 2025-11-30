@@ -1,0 +1,1640 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "appAIGirlFriend.exe"
+		},
+		{
+			"path" : "appAIGirlFriend.pdb"
+		}
+	],
+	"backtrace" : 4,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"_qt_internal_create_executable",
+			"qt6_add_executable",
+			"qt_add_executable",
+			"install",
+			"target_link_libraries",
+			"set_target_properties",
+			"include",
+			"find_package",
+			"find_dependency",
+			"_qt_internal_find_qt_dependencies",
+			"qt6_add_qml_module",
+			"qt_add_qml_module",
+			"add_dependencies",
+			"_qt_internal_qml_copy_files_to_build_dir",
+			"_qt_internal_scan_qml_imports",
+			"_qt_internal_generate_deploy_qml_imports_script",
+			"cmake_language",
+			"_qt_internal_finalize_executable",
+			"qt6_finalize_target",
+			"_qt_internal_write_deferred_qmlls_build_ini_file",
+			"target_include_directories",
+			"_qt_internal_qml_type_registration",
+			"target_sources",
+			"qt6_extract_metatypes",
+			"set_source_files_properties",
+			"__qt_propagate_generated_resource",
+			"_qt_internal_process_resource",
+			"qt6_add_resources",
+			"qt6_target_qml_sources",
+			"_qt_internal_target_enable_qmlcachegen",
+			"_qt_internal_expose_deferred_files_to_ide"
+		],
+		"files" : 
+		[
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+			"CMakeLists.txt",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickTargets.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickConfig.cmake",
+			"build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qtc/package-manager/maintenance_tool_provider.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6QmlMeta/Qt6QmlMetaTargets.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6QmlMeta/Qt6QmlMetaConfig.cmake",
+			"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Quick/Qt6QuickDependencies.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlTargets.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlConfig.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Network/Qt6NetworkTargets.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlDependencies.cmake",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:846:EVAL",
+			"C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake:1086:EVAL"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 15,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 1000,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 671,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 747,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 48,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 43,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 44,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 45,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 39,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 1,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 315,
+				"parent" : 10
+			},
+			{
+				"file" : 3,
+				"parent" : 11
+			},
+			{
+				"command" : 7,
+				"file" : 3,
+				"line" : 52,
+				"parent" : 12
+			},
+			{
+				"file" : 2,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 61,
+				"parent" : 14
+			},
+			{
+				"command" : 7,
+				"file" : 3,
+				"line" : 40,
+				"parent" : 12
+			},
+			{
+				"file" : 9,
+				"parent" : 16
+			},
+			{
+				"command" : 10,
+				"file" : 9,
+				"line" : 45,
+				"parent" : 17
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 142,
+				"parent" : 18
+			},
+			{
+				"command" : 8,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 19
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 333,
+				"parent" : 20
+			},
+			{
+				"file" : 6,
+				"parent" : 21
+			},
+			{
+				"command" : 7,
+				"file" : 6,
+				"line" : 52,
+				"parent" : 22
+			},
+			{
+				"file" : 5,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 5,
+				"line" : 61,
+				"parent" : 24
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 142,
+				"parent" : 18
+			},
+			{
+				"command" : 8,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 26
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 333,
+				"parent" : 27
+			},
+			{
+				"file" : 11,
+				"parent" : 28
+			},
+			{
+				"command" : 7,
+				"file" : 11,
+				"line" : 52,
+				"parent" : 29
+			},
+			{
+				"file" : 10,
+				"parent" : 30
+			},
+			{
+				"command" : 6,
+				"file" : 10,
+				"line" : 61,
+				"parent" : 31
+			},
+			{
+				"command" : 12,
+				"file" : 1,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 11,
+				"file" : 12,
+				"line" : 1405,
+				"parent" : 33
+			},
+			{
+				"command" : 5,
+				"file" : 12,
+				"line" : 618,
+				"parent" : 34
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 142,
+				"parent" : 18
+			},
+			{
+				"command" : 8,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 36
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 333,
+				"parent" : 37
+			},
+			{
+				"file" : 14,
+				"parent" : 38
+			},
+			{
+				"command" : 7,
+				"file" : 14,
+				"line" : 55,
+				"parent" : 39
+			},
+			{
+				"file" : 13,
+				"parent" : 40
+			},
+			{
+				"command" : 6,
+				"file" : 13,
+				"line" : 61,
+				"parent" : 41
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 672,
+				"parent" : 2
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 142,
+				"parent" : 18
+			},
+			{
+				"command" : 8,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 44
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 333,
+				"parent" : 45
+			},
+			{
+				"file" : 16,
+				"parent" : 46
+			},
+			{
+				"command" : 7,
+				"file" : 16,
+				"line" : 54,
+				"parent" : 47
+			},
+			{
+				"file" : 15,
+				"parent" : 48
+			},
+			{
+				"command" : 6,
+				"file" : 15,
+				"line" : 61,
+				"parent" : 49
+			},
+			{
+				"command" : 7,
+				"file" : 16,
+				"line" : 42,
+				"parent" : 47
+			},
+			{
+				"file" : 19,
+				"parent" : 51
+			},
+			{
+				"command" : 10,
+				"file" : 19,
+				"line" : 46,
+				"parent" : 52
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 142,
+				"parent" : 53
+			},
+			{
+				"command" : 8,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 54
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 333,
+				"parent" : 55
+			},
+			{
+				"file" : 18,
+				"parent" : 56
+			},
+			{
+				"command" : 7,
+				"file" : 18,
+				"line" : 52,
+				"parent" : 57
+			},
+			{
+				"file" : 17,
+				"parent" : 58
+			},
+			{
+				"command" : 6,
+				"file" : 17,
+				"line" : 61,
+				"parent" : 59
+			},
+			{
+				"command" : 7,
+				"file" : 14,
+				"line" : 43,
+				"parent" : 39
+			},
+			{
+				"file" : 22,
+				"parent" : 61
+			},
+			{
+				"command" : 10,
+				"file" : 22,
+				"line" : 45,
+				"parent" : 62
+			},
+			{
+				"command" : 9,
+				"file" : 8,
+				"line" : 142,
+				"parent" : 63
+			},
+			{
+				"command" : 8,
+				"file" : 7,
+				"line" : 76,
+				"parent" : 64
+			},
+			{
+				"command" : 8,
+				"file" : 4,
+				"line" : 333,
+				"parent" : 65
+			},
+			{
+				"file" : 21,
+				"parent" : 66
+			},
+			{
+				"command" : 7,
+				"file" : 21,
+				"line" : 52,
+				"parent" : 67
+			},
+			{
+				"file" : 20,
+				"parent" : 68
+			},
+			{
+				"command" : 6,
+				"file" : 20,
+				"line" : 61,
+				"parent" : 69
+			},
+			{
+				"command" : 14,
+				"file" : 12,
+				"line" : 970,
+				"parent" : 34
+			},
+			{
+				"command" : 13,
+				"file" : 12,
+				"line" : 3107,
+				"parent" : 71
+			},
+			{
+				"command" : 14,
+				"file" : 12,
+				"line" : 976,
+				"parent" : 34
+			},
+			{
+				"command" : 13,
+				"file" : 12,
+				"line" : 3107,
+				"parent" : 73
+			},
+			{
+				"file" : 1,
+				"line" : -1,
+				"parent" : 0
+			},
+			{
+				"command" : 19,
+				"file" : 23,
+				"line" : 1,
+				"parent" : 75
+			},
+			{
+				"command" : 18,
+				"file" : 0,
+				"line" : 877,
+				"parent" : 76
+			},
+			{
+				"command" : 17,
+				"file" : 0,
+				"line" : 799,
+				"parent" : 77
+			},
+			{
+				"command" : 16,
+				"file" : 0,
+				"line" : 799,
+				"parent" : 78
+			},
+			{
+				"command" : 15,
+				"file" : 12,
+				"line" : 4767,
+				"parent" : 79
+			},
+			{
+				"command" : 13,
+				"file" : 12,
+				"line" : 4542,
+				"parent" : 80
+			},
+			{
+				"command" : 20,
+				"file" : 24,
+				"line" : 1,
+				"parent" : 75
+			},
+			{
+				"command" : 13,
+				"file" : 12,
+				"line" : 1375,
+				"parent" : 82
+			},
+			{
+				"command" : 22,
+				"file" : 12,
+				"line" : 835,
+				"parent" : 34
+			},
+			{
+				"command" : 21,
+				"file" : 12,
+				"line" : 4240,
+				"parent" : 84
+			},
+			{
+				"command" : 21,
+				"file" : 12,
+				"line" : 4270,
+				"parent" : 84
+			},
+			{
+				"command" : 24,
+				"file" : 12,
+				"line" : 4065,
+				"parent" : 84
+			},
+			{
+				"command" : 23,
+				"file" : 0,
+				"line" : 1546,
+				"parent" : 87
+			},
+			{
+				"command" : 23,
+				"file" : 12,
+				"line" : 4231,
+				"parent" : 84
+			},
+			{
+				"command" : 25,
+				"file" : 12,
+				"line" : 4262,
+				"parent" : 84
+			},
+			{
+				"command" : 28,
+				"file" : 12,
+				"line" : 887,
+				"parent" : 34
+			},
+			{
+				"command" : 27,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 91
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 2589,
+				"parent" : 92
+			},
+			{
+				"command" : 23,
+				"file" : 0,
+				"line" : 2132,
+				"parent" : 93
+			},
+			{
+				"command" : 23,
+				"file" : 12,
+				"line" : 934,
+				"parent" : 34
+			},
+			{
+				"command" : 29,
+				"file" : 12,
+				"line" : 960,
+				"parent" : 34
+			},
+			{
+				"command" : 23,
+				"file" : 12,
+				"line" : 3578,
+				"parent" : 96
+			},
+			{
+				"command" : 30,
+				"file" : 12,
+				"line" : 3715,
+				"parent" : 96
+			},
+			{
+				"command" : 23,
+				"file" : 12,
+				"line" : 1868,
+				"parent" : 98
+			},
+			{
+				"command" : 23,
+				"file" : 12,
+				"line" : 3771,
+				"parent" : 96
+			},
+			{
+				"command" : 28,
+				"file" : 12,
+				"line" : 3863,
+				"parent" : 96
+			},
+			{
+				"command" : 27,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 101
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 2589,
+				"parent" : 102
+			},
+			{
+				"command" : 23,
+				"file" : 0,
+				"line" : 2132,
+				"parent" : 103
+			},
+			{
+				"command" : 28,
+				"file" : 12,
+				"line" : 3881,
+				"parent" : 96
+			},
+			{
+				"command" : 27,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 105
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 2589,
+				"parent" : 106
+			},
+			{
+				"command" : 23,
+				"file" : 0,
+				"line" : 2132,
+				"parent" : 107
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 871,
+				"parent" : 76
+			},
+			{
+				"command" : 23,
+				"file" : 0,
+				"line" : 2257,
+				"parent" : 109
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd"
+				},
+				{
+					"backtrace" : 43,
+					"fragment" : "-Zc:__cplusplus"
+				},
+				{
+					"backtrace" : 43,
+					"fragment" : "-permissive-"
+				},
+				{
+					"backtrace" : 43,
+					"fragment" : "-utf-8"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 43,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_MULTIMEDIA_LIB"
+				},
+				{
+					"backtrace" : 35,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_OPENGL_LIB"
+				},
+				{
+					"backtrace" : 35,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLMETA_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLMODELS_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLWORKERSCRIPT_LIB"
+				},
+				{
+					"backtrace" : 35,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "QT_QUICKCONTROLS2_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QUICK_LIB"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "QT_WEBSOCKETS_LIB"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "WIN64"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "_WIN64"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 0,
+					"path" : "D:/Gitee/AIGirlFriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAIGirlFriend_autogen/include"
+				},
+				{
+					"backtrace" : 85,
+					"path" : "D:/Gitee/AIGirlFriend"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQml"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtCore"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/mkspecs/win32-msvc"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQuick"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtGui"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlMeta"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlModels"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlWorkerScript"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtOpenGL"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtMultimedia"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtWebSockets"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQuickControls2"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					43
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				4,
+				5,
+				7,
+				9,
+				12,
+				14,
+				15,
+				16,
+				17
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd"
+				},
+				{
+					"backtrace" : 43,
+					"fragment" : "-Zc:__cplusplus"
+				},
+				{
+					"backtrace" : 43,
+					"fragment" : "-permissive-"
+				},
+				{
+					"backtrace" : 43,
+					"fragment" : "-utf-8"
+				},
+				{
+					"backtrace" : 90,
+					"fragment" : "/bigobj"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 43,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "QT_MULTIMEDIA_LIB"
+				},
+				{
+					"backtrace" : 35,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_OPENGL_LIB"
+				},
+				{
+					"backtrace" : 35,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLMETA_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLMODELS_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QMLWORKERSCRIPT_LIB"
+				},
+				{
+					"backtrace" : 35,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "QT_QUICKCONTROLS2_LIB"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "QT_QUICK_LIB"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "QT_WEBSOCKETS_LIB"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "WIN64"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 43,
+					"define" : "_WIN64"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 0,
+					"path" : "D:/Gitee/AIGirlFriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAIGirlFriend_autogen/include"
+				},
+				{
+					"backtrace" : 85,
+					"path" : "D:/Gitee/AIGirlFriend"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQml"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtCore"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/mkspecs/win32-msvc"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 86,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQuick"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtGui"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlMeta"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlModels"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQmlWorkerScript"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtOpenGL"
+				},
+				{
+					"backtrace" : 6,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtMultimedia"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtWebSockets"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.10.0/msvc2022_64/include/QtQuickControls2"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					43
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				3
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 72,
+			"id" : "appAIGirlFriend_copy_qml::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 74,
+			"id" : "appAIGirlFriend_copy_res::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "appAIGirlFriend_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 81,
+			"id" : "appAIGirlFriend_qmlimportscan::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 83,
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "appAIGirlFriend_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "appAIGirlFriend::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 5,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Program Files (x86)/AIGirlFriend"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-DQT_QML_DEBUG /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:windows",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6Multimediad.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6WebSocketsd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6QuickControls2d.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 9,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6Quickd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6QmlMetad.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 25,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6QmlWorkerScriptd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6OpenGLd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "user32.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6Guid.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 32,
+				"fragment" : "d3d11.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 32,
+				"fragment" : "dxgi.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 32,
+				"fragment" : "dxguid.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 32,
+				"fragment" : "d3d12.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 15,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6QmlModelsd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 35,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6Qmld.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 42,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6Networkd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 43,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6Cored.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 50,
+				"fragment" : "mpr.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 50,
+				"fragment" : "userenv.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 60,
+				"fragment" : "C:\\Qt\\6.10.0\\msvc2022_64\\lib\\Qt6EntryPointd.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 70,
+				"fragment" : "ws2_32.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 42,
+				"fragment" : "shell32.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "appAIGirlFriend",
+	"nameOnDisk" : "appAIGirlFriend.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files\\Generated",
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				3,
+				4,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				23,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				5,
+				7,
+				9,
+				12,
+				13
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				6,
+				8,
+				10,
+				11
+			]
+		},
+		{
+			"name" : "Resources",
+			"sourceIndexes" : 
+			[
+				22
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAIGirlFriend_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 88,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/meta_types/qt6appaigirlfriend_metatypes.json.gen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 89,
+			"compileGroupIndex" : 1,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appaigirlfriend_qmltyperegistrations.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 94,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_qmake_AIGirlFriend.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 95,
+			"compileGroupIndex" : 0,
+			"path" : "audiomgr.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 95,
+			"path" : "audiomgr.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 95,
+			"compileGroupIndex" : 0,
+			"path" : "configmgr.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 95,
+			"path" : "configmgr.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 95,
+			"compileGroupIndex" : 0,
+			"path" : "gateway.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 95,
+			"path" : "gateway.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 95,
+			"path" : "application.h",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 95,
+			"compileGroupIndex" : 0,
+			"path" : "application.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 97,
+			"path" : "Main.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 99,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAIGirlFriend_qmlcache_loader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 100,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAIGirlFriend_Main_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 104,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAIGirlFriend_raw_qml_0.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 108,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAIGirlFriend_raw_res_0.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 110,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qmake_AIGirlFriend.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 110,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AIGirlFriend/qmldir",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 110,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAIGirlFriend_raw_qml_0.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 110,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAIGirlFriend_raw_res_0.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 110,
+			"path" : "res.qrc",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAIGirlFriend_autogen/timestamp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/meta_types/qt6appaigirlfriend_metatypes.json.gen.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appaigirlfriend_qmltyperegistrations.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_qmake_AIGirlFriend.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAIGirlFriend_qmlcache_loader.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAIGirlFriend_Main_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAIGirlFriend_raw_qml_0.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAIGirlFriend_raw_res_0.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/appAIGirlFriend_autogen/timestamp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/meta_types/appAIGirlFriend_json_file_list.txt.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 43,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6core_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 35,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6qml_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 35,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6network_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6quick_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6gui_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6qmlmeta_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6qmlmodels_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6qmlworkerscript_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 9,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6opengl_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6multimedia_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 7,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6websockets_metatypes.json",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 8,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/metatypes/qt6quickcontrols2_metatypes.json",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

@@ -1,0 +1,366 @@
+[
+    {
+        "classes": [
+            {
+                "className": "Application",
+                "lineNumber": 8,
+                "object": true,
+                "qualifiedClassName": "Application",
+                "slots": [
+                    {
+                        "access": "private",
+                        "index": 0,
+                        "lineNumber": 17,
+                        "name": "on_pushButtonRecord_clicked",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "application.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "AudioMgr",
+                "lineNumber": 11,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 14,
+                        "name": "sampleRate",
+                        "read": "sampleRate",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "AudioMgr",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "pcmData",
+                                "type": "QByteArray"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 34,
+                        "name": "signal_handlePcmData",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 35,
+                        "name": "signal_endAsrRecord",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "data",
+                                "type": "QByteArray"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 32,
+                        "name": "slot_tts_finished",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "audiomgr.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "ConfigMgr",
+                "lineNumber": 7,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 0,
+                        "lineNumber": 10,
+                        "name": "userName",
+                        "notify": "userNameChanged",
+                        "read": "userName",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setUserName"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 1,
+                        "lineNumber": 11,
+                        "name": "password",
+                        "notify": "passwordChanged",
+                        "read": "password",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setPassword"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 2,
+                        "lineNumber": 12,
+                        "name": "uid",
+                        "notify": "uidChanged",
+                        "read": "uid",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setUid"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 3,
+                        "lineNumber": 13,
+                        "name": "asrServerUrl",
+                        "notify": "asrServerUrlChanged",
+                        "read": "asrServerUrl",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setAsrServerUrl"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 4,
+                        "lineNumber": 14,
+                        "name": "llmServerUrl",
+                        "notify": "llmServerUrlChanged",
+                        "read": "llmServerUrl",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setLlmServerUrl"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 5,
+                        "lineNumber": 15,
+                        "name": "llmModelName",
+                        "notify": "llmModelNameChanged",
+                        "read": "llmModelName",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setLlmModelName"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "index": 6,
+                        "lineNumber": 16,
+                        "name": "ttsServerUrl",
+                        "notify": "ttsServerUrlChanged",
+                        "read": "ttsServerUrl",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "write": "setTtsServerUrl"
+                    }
+                ],
+                "qualifiedClassName": "ConfigMgr",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 70,
+                        "name": "userNameChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 72,
+                        "name": "passwordChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 74,
+                        "name": "uidChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 76,
+                        "name": "asrServerUrlChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 78,
+                        "name": "llmServerUrlChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 80,
+                        "name": "llmModelNameChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 6,
+                        "lineNumber": 82,
+                        "name": "ttsServerUrlChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "configmgr.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "GateWay",
+                "lineNumber": 20,
+                "object": true,
+                "qualifiedClassName": "GateWay",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 37,
+                        "name": "signal_connectAsrWS",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "data",
+                                "type": "QByteArray"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 38,
+                        "name": "signal_tts_finished",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "pcmData",
+                                "type": "QByteArray"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 40,
+                        "name": "slot_handlePcmData",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "data",
+                                "type": "QByteArray"
+                            },
+                            {
+                                "name": "id",
+                                "type": "ReqId"
+                            },
+                            {
+                                "name": "ec",
+                                "type": "ErrorCode"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 41,
+                        "name": "handle_http_finished",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 43,
+                        "name": "slot_endAsrRecord",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "gateway.h",
+        "outputRevision": 69
+    }
+]

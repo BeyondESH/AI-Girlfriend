@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sample/huiyuanai.WAV</file>
+        <file>sample/huiyuanai2.WAV</file>
+    </qresource>
+</RCC>
