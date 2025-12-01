@@ -128,7 +128,7 @@ ApplicationWindow{
         //     newChatButton1.visible=true
         // }
         ColumnLayout{
-            width:parent.width
+            anchors.fill: parent
             spacing:0
 
             SideButton{
@@ -165,9 +165,48 @@ ApplicationWindow{
                 font.pixelSize: 12
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 Layout.leftMargin: 20
+                Layout.bottomMargin: 15
             }
 
+            Rectangle{
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                ListView{
+                    id:historyListView
+                    anchors.fill:parent
+                    model:HistoryListModel{
+                    }
+                    spacing: 5
+                    clip: true
 
+                    delegate:Button{
+                        id:delegateButton
+                        width: parent.width
+                        height:30
+                        flat:true
+                        Text{
+                            width:parent.width
+                            id:text
+                            elide:Text.ElideRight
+                            clip:true
+                            anchors.left: parent.left
+                            anchors.verticalCenter: parent.verticalCenter
+                            leftPadding: 20
+                            font.family: "Microsoft YaHei"
+                            font.pixelSize: 14
+                            text:context
+                            color:"#4b4b4b"
+                        }
+                        MouseArea{
+                            anchors.fill:parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked:{
+
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

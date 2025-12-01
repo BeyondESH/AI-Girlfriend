@@ -34,7 +34,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 976,
+				"line" : 970,
 				"parent" : 2
 			},
 			{
@@ -46,7 +46,7 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 970,
+				"line" : 976,
 				"parent" : 2
 			},
 			{
@@ -60,16 +60,16 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 4,
-			"id" : "appAI-Girlfriend_copy_res::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 4,
 			"id" : "appAI-Girlfriend_copy_qml::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 0,
-			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+			"backtrace" : 6,
+			"id" : "appAI-Girlfriend_copy_res::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,

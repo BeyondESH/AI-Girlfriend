@@ -22,6 +22,7 @@ qt_add_qml_module(appAI-Girlfriend
     QML_FILES
         Main.qml
         Components/SideButton.qml
+        Components/HistoryListModel.qml
     SOURCES
         audiomgr.cpp audiomgr.h 
         configmgr.cpp configmgr.h 

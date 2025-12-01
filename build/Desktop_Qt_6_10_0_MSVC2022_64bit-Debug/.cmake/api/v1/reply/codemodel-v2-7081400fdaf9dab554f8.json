@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-fc27a648bb06e3e53410.json",
+					"jsonFile" : "directory-.-Debug-99b00b4372ff3a48cee7.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -72,7 +72,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-all_aotstats-Debug-cfefd046a0cf7a78a4f0.json",
+					"jsonFile" : "target-all_aotstats-Debug-f20043e65b0885259252.json",
 					"name" : "all_aotstats",
 					"projectIndex" : 0
 				},
@@ -107,7 +107,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appAI-Girlfriend::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appAI-Girlfriend-Debug-a5e1e5639152aefa4948.json",
+					"jsonFile" : "target-appAI-Girlfriend-Debug-2c67cc66ccda5291387c.json",
 					"name" : "appAI-Girlfriend",
 					"projectIndex" : 0
 				},
@@ -121,7 +121,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appAI-Girlfriend_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appAI-Girlfriend_autogen_timestamp_deps-Debug-2b446e8b3326f87565f1.json",
+					"jsonFile" : "target-appAI-Girlfriend_autogen_timestamp_deps-Debug-bfbe89b197a751cd8ef7.json",
 					"name" : "appAI-Girlfriend_autogen_timestamp_deps",
 					"projectIndex" : 0
 				},
@@ -184,7 +184,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "module_appAI-Girlfriend_aotstats_target::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-module_appAI-Girlfriend_aotstats_target-Debug-ab05445eebe1f305e3fd.json",
+					"jsonFile" : "target-module_appAI-Girlfriend_aotstats_target-Debug-7aadf2a972123059af80.json",
 					"name" : "module_appAI-Girlfriend_aotstats_target",
 					"projectIndex" : 0
 				}

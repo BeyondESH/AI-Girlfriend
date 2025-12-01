@@ -2,6 +2,7 @@
   <qresource prefix="/qt/qml/AI-Girlfriend/">
     <file alias="Main.qml">D:/Gitee/AI-Girlfriend/Main.qml</file>
     <file alias="Components/SideButton.qml">D:/Gitee/AI-Girlfriend/Components/SideButton.qml</file>
+    <file alias="Components/HistoryListModel.qml">D:/Gitee/AI-Girlfriend/Components/HistoryListModel.qml</file>
   </qresource>
 </RCC>
 

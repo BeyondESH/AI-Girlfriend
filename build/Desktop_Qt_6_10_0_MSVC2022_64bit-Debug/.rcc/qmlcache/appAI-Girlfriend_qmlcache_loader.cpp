@@ -19,6 +19,13 @@ namespace _qt_qml_AI_0x2d_Girlfriend_Components_SideButton_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _qt_qml_AI_0x2d_Girlfriend_Components_HistoryListModel_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 
 }
 namespace {
@@ -35,6 +42,7 @@ Q_GLOBAL_STATIC(Registry, unitRegistry)
 Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AI-Girlfriend/Main.qml"), &QmlCacheGeneratedCode::_qt_qml_AI_0x2d_Girlfriend_Main_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AI-Girlfriend/Components/SideButton.qml"), &QmlCacheGeneratedCode::_qt_qml_AI_0x2d_Girlfriend_Components_SideButton_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/AI-Girlfriend/Components/HistoryListModel.qml"), &QmlCacheGeneratedCode::_qt_qml_AI_0x2d_Girlfriend_Components_HistoryListModel_qml::unit);
     QQmlPrivate::RegisterQmlUnitCacheHook registration;
     registration.structVersion = 0;
     registration.lookupCachedQmlUnit = &lookupCachedUnit;

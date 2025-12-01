@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 298,
+                            "durationMicroseconds": 129,
                             "functionName": "preferredHeight",
                             "line": 9,
                             "message": "Cannot access value for name item"
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 2,
                             "column": 29,
-                            "durationMicroseconds": 28,
+                            "durationMicroseconds": 17,
                             "functionName": "implicitHeight",
                             "line": 18,
                             "message": "Cannot access value for name row"
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 2,
                             "column": 19,
-                            "durationMicroseconds": 14,
+                            "durationMicroseconds": 9,
                             "functionName": "width",
                             "line": 19,
                             "message": "Cannot access value for name parent"
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 2,
                             "column": 31,
-                            "durationMicroseconds": 13,
+                            "durationMicroseconds": 8,
                             "functionName": "left",
                             "line": 22,
                             "message": "Cannot access value for name parent"
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 11,
+                            "durationMicroseconds": 8,
                             "functionName": "verticalCenter",
                             "line": 23,
                             "message": "Cannot access value for name parent"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 26,
-                            "durationMicroseconds": 259,
+                            "durationMicroseconds": 139,
                             "functionName": "cursorShape",
                             "line": 45,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 53,
+                            "durationMicroseconds": 27,
                             "functionName": "onClicked",
                             "line": 46,
                             "message": ""
@@ -72,13 +72,13 @@
                         {
                             "codegenResult": 0,
                             "column": 26,
-                            "durationMicroseconds": 71,
+                            "durationMicroseconds": 123,
                             "functionName": "fill",
                             "line": 44,
                             "message": ""
                         }
                     ],
-                    "filePath": "D:/Gitee/AI-Girlfriend/Components/sideButton.qml"
+                    "filePath": "D:/Gitee/AI-Girlfriend/Components/SideButton.qml"
                 }
             ],
             "moduleId": "AI-Girlfriend(appAI-Girlfriend)"
