@@ -82,5 +82,6 @@
         <file>img/icon/volume-max.svg</file>
         <file>img/icon/x-close.svg</file>
         <file>img/icon/zhongyinhuyi.svg</file>
+        <file>img/icon/favicon.ico</file>
     </qresource>
 </RCC>

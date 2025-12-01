@@ -478,23 +478,6 @@
 				"parent" : 71
 			},
 			{
-				"file" : 1,
-				"line" : -1,
-				"parent" : 0
-			},
-			{
-				"command" : 15,
-				"file" : 23,
-				"line" : 1,
-				"parent" : 73
-			},
-			{
-				"command" : 13,
-				"file" : 12,
-				"line" : 1375,
-				"parent" : 74
-			},
-			{
 				"command" : 14,
 				"file" : 12,
 				"line" : 976,
@@ -504,13 +487,30 @@
 				"command" : 13,
 				"file" : 12,
 				"line" : 3107,
+				"parent" : 73
+			},
+			{
+				"file" : 1,
+				"line" : -1,
+				"parent" : 0
+			},
+			{
+				"command" : 15,
+				"file" : 23,
+				"line" : 1,
+				"parent" : 75
+			},
+			{
+				"command" : 13,
+				"file" : 12,
+				"line" : 1375,
 				"parent" : 76
 			},
 			{
 				"command" : 20,
 				"file" : 24,
 				"line" : 1,
-				"parent" : 73
+				"parent" : 75
 			},
 			{
 				"command" : 19,
@@ -1127,12 +1127,12 @@
 			"id" : "appAI-Girlfriend_copy_qml::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 75,
-			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+			"backtrace" : 74,
+			"id" : "appAI-Girlfriend_copy_res::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 77,
-			"id" : "appAI-Girlfriend_copy_res::@6890427a1f51a3e7e1df"
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 83,

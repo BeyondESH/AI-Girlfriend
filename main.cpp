@@ -1,11 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
+#include <QIcon>
+
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
+    app.setWindowIcon(QIcon(":/img/icon/favicon.ico"));
     QQmlApplicationEngine engine;
     QQuickStyle::setStyle("FluentWinUI3");
     // QQuickStyle::setStyle("Fusion");

@@ -107,7 +107,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appAI-Girlfriend::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appAI-Girlfriend-Debug-862e2b8f71574261fbd5.json",
+					"jsonFile" : "target-appAI-Girlfriend-Debug-6d764d514bdad1aa51e1.json",
 					"name" : "appAI-Girlfriend",
 					"projectIndex" : 0
 				},
@@ -121,7 +121,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appAI-Girlfriend_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appAI-Girlfriend_autogen_timestamp_deps-Debug-32a20b62176c2b11bce6.json",
+					"jsonFile" : "target-appAI-Girlfriend_autogen_timestamp_deps-Debug-2b446e8b3326f87565f1.json",
 					"name" : "appAI-Girlfriend_autogen_timestamp_deps",
 					"projectIndex" : 0
 				},

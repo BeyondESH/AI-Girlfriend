@@ -1,0 +1,205 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-899e1581a7306d07d003.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "AI-Girlfriend",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_aotstats-Debug-21de99bf563895b2bf88.json",
+					"name" : "all_aotstats",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-d38e37ad3cdbcb59f887.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-a7e8850b21aed9b6f0ff.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Debug-611136fba6eb3a57e740.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Debug-8e8535f00c81c14141b9.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend-Debug-b1cc06083efa9cd6bfd0.json",
+					"name" : "appAI-Girlfriend",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_autogen-Debug-51c2067f01d684f721f3.json",
+					"name" : "appAI-Girlfriend_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_autogen_timestamp_deps-Debug-2b446e8b3326f87565f1.json",
+					"name" : "appAI-Girlfriend_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_copy_qml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_copy_qml-Debug-725dcbb043569dea808c.json",
+					"name" : "appAI-Girlfriend_copy_qml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_copy_res::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_copy_res-Debug-3b569c26a716f5c2e6eb.json",
+					"name" : "appAI-Girlfriend_copy_res",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_qmlimportscan-Debug-3a9de7ed0195c5359065.json",
+					"name" : "appAI-Girlfriend_qmlimportscan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_qmllint-Debug-2d078522310f576beb64.json",
+					"name" : "appAI-Girlfriend_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_qmllint_json-Debug-5964538a45cea4b51e98.json",
+					"name" : "appAI-Girlfriend_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_qmllint_module-Debug-1f117caba6ed2103afb1.json",
+					"name" : "appAI-Girlfriend_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appAI-Girlfriend_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appAI-Girlfriend_qmltyperegistration-Debug-f48431f267dc0a21b9b0.json",
+					"name" : "appAI-Girlfriend_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-generate_qmlls_build_ini_file-Debug-272cc8dd7172715a6fe5.json",
+					"name" : "generate_qmlls_build_ini_file",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "module_appAI-Girlfriend_aotstats_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-module_appAI-Girlfriend_aotstats_target-Debug-2c376a4a363e888d50d8.json",
+					"name" : "module_appAI-Girlfriend_aotstats_target",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug",
+		"source" : "D:/Gitee/AI-Girlfriend"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
