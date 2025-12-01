@@ -4,4 +4,7 @@ D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qmak
 D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_qml_0.qrc
 --resource
 D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_res_0.qrc
+--resource
+D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_qml_0_extra_qmldirs.qrc
 /qt/qml/AI-Girlfriend/Main.qml
+/qt/qml/AI-Girlfriend/Components/SideButton.qml

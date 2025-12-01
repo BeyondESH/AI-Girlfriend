@@ -106,31 +106,31 @@
 			{
 				"command" : 4,
 				"file" : 1,
+				"line" : 54,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
 				"line" : 49,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 44,
+				"line" : 50,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 1,
+				"line" : 51,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
 				"line" : 45,
-				"parent" : 0
-			},
-			{
-				"command" : 5,
-				"file" : 1,
-				"line" : 46,
-				"parent" : 0
-			},
-			{
-				"command" : 5,
-				"file" : 1,
-				"line" : 40,
 				"parent" : 0
 			},
 			{
@@ -645,6 +645,18 @@
 				"parent" : 96
 			},
 			{
+				"command" : 23,
+				"file" : 12,
+				"line" : 3578,
+				"parent" : 96
+			},
+			{
+				"command" : 23,
+				"file" : 12,
+				"line" : 3771,
+				"parent" : 96
+			},
+			{
 				"command" : 28,
 				"file" : 12,
 				"line" : 3863,
@@ -654,19 +666,19 @@
 				"command" : 27,
 				"file" : 0,
 				"line" : 405,
-				"parent" : 101
+				"parent" : 103
 			},
 			{
 				"command" : 26,
 				"file" : 0,
 				"line" : 2589,
-				"parent" : 102
+				"parent" : 104
 			},
 			{
 				"command" : 23,
 				"file" : 0,
 				"line" : 2132,
-				"parent" : 103
+				"parent" : 105
 			},
 			{
 				"command" : 28,
@@ -678,19 +690,43 @@
 				"command" : 27,
 				"file" : 0,
 				"line" : 405,
-				"parent" : 105
+				"parent" : 107
 			},
 			{
 				"command" : 26,
 				"file" : 0,
 				"line" : 2589,
-				"parent" : 106
+				"parent" : 108
 			},
 			{
 				"command" : 23,
 				"file" : 0,
 				"line" : 2132,
-				"parent" : 107
+				"parent" : 109
+			},
+			{
+				"command" : 28,
+				"file" : 12,
+				"line" : 3917,
+				"parent" : 96
+			},
+			{
+				"command" : 27,
+				"file" : 0,
+				"line" : 405,
+				"parent" : 111
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 2589,
+				"parent" : 112
+			},
+			{
+				"command" : 23,
+				"file" : 0,
+				"line" : 2132,
+				"parent" : 113
 			},
 			{
 				"command" : 31,
@@ -702,7 +738,7 @@
 				"command" : 23,
 				"file" : 0,
 				"line" : 2257,
-				"parent" : 109
+				"parent" : 115
 			}
 		]
 	},
@@ -912,9 +948,11 @@
 				12,
 				14,
 				15,
-				16,
 				17,
-				24
+				18,
+				19,
+				20,
+				29
 			]
 		},
 		{
@@ -1309,26 +1347,30 @@
 				4,
 				14,
 				15,
-				16,
 				17,
 				18,
 				19,
 				20,
 				21,
+				22,
 				23,
 				24,
-				35,
-				36,
-				37,
-				38,
-				39,
-				40,
-				41,
+				26,
+				27,
+				28,
+				29,
 				42,
 				43,
 				44,
 				45,
-				46
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53
 			]
 		},
 		{
@@ -1340,7 +1382,8 @@
 				7,
 				9,
 				12,
-				13
+				13,
+				16
 			]
 		},
 		{
@@ -1357,23 +1400,25 @@
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				22
+				25
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				25,
-				26,
-				27,
-				28,
-				29,
 				30,
 				31,
 				32,
 				33,
-				34
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41
 			]
 		}
 	],
@@ -1476,47 +1521,78 @@
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 104,
+			"backtrace" : 101,
+			"path" : "Components/sideButton.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 102,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAI-Girlfriend_Components/sideButton_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 106,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAI-Girlfriend_raw_qml_0.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 108,
+			"backtrace" : 110,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAI-Girlfriend_raw_res_0.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 110,
+			"backtrace" : 114,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAI-Girlfriend_raw_qml_0_extra_qmldirs.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 116,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qmake_AI-Girlfriend.qrc",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 110,
+			"backtrace" : 116,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/qmldir",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 110,
+			"backtrace" : 116,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_qml_0.qrc",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 110,
+			"backtrace" : 116,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_res_0.qrc",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 110,
+			"backtrace" : 116,
 			"path" : "res.qrc",
 			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 116,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/appAI-Girlfriend_raw_qml_0_extra_qmldirs.qrc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 116,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Components/qmldir",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
@@ -1564,6 +1640,12 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAI-Girlfriend_Components/sideButton_qml.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAI-Girlfriend_raw_qml_0.cpp.rule",
 			"sourceGroupIndex" : 4
 		},
@@ -1571,6 +1653,12 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAI-Girlfriend_raw_res_0.cpp.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.qt/rcc/qrc_appAI-Girlfriend_raw_qml_0_extra_qmldirs.cpp.rule",
 			"sourceGroupIndex" : 4
 		},
 		{

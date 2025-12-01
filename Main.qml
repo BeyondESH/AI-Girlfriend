@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-
+import "Components"
 
 ApplicationWindow{
     id:window
@@ -19,7 +19,7 @@ ApplicationWindow{
             spacing:10
             Button{
                 id:drawOpenButton
-                Layout.leftMargin: 25
+                Layout.leftMargin: 15
                 Layout.preferredWidth: 30
                 Layout.preferredHeight: 30
                 Layout.minimumWidth: 30
@@ -37,16 +37,24 @@ ApplicationWindow{
                         fillMode: Image.PreserveAspectFit
                     }
                 }
-                onClicked:{
-                    if(drawer.position===0){
-                        drawer.open()
-                    }else{
-                        drawer.close()
+
+                ToolTip.visible: hovered
+                ToolTip.text: qsTr("显示侧边栏")
+
+                MouseArea{
+                    anchors.fill:parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked:{
+                        if(drawer.position===0){
+                            drawer.open()
+                        }else{
+                            drawer.close()
+                        }
                     }
                 }
             }
             Button{
-                id:newChatButton1
+                id:newChatButton
                 Layout.preferredWidth: 30
                 Layout.preferredHeight: 30
                 Layout.minimumWidth: 30
@@ -62,6 +70,17 @@ ApplicationWindow{
                         height: 20
                         anchors.centerIn: parent
                         fillMode: Image.PreserveAspectFit
+                    }
+                }
+
+                ToolTip.visible: hovered
+                ToolTip.text: qsTr("开启新对话")
+
+                MouseArea{
+                    anchors.fill:parent
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked:{
+                        print("进入新对话")
                     }
                 }
             }
@@ -80,9 +99,18 @@ ApplicationWindow{
                     if (find(editText) === -1)
                         model.append({text: editText})
                 }
+
+                ToolTip.visible: hovered
+                ToolTip.text: qsTr("选择大模型")
             }
             Item{
                 Layout.fillWidth: true
+            }
+            Label{
+                text:"by BeyondESH"
+                font.family: "Microsoft YaHei"
+                rightPadding: 30
+                font.bold: true
             }
         }
     }
@@ -102,71 +130,46 @@ ApplicationWindow{
         ColumnLayout{
             width:parent.width
             spacing:0
-            Button{
-                id:newChatButton2
-                Layout.topMargin: 10
-                flat:true
-                Layout.fillWidth: true
-                contentItem: Item{
-                    anchors.fill:parent
-                    Row{
-                        anchors.left: parent.left
-                        leftPadding: 30
-                        spacing: 20
-                        Image{
-                            source: "qrc:/img/icon/edit-05.svg"
-                            width:18
-                            height:18
-                        }
-                        Text{
-                            text:"新聊天"
-                            font.family: "Microsoft YaHei"
-                            font.pixelSize: 14
-                            // verticalAlignment: Text.AlignVCenter
-                            // horizontalAlignment: Text.AlignHCenter
-                        }
-                    }
+
+            SideButton{
+                id:newChatSideButton
+            }
+
+            SideButton{
+                id:settingSideButton
+                text:qsTr("个性化定制")
+                image:"qrc:/img/icon/user-02.svg"
+            }
+
+            SideButton{
+                id:stateSideButton
+                text:qsTr("服务器状态")
+                image:"qrc:/img/icon/cehua.svg"
+            }
+
+            MenuSeparator {
+                padding: 0
+                topPadding: 12
+                bottomPadding: 12
+                contentItem: Rectangle {
+                    implicitWidth: 200
+                    implicitHeight: 1
+                    color: "#1E000000"
                 }
             }
 
-            Button{
-                id:personalizationButton
-                Layout.topMargin: 10
-                flat:true
-                Layout.fillWidth: true
-                contentItem: Item{
-                    anchors.fill:parent
-                    Row{
-                        anchors.left: parent.left
-                        leftPadding: 30
-                        spacing: 20
-                        Image{
-                            source: "qrc:/img/icon/cehua.svg"
-                            width:18
-                            height:18
-                        }
-                        Text{
-                            text:"个性化定制"
-                            font.family: "Microsoft YaHei"
-                            font.pixelSize: 14
-                            // verticalAlignment: Text.AlignVCenter
-                            // horizontalAlignment: Text.AlignHCenter
-                        }
-                    }
-                }
+            Label{
+                text: qsTr("历史对话")
+                color: "#6c6c6c"
+                font.family: "Microsoft YaHei"
+                font.pixelSize: 12
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                Layout.leftMargin: 20
             }
+
+
         }
     }
-    Label {
-        id: content
-        text: "Aa"
-        font.pixelSize: 96
-        anchors.fill: parent
-        verticalAlignment: Label.AlignVCenter
-        horizontalAlignment: Label.AlignHCenter
 
-        // transform: Translate {
-        //     x: drawer.position * content.width * 0.33
-        // }
-    }
+
 }

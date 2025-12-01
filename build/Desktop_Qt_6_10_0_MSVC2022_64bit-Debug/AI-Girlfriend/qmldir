@@ -2,5 +2,6 @@ module AI-Girlfriend
 typeinfo appAI-Girlfriend.qmltypes
 prefer :/qt/qml/AI-Girlfriend/
 Main 254.0 Main.qml
+SideButton 254.0 Components/SideButton.qml
 depends QtQuick
 

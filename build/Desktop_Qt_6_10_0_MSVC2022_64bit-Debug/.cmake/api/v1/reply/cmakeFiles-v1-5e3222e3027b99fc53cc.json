@@ -6516,6 +6516,14 @@
 			"path" : "C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in"
 		},
 		{
+			"isExternal" : true,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in"
+		},
+		{
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/GNUInstallDirs.cmake"

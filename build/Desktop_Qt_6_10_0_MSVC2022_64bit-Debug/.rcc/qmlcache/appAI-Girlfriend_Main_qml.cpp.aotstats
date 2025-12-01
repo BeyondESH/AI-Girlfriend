@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 172,
+                            "durationMicroseconds": 198,
                             "functionName": "height",
                             "line": 13,
                             "message": "Cannot access value for name headerLayout"
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 15,
-                            "durationMicroseconds": 10,
+                            "durationMicroseconds": 14,
                             "functionName": "width",
                             "line": 14,
                             "message": "Cannot access value for name parent"
@@ -24,23 +24,15 @@
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 6,
+                            "durationMicroseconds": 13,
                             "functionName": "fill",
                             "line": 18,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 40,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 5,
+                            "durationMicroseconds": 14,
                             "functionName": "fill",
                             "line": 31,
                             "message": "Cannot access value for name parent"
@@ -48,7 +40,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 231,
+                            "durationMicroseconds": 453,
                             "functionName": "fillMode",
                             "line": 37,
                             "message": "Cannot access value for name Image"
@@ -56,33 +48,97 @@
                         {
                             "codegenResult": 2,
                             "column": 43,
-                            "durationMicroseconds": 6,
+                            "durationMicroseconds": 9,
                             "functionName": "centerIn",
                             "line": 36,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 4,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 41,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 177,
+                            "functionName": "cursorShape",
+                            "line": 46,
+                            "message": "Cannot access value for name Qt"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 140,
+                            "functionName": "onClicked",
+                            "line": 47,
+                            "message": "Cannot access value for name drawer"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 10,
                             "functionName": "fill",
-                            "line": 58,
+                            "line": 45,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 170,
+                            "durationMicroseconds": 6,
+                            "functionName": "fill",
+                            "line": 66,
+                            "message": "Cannot access value for name parent"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 214,
                             "functionName": "fillMode",
-                            "line": 64,
+                            "line": 72,
                             "message": "Cannot access value for name Image"
                         },
                         {
                             "codegenResult": 2,
                             "column": 43,
-                            "durationMicroseconds": 5,
+                            "durationMicroseconds": 6,
                             "functionName": "centerIn",
-                            "line": 63,
+                            "line": 71,
+                            "message": "Cannot access value for name parent"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 76,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 435,
+                            "functionName": "cursorShape",
+                            "line": 81,
+                            "message": "Cannot access value for name Qt"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 211,
+                            "functionName": "onClicked",
+                            "line": 82,
+                            "message": "method print cannot be resolved."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 9,
+                            "functionName": "fill",
+                            "line": 80,
                             "message": "Cannot access value for name parent"
                         },
                         {
@@ -90,15 +146,23 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "onAccepted",
-                            "line": 79,
+                            "line": 98,
                             "message": "Could not find signal \"accepted\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 103,
+                            "message": "Could not find property \"visible\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "y",
-                            "line": 92,
+                            "line": 120,
                             "message": "Could not find property \"y\"."
                         },
                         {
@@ -106,7 +170,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 93,
+                            "line": 121,
                             "message": "Could not find property \"height\"."
                         },
                         {
@@ -114,72 +178,24 @@
                             "column": 16,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 94,
+                            "line": 122,
                             "message": "Could not find property \"width\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 133,
+                            "durationMicroseconds": 154,
                             "functionName": "width",
-                            "line": 103,
+                            "line": 131,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 7,
-                            "functionName": "fill",
-                            "line": 111,
-                            "message": "Cannot access value for name parent"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 9,
-                            "functionName": "left",
-                            "line": 113,
-                            "message": "Cannot access value for name parent"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 34,
-                            "durationMicroseconds": 4,
-                            "functionName": "fill",
-                            "line": 138,
-                            "message": "Cannot access value for name parent"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 7,
-                            "functionName": "left",
-                            "line": 140,
-                            "message": "Cannot access value for name parent"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 0,
-                            "functionName": "verticalAlignment",
-                            "line": 165,
-                            "message": "Could not find property \"verticalAlignment\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 30,
-                            "durationMicroseconds": 0,
-                            "functionName": "horizontalAlignment",
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 124,
+                            "functionName": "alignment",
                             "line": 166,
-                            "message": "Could not find property \"horizontalAlignment\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 23,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 164,
-                            "message": "Could not find property \"fill\"."
+                            "message": ""
                         }
                     ],
                     "filePath": "D:/Gitee/AI-Girlfriend/Main.qml"

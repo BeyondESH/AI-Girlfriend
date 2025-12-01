@@ -21,10 +21,15 @@ qt_add_qml_module(appAI-Girlfriend
     URI AI-Girlfriend
     QML_FILES
         Main.qml
-        SOURCES audiomgr.cpp audiomgr.h configmgr.cpp configmgr.h gateway.cpp gateway.h
-        RESOURCES res.qrc
-        SOURCES application.h application.cpp
-        )
+        Components/SideButton.qml
+    SOURCES
+        audiomgr.cpp audiomgr.h 
+        configmgr.cpp configmgr.h 
+        gateway.cpp gateway.h
+        application.h application.cpp
+    RESOURCES 
+        res.qrc
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
