@@ -8,9 +8,9 @@
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 112,
+                            "durationMicroseconds": 120,
                             "functionName": "height",
-                            "line": 13,
+                            "line": 15,
                             "message": "Cannot access value for name headerLayout"
                         },
                         {
@@ -18,15 +18,15 @@
                             "column": 15,
                             "durationMicroseconds": 11,
                             "functionName": "width",
-                            "line": 14,
+                            "line": 16,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 7,
+                            "durationMicroseconds": 6,
                             "functionName": "fill",
-                            "line": 18,
+                            "line": 20,
                             "message": "Cannot access value for name parent"
                         },
                         {
@@ -34,15 +34,15 @@
                             "column": 35,
                             "durationMicroseconds": 4,
                             "functionName": "fill",
-                            "line": 31,
+                            "line": 33,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 202,
+                            "durationMicroseconds": 194,
                             "functionName": "fillMode",
-                            "line": 37,
+                            "line": 39,
                             "message": "Cannot access value for name Image"
                         },
                         {
@@ -50,7 +50,7 @@
                             "column": 43,
                             "durationMicroseconds": 5,
                             "functionName": "centerIn",
-                            "line": 36,
+                            "line": 38,
                             "message": "Cannot access value for name parent"
                         },
                         {
@@ -58,31 +58,31 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 41,
+                            "line": 43,
                             "message": "Could not find property \"visible\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 117,
+                            "durationMicroseconds": 114,
                             "functionName": "cursorShape",
-                            "line": 46,
+                            "line": 48,
                             "message": "Cannot access value for name Qt"
                         },
                         {
                             "codegenResult": 2,
                             "column": 31,
-                            "durationMicroseconds": 68,
+                            "durationMicroseconds": 69,
                             "functionName": "onClicked",
-                            "line": 47,
+                            "line": 49,
                             "message": "Cannot access value for name drawer"
                         },
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 5,
+                            "durationMicroseconds": 6,
                             "functionName": "fill",
-                            "line": 45,
+                            "line": 47,
                             "message": "Cannot access value for name parent"
                         },
                         {
@@ -90,15 +90,15 @@
                             "column": 35,
                             "durationMicroseconds": 4,
                             "functionName": "fill",
-                            "line": 66,
+                            "line": 68,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 165,
+                            "durationMicroseconds": 167,
                             "functionName": "fillMode",
-                            "line": 72,
+                            "line": 74,
                             "message": "Cannot access value for name Image"
                         },
                         {
@@ -106,7 +106,7 @@
                             "column": 43,
                             "durationMicroseconds": 5,
                             "functionName": "centerIn",
-                            "line": 71,
+                            "line": 73,
                             "message": "Cannot access value for name parent"
                         },
                         {
@@ -114,23 +114,23 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 76,
+                            "line": 78,
                             "message": "Could not find property \"visible\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 102,
+                            "durationMicroseconds": 115,
                             "functionName": "cursorShape",
-                            "line": 81,
+                            "line": 83,
                             "message": "Cannot access value for name Qt"
                         },
                         {
                             "codegenResult": 2,
                             "column": 31,
-                            "durationMicroseconds": 149,
+                            "durationMicroseconds": 151,
                             "functionName": "onClicked",
-                            "line": 82,
+                            "line": 84,
                             "message": "method print cannot be resolved."
                         },
                         {
@@ -138,7 +138,7 @@
                             "column": 34,
                             "durationMicroseconds": 5,
                             "functionName": "fill",
-                            "line": 80,
+                            "line": 82,
                             "message": "Cannot access value for name parent"
                         },
                         {
@@ -146,7 +146,7 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "onAccepted",
-                            "line": 98,
+                            "line": 100,
                             "message": "Could not find signal \"accepted\"."
                         },
                         {
@@ -154,7 +154,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 103,
+                            "line": 105,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -162,7 +162,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "y",
-                            "line": 120,
+                            "line": 122,
                             "message": "Could not find property \"y\"."
                         },
                         {
@@ -170,7 +170,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 121,
+                            "line": 123,
                             "message": "Could not find property \"height\"."
                         },
                         {
@@ -178,31 +178,31 @@
                             "column": 16,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 122,
+                            "line": 124,
                             "message": "Could not find property \"width\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 107,
+                            "durationMicroseconds": 108,
                             "functionName": "fill",
-                            "line": 131,
+                            "line": 133,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 98,
+                            "durationMicroseconds": 117,
                             "functionName": "alignment",
-                            "line": 166,
+                            "line": 168,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 34,
-                            "durationMicroseconds": 33,
+                            "durationMicroseconds": 39,
                             "functionName": "fill",
-                            "line": 176,
+                            "line": 178,
                             "message": ""
                         },
                         {
@@ -210,7 +210,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 184,
+                            "line": 186,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -218,64 +218,144 @@
                             "column": 35,
                             "durationMicroseconds": 57,
                             "functionName": "width",
-                            "line": 188,
+                            "line": 190,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 42,
+                            "durationMicroseconds": 47,
                             "functionName": "elide",
-                            "line": 190,
+                            "line": 192,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 279,
+                            "durationMicroseconds": 400,
                             "functionName": "text",
-                            "line": 197,
+                            "line": 199,
                             "message": "Cannot access value for name context"
                         },
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 56,
+                            "durationMicroseconds": 68,
                             "functionName": "left",
-                            "line": 192,
+                            "line": 194,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 53,
-                            "durationMicroseconds": 52,
+                            "durationMicroseconds": 42,
                             "functionName": "verticalCenter",
-                            "line": 193,
+                            "line": 195,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 42,
-                            "durationMicroseconds": 50,
+                            "durationMicroseconds": 47,
                             "functionName": "cursorShape",
-                            "line": 202,
+                            "line": 204,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 20,
+                            "durationMicroseconds": 22,
                             "functionName": "onClicked",
-                            "line": 203,
+                            "line": 205,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 42,
-                            "durationMicroseconds": 30,
+                            "durationMicroseconds": 42,
                             "functionName": "fill",
-                            "line": 201,
+                            "line": 203,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 216,
+                            "message": "Could not find property \"fill\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 8,
+                            "functionName": "fill",
+                            "line": 218,
+                            "message": "Cannot access value for name parent"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 16,
+                            "functionName": "alignment",
+                            "line": 224,
+                            "message": "Cannot access value for name Qt"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 25,
+                            "durationMicroseconds": 18,
+                            "functionName": "height",
+                            "line": 233,
+                            "message": "Cannot access value for name chatColumn"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 116,
+                            "functionName": "alignment",
+                            "line": 231,
+                            "message": "Cannot access value for name Qt"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 6,
+                            "functionName": "fill",
+                            "line": 237,
+                            "message": "Cannot access value for name parent"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 242,
+                            "message": "Could not find property \"width\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 51,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalCenter",
+                            "line": 243,
+                            "message": "Could not find property \"horizontalCenter\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 8,
+                            "functionName": "width",
+                            "line": 253,
+                            "message": "Cannot access value for name parent"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 51,
+                            "durationMicroseconds": 8,
+                            "functionName": "horizontalCenter",
+                            "line": 252,
+                            "message": "Cannot access value for name parent"
                         }
                     ],
                     "filePath": "D:/Gitee/AI-Girlfriend/Main.qml"
