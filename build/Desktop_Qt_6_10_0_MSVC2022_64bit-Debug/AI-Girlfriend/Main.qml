@@ -11,6 +11,7 @@ ApplicationWindow{
     visible: true
     title: qsTr("你的女孩")
     minimumWidth:1024
+    minimumHeight:800
     header:Rectangle{
         height: headerLayout.implicitHeight+10
         width:parent.width
@@ -217,56 +218,86 @@ ApplicationWindow{
         initialItem: ColumnLayout{
             anchors.fill:parent
             spacing: 0
-
-            Label{
-                id:greetLabel
-                visible: true
-                Layout.alignment: Qt.AlignHCenter
-                text:"你好，我能为你做点什么"
-                font.family: "Microsoft YaHei"
-                font.pixelSize: 25
+            ScrollView{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                visible: false
             }
-            Rectangle{
-                radius: 20
-                Layout.alignment: Qt.AlignHCenter
-                width:750
-                height: chatColumn.implicitHeight
-                color:"#f0f0f4"
-                Column{
-                    id:chatColumn
-                    anchors.fill:parent
-                    spacing:10
-                    bottomPadding: 5
-                    topPadding: 5
-                    TextArea{
-                        width:parent.width
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        placeholderText: "发送信息/语音对话"
-                        font.family: "Microsoft YaHei"
-                        background: Rectangle {
-                            color: "#f0f0f4"  // 与你的背景色一致
-                            radius: 4         // 可选，圆角效果
-                        }
-                    }
-                    RowLayout{
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        width:parent.width
-                        spacing:15
+            Column{
+                Layout.alignment: Qt.AlignCenter
+                spacing:40
+                Label{
+                    id:greetLabel
+                    visible: true
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text:"你好，我能为你做点什么"
+                    font.family: "Microsoft YaHei"
+                    font.pixelSize: 25
+                }
+                Rectangle{
+                    radius: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width:750
+                    height: chatColumn.implicitHeight
+                    color:"#f0f0f4"
+                    Column{
+                        id:chatColumn
+                        anchors.fill:parent
+                        spacing:10
+                        bottomPadding: 5
+                        topPadding: 5
+                        ScrollView{
+                            id:sendScrollView
+                            width:parent.width
+                            height:textArea.implicitHeight
+                            clip: true
+                            TextArea{
+                                id: textArea
+                                leftPadding: 20
+                                topPadding: 20
+                                width:parent.width
+                                placeholderText: "发送信息/语音对话"
+                                font.family: "Microsoft YaHei"
+                                font.pointSize: 12
+                                wrapMode:TextEdit.Wrap
+                                background: Rectangle {
+                                    color: "#f0f0f4"  // 与你的背景色一致
+                                    radius: 4         // 可选，圆角效果
+                                }
 
-                        Switch{
-                            Layout.leftMargin: 10
-                            text:"深度思考"
-                            font.family: "Microsoft YaHei"
+
+                                property int maxHeight: 250
+                                onContentHeightChanged: {
+                                    if (contentHeight >= maxHeight) {
+                                        sendScrollView.height = maxHeight
+                                    }else{
+                                        sendScrollView.height=height
+                                    }
+                                }
+
+
+                            }
                         }
-                        Item{
-                            Layout.fillWidth: true
-                        }
-                        RoundButton {
-                            icon.source: "qrc:/img/icon/microphone-01.svg"
-                        }
-                        RoundButton {
-                            Layout.rightMargin: 10
-                            text:"发送"
+                        RowLayout{
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            width:parent.width
+                            spacing:15
+
+                            Switch{
+                                Layout.leftMargin: 10
+                                text:"深度思考"
+                                font.family: "Microsoft YaHei"
+                            }
+                            Item{
+                                Layout.fillWidth: true
+                            }
+                            RoundButton {
+                                icon.source: "qrc:/img/icon/microphone-01.svg"
+                            }
+                            RoundButton {
+                                Layout.rightMargin: 10
+                                icon.source:"qrc:/img/icon/check.svg"
+                            }
                         }
                     }
                 }
