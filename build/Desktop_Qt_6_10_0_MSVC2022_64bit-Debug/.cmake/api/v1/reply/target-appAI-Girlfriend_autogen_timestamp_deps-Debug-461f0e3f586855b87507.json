@@ -69,11 +69,11 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
+			"id" : "appAI-Girlfriend_qmlimportscan::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "appAI-Girlfriend_qmlimportscan::@6890427a1f51a3e7e1df"
+			"id" : "generate_qmlls_build_ini_file::@6890427a1f51a3e7e1df"
 		}
 	],
 	"folder" : 

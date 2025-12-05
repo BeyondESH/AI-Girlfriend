@@ -6521,6 +6521,10 @@
 		},
 		{
 			"isExternal" : true,
+			"path" : "C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Qml/Qt6qmldirTemplate.cmake.in"
+		},
+		{
+			"isExternal" : true,
 			"path" : "C:/Qt/6.10.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in"
 		},
 		{

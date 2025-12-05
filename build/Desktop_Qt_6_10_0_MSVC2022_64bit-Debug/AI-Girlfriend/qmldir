@@ -4,5 +4,8 @@ prefer :/qt/qml/AI-Girlfriend/
 Main 254.0 Main.qml
 SideButton 254.0 Components/SideButton.qml
 HistoryListModel 254.0 Components/HistoryListModel.qml
+MessageBubble 254.0 Components/MessageBubble.qml
+ChatMessageListModel 254.0 Components/ChatMessageListModel.qml
+GreetPage 254.0 Pages/GreetPage.qml
 depends QtQuick
 

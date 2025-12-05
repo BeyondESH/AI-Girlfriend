@@ -3,6 +3,9 @@
     <file alias="Main.qml">D:/Gitee/AI-Girlfriend/Main.qml</file>
     <file alias="Components/SideButton.qml">D:/Gitee/AI-Girlfriend/Components/SideButton.qml</file>
     <file alias="Components/HistoryListModel.qml">D:/Gitee/AI-Girlfriend/Components/HistoryListModel.qml</file>
+    <file alias="Components/MessageBubble.qml">D:/Gitee/AI-Girlfriend/Components/MessageBubble.qml</file>
+    <file alias="Components/ChatMessageListModel.qml">D:/Gitee/AI-Girlfriend/Components/ChatMessageListModel.qml</file>
+    <file alias="Pages/GreetPage.qml">D:/Gitee/AI-Girlfriend/Pages/GreetPage.qml</file>
   </qresource>
 </RCC>
 

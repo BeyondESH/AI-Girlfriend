@@ -1,4 +1,4 @@
-set(qml_import_scanner_imports_count 32)
+set(qml_import_scanner_imports_count 37)
 set(qml_import_scanner_import_0 "CLASSNAME;QtQuick2Plugin;LINKTARGET;Qt6::qtquick2plugin;NAME;QtQuick;PATH;C:/Qt/6.10.0/msvc2022_64/qml/QtQuick;PLUGIN;qtquick2plugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/QtQuick/;RELATIVEPATH;QtQuick;TYPE;module;")
 set(qml_import_scanner_import_1 "CLASSNAME;QtQmlPlugin;LINKTARGET;Qt6::qmlplugin;NAME;QtQml;PATH;C:/Qt/6.10.0/msvc2022_64/qml/QtQml;PLUGIN;qmlplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/QtQml/;RELATIVEPATH;QtQml;TYPE;module;")
 set(qml_import_scanner_import_2 "NAME;QML;PATH;C:/Qt/6.10.0/msvc2022_64/qml/QML;PREFER;:/qt-project.org/imports/QML/;RELATIVEPATH;QML;TYPE;module;")
@@ -30,5 +30,10 @@ set(qml_import_scanner_import_27 "CLASSNAME;QtQuickControls2WindowsStyleImplPlug
 set(qml_import_scanner_import_28 "CLASSNAME;QtQuickControls2BasicStyleImplPlugin;LINKTARGET;Qt6::qtquickcontrols2basicstyleimplplugin;NAME;QtQuick.Controls.Basic.impl;PATH;C:/Qt/6.10.0/msvc2022_64/qml/QtQuick/Controls/Basic/impl;PLUGIN;qtquickcontrols2basicstyleimplplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/QtQuick/Controls/Basic/impl/;RELATIVEPATH;QtQuick/Controls/Basic/impl;TYPE;module;")
 set(qml_import_scanner_import_29 "CLASSNAME;QtQmlLabsModelsPlugin;LINKTARGET;Qt6::labsmodelsplugin;NAME;Qt.labs.qmlmodels;PATH;C:/Qt/6.10.0/msvc2022_64/qml/Qt/labs/qmlmodels;PLUGIN;labsmodelsplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/Qt/labs/qmlmodels/;RELATIVEPATH;Qt/labs/qmlmodels;TYPE;module;")
 set(qml_import_scanner_import_30 "NAME;Components;PATH;D:/Gitee/AI-Girlfriend/Components;TYPE;directory;")
-set(qml_import_scanner_import_31 "NAME;Components;PATH;D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Components;TYPE;directory;")
+set(qml_import_scanner_import_31 "NAME;Pages;PATH;D:/Gitee/AI-Girlfriend/Pages;TYPE;directory;")
+set(qml_import_scanner_import_32 "NAME;Components;PATH;D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Components;TYPE;directory;")
+set(qml_import_scanner_import_33 "NAME;Pages;PATH;D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Pages;TYPE;directory;")
+set(qml_import_scanner_import_34 "NAME;../Components;PATH;D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Components;TYPE;directory;")
+set(qml_import_scanner_import_35 "CLASSNAME;QmlSettingsPlugin;LINKTARGET;Qt6::qmlsettingsplugin;NAME;Qt.labs.settings;PATH;C:/Qt/6.10.0/msvc2022_64/qml/Qt/labs/settings;PLUGIN;qmlsettingsplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/Qt/labs/settings/;RELATIVEPATH;Qt/labs/settings;TYPE;module;")
+set(qml_import_scanner_import_36 "NAME;../Components;PATH;D:/Gitee/AI-Girlfriend/Components;TYPE;directory;")
 

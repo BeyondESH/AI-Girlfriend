@@ -80,7 +80,10 @@
 				3,
 				4,
 				5,
-				6
+				6,
+				7,
+				8,
+				9
 			]
 		}
 	],
@@ -107,7 +110,19 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAI-Girlfriend_Components/ChatMessageListModel_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAI-Girlfriend_Components/HistoryListModel_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAI-Girlfriend_Components/MessageBubble_qml.cpp.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -120,6 +135,12 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAI-Girlfriend_Main_qml.cpp.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/.rcc/qmlcache/appAI-Girlfriend_Pages/GreetPage_qml.cpp.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
