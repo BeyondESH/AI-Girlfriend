@@ -23,6 +23,9 @@ qt_add_qml_module(appAI-Girlfriend
         Main.qml
         Components/SideButton.qml
         Components/HistoryListModel.qml
+        Components/MessageBubble.qml
+        Components/ChatMessageListModel.qml
+        Pages/GreetPage.qml
 
     SOURCES
         audiomgr.cpp audiomgr.h 
