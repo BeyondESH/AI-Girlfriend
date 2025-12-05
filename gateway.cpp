@@ -62,7 +62,7 @@ GateWay::GateWay(QObject *parent)
         }
         QString content=jsonObj["text"].toString();
         qDebug().noquote()<<"我说:"<<content;
-        sendllmMessage(content);
+        sendllmMessage(content,ReqId::VOICE_LLM);
     });
 }
 
@@ -185,6 +185,14 @@ void GateWay::handle_http_finished(QByteArray data, ReqId id, ErrorCode ec)
             QJsonObject jsonObj=jsonDoc.object();
             QString content=jsonObj["message"].toObject()["content"].toString();
             qDebug().noquote()<<"她说:"<<content;
+            emit signal_receive_llm(content);
+            return;
+        }
+        case ReqId::VOICE_LLM:{
+            QJsonDocument jsonDoc=QJsonDocument::fromJson(data);
+            QJsonObject jsonObj=jsonDoc.object();
+            QString content=jsonObj["message"].toObject()["content"].toString();
+            qDebug().noquote()<<"她说:"<<content;
             sendttsMessage(content);
             return;
         }
@@ -195,7 +203,7 @@ void GateWay::handle_http_finished(QByteArray data, ReqId id, ErrorCode ec)
     }
 }
 
-void GateWay::sendllmMessage(const QString &text)
+void GateWay::sendllmMessage(const QString &text,ReqId id)
 {
     QJsonObject rootObj,messageObj;
     rootObj["model"]="qwen3:8b";

@@ -27,8 +27,8 @@ qt_add_qml_module(appAI-Girlfriend
         Components/ChatMessageListModel.qml
         Pages/StatePage.qml
         Pages/SettingPage.qml
-        Pages/GreetPage.qml
-
+        Pages/ChatPage.qml
+        js/addListModel.js
     SOURCES
         audiomgr.cpp audiomgr.h 
         configmgr.cpp configmgr.h 

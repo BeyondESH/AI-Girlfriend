@@ -2,9 +2,12 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import "../Components"
+import "../js/addListModel.js" as AddListModel
 
 Page{
     // anchors.fill:parent
+    id:page
+    signal signal_sendMessage(string text);
     ColumnLayout{
         anchors.fill:parent
         spacing: 0
@@ -34,6 +37,7 @@ Page{
                     width: messageLabel.width+20
                     height:messageLabel.implicitHeight+20
                     property string role:model.role
+                    color:role==="User"?"#A9E87A":"#FFFFFF"
                     Label{
                         id:messageLabel
                         anchors.centerIn: parent
@@ -49,7 +53,6 @@ Page{
                         if(role==="User"){
                             anchors.right= parent.right
                             radius=10
-                            color="#A9E87A"
                             anchors.rightMargin=20
                             nameLabel.visible=false
                         }else if(role==="Assistant"){
@@ -103,7 +106,7 @@ Page{
                             font.pointSize: 12
                             wrapMode:TextEdit.Wrap
                             background: Rectangle {
-                                color: "#f0f0f4"
+                                color: "#ededed"
                                 radius: 4
                             }
 
@@ -152,7 +155,10 @@ Page{
                             onClicked: {
                                 greetLabel.visible=false;
                                 listView.visible=true
-                                print(textArea.text)
+                                AddListModel.addChatMessage(listView.model,textArea.text)
+                                page.signal_sendMessage(textArea.text)
+                                app.sendChatMessage(textArea.text)
+                                textArea.clear()
                             }
                         }
                     }
@@ -161,4 +167,10 @@ Page{
         }
     }
 
+    Connections{
+        target: app
+        function onSignal_receive_llm(content){
+            AddListModel.addChatMessage(listView.model,content,"Assistant")
+        }
+    }
 }

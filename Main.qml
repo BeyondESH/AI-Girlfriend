@@ -83,7 +83,7 @@ ApplicationWindow{
                     anchors.fill:parent
                     cursorShape: Qt.PointingHandCursor
                     onClicked:{
-                        stackView.replace("Pages/GreetPage.qml")
+                        stackView.replace("Pages/ChatPage.qml")
                     }
                 }
             }
@@ -137,7 +137,7 @@ ApplicationWindow{
             SideButton{
                 id:newChatSideButton
                 onClicked: {
-                    stackView.replace("Pages/GreetPage.qml")
+                    stackView.replace("Pages/ChatPage.qml")
                 }
             }
 
@@ -224,6 +224,6 @@ ApplicationWindow{
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem:GreetPage{}
+        initialItem:ChatPage{}
     }
 }

@@ -8,6 +8,7 @@ Application::Application(QObject *parent)
     connect(_audioMgr,&AudioMgr::signal_handlePcmData,_gateWay,&GateWay::slot_handlePcmData);
     connect(_audioMgr,&AudioMgr::signal_endAsrRecord,_gateWay,&GateWay::slot_endAsrRecord);
     connect(_gateWay,&GateWay::signal_tts_finished,_audioMgr,&AudioMgr::slot_tts_finished);
+    connect(_gateWay,&GateWay::signal_receive_llm,this,&Application::signal_receive_llm);
     // _audioMgr->test();
 }
 
@@ -19,6 +20,11 @@ Application::~Application()
 void Application::sendAsrConfig()
 {
     _gateWay->wsSendAsrConfig();
+}
+
+void Application::sendChatMessage(QString text)
+{
+    _gateWay->sendllmMessage(text,ReqId::CHAT_LLM);
 }
 
 void Application::on_pushButtonRecord_clicked()

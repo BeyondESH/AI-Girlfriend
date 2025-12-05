@@ -10,6 +10,7 @@ enum ReqId{
     SEND_ASR,
     SEDN_TTS,
     CHAT_LLM,
+    VOICE_LLM
 };
 
 enum ErrorCode{
@@ -31,11 +32,12 @@ public:
     void get(const QUrl & url,ReqId id);
     void post(const QUrl &url,QByteArray &data,ReqId id);
     void post(const QUrl &url,QHttpMultiPart *multiPart,ReqId id);
-    void sendllmMessage(const QString& text);
+    void sendllmMessage(const QString& text,ReqId id);
     void sendttsMessage(const QString& text);
 signals:
     void signal_connectAsrWS();
     void signal_tts_finished(const QByteArray &data);
+    void signal_receive_llm(const QString &context);
 public slots:
     void slot_handlePcmData(const QByteArray &pcmData);
     void handle_http_finished(QByteArray data,ReqId id,ErrorCode ec);

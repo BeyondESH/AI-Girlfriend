@@ -12,10 +12,11 @@ public:
     explicit Application(QObject *parent = nullptr);
     ~Application();
     void sendAsrConfig();
+    Q_INVOKABLE void sendChatMessage(QString text);
+signals:
+    void signal_receive_llm(const QString &content);
 private slots:
-
     void on_pushButtonRecord_clicked();
-
 private:
     AudioMgr* _audioMgr;
     GateWay* _gateWay;
