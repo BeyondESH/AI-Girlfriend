@@ -25,6 +25,8 @@ qt_add_qml_module(appAI-Girlfriend
         Components/HistoryListModel.qml
         Components/MessageBubble.qml
         Components/ChatMessageListModel.qml
+        Pages/StatePage.qml
+        Pages/SettingPage.qml
         Pages/GreetPage.qml
 
     SOURCES

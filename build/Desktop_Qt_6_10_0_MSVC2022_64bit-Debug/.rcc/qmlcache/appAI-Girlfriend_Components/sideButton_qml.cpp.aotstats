@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 191,
+                            "durationMicroseconds": 138,
                             "functionName": "preferredHeight",
                             "line": 9,
                             "message": "Cannot access value for name item"
@@ -18,63 +18,63 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 15,
+                            "line": 16,
                             "message": "Could not find property \"fill\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 29,
-                            "durationMicroseconds": 43,
+                            "durationMicroseconds": 19,
                             "functionName": "implicitHeight",
-                            "line": 18,
+                            "line": 19,
                             "message": "Cannot access value for name row"
                         },
                         {
                             "codegenResult": 2,
                             "column": 19,
-                            "durationMicroseconds": 18,
+                            "durationMicroseconds": 10,
                             "functionName": "width",
-                            "line": 19,
+                            "line": 20,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
                             "column": 31,
-                            "durationMicroseconds": 22,
+                            "durationMicroseconds": 10,
                             "functionName": "left",
-                            "line": 22,
+                            "line": 23,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 20,
+                            "durationMicroseconds": 10,
                             "functionName": "verticalCenter",
-                            "line": 23,
+                            "line": 24,
                             "message": "Cannot access value for name parent"
                         },
                         {
                             "codegenResult": 0,
                             "column": 26,
-                            "durationMicroseconds": 287,
+                            "durationMicroseconds": 161,
                             "functionName": "cursorShape",
-                            "line": 45,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 42,
-                            "functionName": "onClicked",
                             "line": 46,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 145,
+                            "functionName": "onClicked",
+                            "line": 47,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
                             "column": 26,
-                            "durationMicroseconds": 82,
+                            "durationMicroseconds": 75,
                             "functionName": "fill",
-                            "line": 44,
+                            "line": 45,
                             "message": ""
                         }
                     ],

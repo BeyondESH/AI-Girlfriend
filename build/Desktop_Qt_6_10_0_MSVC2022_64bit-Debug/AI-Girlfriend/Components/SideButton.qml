@@ -9,6 +9,7 @@ Item{
     Layout.preferredHeight:item.implicitHeight+20
     property alias text: text.text
     property alias image:image.source
+    signal clicked()
     Button{
         id:button
         flat:true
@@ -44,7 +45,7 @@ Item{
             anchors.fill:parent
             cursorShape: Qt.PointingHandCursor
             onClicked:{
-
+                root.clicked()
             }
         }
     }

@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 237,
+                            "durationMicroseconds": 171,
                             "functionName": "fill",
                             "line": 9,
                             "message": ""
@@ -16,9 +16,9 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 75,
+                            "durationMicroseconds": 52,
                             "functionName": "width",
-                            "line": 20,
+                            "line": 21,
                             "message": "Cannot access value for name listView"
                         },
                         {
@@ -26,31 +26,31 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "left",
-                            "line": 28,
+                            "line": 29,
                             "message": "Could not find property \"left\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 41,
+                            "durationMicroseconds": 30,
                             "functionName": "width",
-                            "line": 33,
-                            "message": "Cannot retrieve a non-object type by ID: messageLabel"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 18,
-                            "functionName": "height",
                             "line": 34,
                             "message": "Cannot retrieve a non-object type by ID: messageLabel"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 42,
-                            "durationMicroseconds": 23,
-                            "functionName": "role",
+                            "column": 28,
+                            "durationMicroseconds": 17,
+                            "functionName": "height",
                             "line": 35,
+                            "message": "Cannot retrieve a non-object type by ID: messageLabel"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 42,
+                            "durationMicroseconds": 20,
+                            "functionName": "role",
+                            "line": 36,
                             "message": "Cannot access value for name model"
                         },
                         {
@@ -58,7 +58,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 41,
+                            "line": 42,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -66,7 +66,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 42,
+                            "line": 43,
                             "message": "Could not find property \"wrapMode\"."
                         },
                         {
@@ -74,7 +74,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 44,
+                            "line": 45,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -82,23 +82,23 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 38,
+                            "line": 39,
                             "message": "Could not find property \"centerIn\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 44,
-                            "durationMicroseconds": 91,
+                            "durationMicroseconds": 98,
                             "functionName": "onCompleted",
-                            "line": 47,
+                            "line": 48,
                             "message": "Cannot retrieve a non-object type by ID: nameLabel"
                         },
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 70,
+                            "durationMicroseconds": 75,
                             "functionName": "alignment",
-                            "line": 64,
+                            "line": 67,
                             "message": ""
                         },
                         {
@@ -106,31 +106,31 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalCenter",
-                            "line": 70,
+                            "line": 73,
                             "message": "Could not find property \"horizontalCenter\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 25,
-                            "durationMicroseconds": 89,
+                            "durationMicroseconds": 63,
                             "functionName": "height",
-                            "line": 79,
+                            "line": 82,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 77,
+                            "durationMicroseconds": 64,
                             "functionName": "horizontalCenter",
-                            "line": 77,
+                            "line": 80,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 34,
-                            "durationMicroseconds": 52,
+                            "durationMicroseconds": 39,
                             "functionName": "fill",
-                            "line": 83,
+                            "line": 86,
                             "message": ""
                         },
                         {
@@ -138,7 +138,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 89,
+                            "line": 92,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -146,7 +146,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 90,
+                            "line": 93,
                             "message": "Could not find property \"height\"."
                         },
                         {
@@ -154,7 +154,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 96,
+                            "line": 99,
                             "message": "Could not find property \"width\"."
                         },
                         {
@@ -162,23 +162,31 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "wrapMode",
-                            "line": 101,
+                            "line": 104,
                             "message": "Could not find property \"wrapMode\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "onLengthChanged",
+                            "line": 110,
+                            "message": "Could not find signal \"lengthChanged\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 53,
                             "durationMicroseconds": 0,
                             "functionName": "onContentHeightChanged",
-                            "line": 109,
+                            "line": 119,
                             "message": "Could not find signal \"contentHeightChanged\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 62,
+                            "durationMicroseconds": 53,
                             "functionName": "width",
-                            "line": 122,
+                            "line": 132,
                             "message": ""
                         },
                         {
@@ -186,7 +194,7 @@
                             "column": 51,
                             "durationMicroseconds": 61,
                             "functionName": "horizontalCenter",
-                            "line": 121,
+                            "line": 131,
                             "message": ""
                         },
                         {
@@ -194,7 +202,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 142,
+                            "line": 152,
                             "message": "Could not find signal \"clicked\"."
                         }
                     ],

@@ -17,6 +17,7 @@ Page{
             spacing: 20
             clip: true
             delegate:Column{
+                id:column
                 width: listView.width
                 Label{
                     id:nameLabel
@@ -51,9 +52,11 @@ Page{
                             color="#A9E87A"
                             anchors.rightMargin=20
                             nameLabel.visible=false
-                        }else{
+                        }else if(role==="Assistant"){
                             anchors.left=parent.left
                             anchors.leftMargin=20
+                        }else{
+                            column.visible=false
                         }
                     }
                 }
@@ -100,10 +103,17 @@ Page{
                             font.pointSize: 12
                             wrapMode:TextEdit.Wrap
                             background: Rectangle {
-                                color: "#f0f0f4"  // 与你的背景色一致
-                                radius: 4         // 可选，圆角效果
+                                color: "#f0f0f4"
+                                radius: 4
                             }
 
+                            onLengthChanged: {
+                                if(length===0){
+                                    sendButton.enabled=false
+                                }else{
+                                    sendButton.enabled=true
+                                }
+                            }
 
                             property int maxHeight: 200
                             onContentHeightChanged: {
@@ -138,10 +148,11 @@ Page{
                             id:sendButton
                             Layout.rightMargin: 10
                             icon.source:"qrc:/img/icon/arrow-narrow-right.svg"
-
+                            enabled:false
                             onClicked: {
                                 greetLabel.visible=false;
                                 listView.visible=true
+                                print(textArea.text)
                             }
                         }
                     }

@@ -83,7 +83,7 @@ ApplicationWindow{
                     anchors.fill:parent
                     cursorShape: Qt.PointingHandCursor
                     onClicked:{
-                        print("进入新对话")
+                        stackView.replace("Pages/GreetPage.qml")
                     }
                 }
             }
@@ -136,18 +136,27 @@ ApplicationWindow{
 
             SideButton{
                 id:newChatSideButton
+                onClicked: {
+                    stackView.replace("Pages/GreetPage.qml")
+                }
             }
 
             SideButton{
                 id:settingSideButton
                 text:qsTr("个性化定制")
                 image:"qrc:/img/icon/user-02.svg"
+                onClicked:{
+                    stackView.replace("Pages/SettingPage.qml")
+                }
             }
 
             SideButton{
                 id:stateSideButton
                 text:qsTr("服务器状态")
                 image:"qrc:/img/icon/cehua.svg"
+                onClicked: {
+                    stackView.replace("Pages/StatePage.qml")
+                }
             }
 
             MenuSeparator {

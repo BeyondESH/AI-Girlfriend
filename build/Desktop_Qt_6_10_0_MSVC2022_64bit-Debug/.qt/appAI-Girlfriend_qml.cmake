@@ -12,6 +12,10 @@ set(src_and_dest_list
     "D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Components/MessageBubble.qml"
     "D:/Gitee/AI-Girlfriend/Components/ChatMessageListModel.qml"
     "D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Components/ChatMessageListModel.qml"
+    "D:/Gitee/AI-Girlfriend/Pages/StatePage.qml"
+    "D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Pages/StatePage.qml"
+    "D:/Gitee/AI-Girlfriend/Pages/SettingPage.qml"
+    "D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Pages/SettingPage.qml"
     "D:/Gitee/AI-Girlfriend/Pages/GreetPage.qml"
     "D:/Gitee/AI-Girlfriend/build/Desktop_Qt_6_10_0_MSVC2022_64bit-Debug/AI-Girlfriend/Pages/GreetPage.qml"
 
