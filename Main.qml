@@ -106,6 +106,16 @@ ApplicationWindow{
                 ToolTip.visible: hovered
                 ToolTip.text: qsTr("选择大模型")
             }
+
+            Label{
+                id:stateLabel
+                Layout.alignment: Qt.AlignCenter
+                text:"雅萱正在输入..."
+                font.family: "Microsoft YaHei"
+                font.pointSize: 10
+                visible: false
+            }
+
             Item{
                 Layout.fillWidth: true
             }
@@ -156,6 +166,15 @@ ApplicationWindow{
                 image:"qrc:/img/icon/cehua.svg"
                 onClicked: {
                     stackView.replace("Pages/StatePage.qml")
+                }
+            }
+
+            SideButton{
+                id:voiceChatSideButton
+                text:qsTr("语音对话")
+                image:"qrc:/img/icon/microphone-01.svg"
+                onClicked: {
+                    stackView.replace("Pages/VoiceChatPage.qml")
                 }
             }
 
@@ -224,6 +243,10 @@ ApplicationWindow{
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem:ChatPage{}
+        initialItem: ChatPage {
+            onSignal_sendMessage: (text) => {
+                stateLabel.visible=true
+            }
+        }
     }
 }

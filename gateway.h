@@ -5,6 +5,7 @@
 #include <QWebSocket>
 #include <QUrl>
 #include <QNetworkAccessManager>
+#include <QTimer>
 
 enum ReqId{
     SEND_ASR,
@@ -38,6 +39,7 @@ signals:
     void signal_connectAsrWS();
     void signal_tts_finished(const QByteArray &data);
     void signal_receive_llm(const QString &context);
+    void signal_asr_text(const QString &text, bool isFinal);
 public slots:
     void slot_handlePcmData(const QByteArray &pcmData);
     void handle_http_finished(QByteArray data,ReqId id,ErrorCode ec);
@@ -47,6 +49,7 @@ private:
     QWebSocket* _websocket;
     QNetworkAccessManager* _networkAccessMgr;
     std::atomic_bool _wsConnected;
+    QTimer* _reconnectTimer;
 };
 
 #endif // GATEWAY_H

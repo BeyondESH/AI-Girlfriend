@@ -139,6 +139,7 @@ Page{
                             Layout.leftMargin: 10
                             text:"深度思考"
                             font.family: "Microsoft YaHei"
+
                         }
                         Item{
                             Layout.fillWidth: true
