@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtMultimedia
 import "../Components"
 import "../js/addListModel.js" as AddListModel
 
@@ -9,10 +10,18 @@ Page {
 
     // 录音状态
     property bool isRecording: false
-    property bool isProcessing: false
+    property bool isProcessing: false  // LLM处理中
+    property bool isPlayingTts: false  // TTS播放中
+    property bool canRecord: true      // 是否允许录音
     property string currentTranscript: ""
 
     signal signal_sendVoiceMessage(string text)
+    
+    // 音频播放器用于试听
+    MediaPlayer {
+        id: previewPlayer
+        audioOutput: AudioOutput {}
+    }
 
     background: Rectangle {
         color: "#f5f5f5"
@@ -21,6 +30,180 @@ Page {
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
+
+        // 顶部工具栏：语音选择
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 56
+            color: "#FFFFFF"
+            
+            RowLayout {
+                anchors.fill: parent
+                anchors.leftMargin: 20
+                anchors.rightMargin: 20
+                spacing: 12
+                
+                Label {
+                    text: "语音角色："
+                    font.family: "Microsoft YaHei"
+                    font.pointSize: 11
+                    color: "#666666"
+                }
+                
+                ComboBox {
+                    id: voiceSampleComboBox
+                    Layout.preferredWidth: 200
+                    Layout.preferredHeight: 36
+                    
+                    model: ListModel {
+                        id: voiceSampleModel
+                        ListElement { text: "灰原哀 样本1"; value: ":/sample/huiyuanai.WAV" }
+                        ListElement { text: "灰原哀 样本2"; value: ":/sample/huiyuanai2.WAV" }
+                        ListElement { text: "自定义样本"; value: "custom" }
+                    }
+                    
+                    textRole: "text"
+                    
+                    // 更新自定义样本显示名称
+                    function updateCustomName() {
+                        var customName = configMgr.customVoiceName
+                        if (customName && customName !== "") {
+                            voiceSampleModel.setProperty(2, "text", customName)
+                        }
+                    }
+                    
+                    Component.onCompleted: {
+                        // 更新自定义样本名称
+                        updateCustomName()
+                        // 从配置加载当前选中的语音样本索引
+                        // -1 表示自定义样本，映射到 index 2
+                        if (configMgr.currentVoiceSample === -1) {
+                            currentIndex = 2
+                        } else {
+                            currentIndex = configMgr.currentVoiceSample
+                        }
+                    }
+                    
+                    Connections {
+                        target: configMgr
+                        function onCustomVoiceNameChanged() {
+                            voiceSampleComboBox.updateCustomName()
+                        }
+                    }
+                    
+                    onCurrentIndexChanged: {
+                        if (currentIndex >= 0 && currentIndex < voiceSampleModel.count) {
+                            var selectedValue = voiceSampleModel.get(currentIndex).value
+                            if (currentIndex === 0) {
+                                configMgr.currentVoiceSample = 0
+                                configMgr.ttsPromptWav = ":/sample/huiyuanai.WAV"
+                            } else if (currentIndex === 1) {
+                                configMgr.currentVoiceSample = 1
+                                configMgr.ttsPromptWav = ":/sample/huiyuanai2.WAV"
+                            } else if (currentIndex === 2) {
+                                configMgr.currentVoiceSample = -1
+                                // 自定义样本使用已保存的路径，不覆盖
+                            }
+                        }
+                    }
+                    
+                    background: Rectangle {
+                        radius: 8
+                        color: voiceSampleComboBox.down ? "#f0f0f0" : "#f5f5f5"
+                        border.color: voiceSampleComboBox.activeFocus ? "#007AFF" : "#e0e0e0"
+                        border.width: 1
+                        
+                        Behavior on border.color {
+                            ColorAnimation { duration: 150 }
+                        }
+                    }
+                }
+                
+                // 试听按钮
+                Button {
+                    id: previewVoiceBtn
+                    Layout.preferredWidth: 80
+                    Layout.preferredHeight: 36
+                    text: "试听"
+                    
+                    contentItem: Label {
+                        text: parent.text
+                        font.family: "Microsoft YaHei"
+                        font.pointSize: 10
+                        color: "#007AFF"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    
+                    background: Rectangle {
+                        radius: 8
+                        color: previewVoiceBtn.down ? "#e6f3ff" : (previewVoiceBtn.hovered ? "#f0f8ff" : "transparent")
+                        border.color: "#007AFF"
+                        border.width: 1
+                        
+                        Behavior on color {
+                            ColorAnimation { duration: 150 }
+                        }
+                    }
+                    
+                    onClicked: {
+                        // 播放选中语音样本的预览
+                        var samplePath = voiceSampleModel.get(voiceSampleComboBox.currentIndex).value
+                        console.log("Preview voice:", voiceSampleComboBox.currentText, "Path:", samplePath)
+                        if (samplePath === "custom") {
+                            // 自定义样本使用configMgr中保存的路径
+                            var customPath = configMgr.ttsPromptWav
+                            console.log("自定义样本路径:", customPath)
+                            // 检查是否是有效的本地文件路径（包含盘符如 D: 或 C:）
+                            if (customPath && customPath !== "" && customPath.length > 3 && customPath.charAt(1) === ':') {
+                                previewPlayer.source = "file:///" + customPath
+                                previewPlayer.play()
+                            } else {
+                                console.log("自定义样本路径为空或无效，请在设置页面选择文件")
+                            }
+                        } else {
+                            previewPlayer.source = "qrc" + samplePath.substring(1) // 转换 :/ 为 qrc:/
+                            previewPlayer.play()
+                        }
+                    }
+                    
+                    ToolTip.visible: hovered
+                    ToolTip.text: "试听当前语音角色"
+                }
+                
+                Item { Layout.fillWidth: true }
+                
+                // 当前语音角色显示
+                Row {
+                    spacing: 6
+                    
+                    Rectangle {
+                        width: 8
+                        height: 8
+                        radius: 4
+                        color: "#4CAF50"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                    
+                    Label {
+                        text: voiceSampleComboBox.currentText
+                        font.family: "Microsoft YaHei"
+                        font.pointSize: 10
+                        font.bold: true
+                        color: "#333"
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+            }
+            
+            // 底部分隔线
+            Rectangle {
+                width: parent.width
+                height: 1
+                anchors.bottom: parent.bottom
+                color: "#E8E8E8"
+            }
+        }
 
         // 对话列表区域
         ListView {
@@ -51,7 +234,7 @@ Page {
                     // 角色名称
                     Label {
                         id: roleLabel
-                        text: model.role === "User" ? "你" : "雅萱"
+                        text: model.role === "User" ? "你" : configMgr.aiName
                         font.family: "Microsoft YaHei"
                         font.pointSize: 9
                         color: "#666666"
@@ -105,6 +288,63 @@ Page {
                         anchors.right: model.role === "User" ? parent.right : undefined
                         anchors.leftMargin: model.role === "User" ? 0 : 16
                         anchors.rightMargin: model.role === "User" ? 16 : 0
+                    }
+                }
+            }
+
+            // "正在输入"动画footer
+            footer: Item {
+                width: chatListView.width
+                height: (isProcessing || isPlayingTts) ? 60 : 0
+                visible: isProcessing || isPlayingTts
+
+                Behavior on height {
+                    NumberAnimation { duration: 200; easing.type: Easing.OutQuad }
+                }
+
+                Row {
+                    anchors.left: parent.left
+                    anchors.leftMargin: 16
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 8
+
+                    Label {
+                        text: isPlayingTts ? (configMgr.aiName + " 正在说话") : (configMgr.aiName + " 正在输入")
+                        font.family: "Microsoft YaHei"
+                        font.pixelSize: 13
+                        color: "#666666"
+                    }
+
+                    // 打字动画点
+                    Row {
+                        spacing: 4
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Repeater {
+                            model: 3
+                            Rectangle {
+                                width: 6
+                                height: 6
+                                radius: 3
+                                color: "#007AFF"
+
+                                SequentialAnimation on opacity {
+                                    running: isProcessing || isPlayingTts
+                                    loops: Animation.Infinite
+                                    PauseAnimation { duration: index * 200 }
+                                    NumberAnimation { from: 0.3; to: 1; duration: 400 }
+                                    NumberAnimation { from: 1; to: 0.3; duration: 400 }
+                                }
+
+                                SequentialAnimation on y {
+                                    running: isProcessing || isPlayingTts
+                                    loops: Animation.Infinite
+                                    PauseAnimation { duration: index * 200 }
+                                    NumberAnimation { from: 0; to: -4; duration: 300; easing.type: Easing.OutQuad }
+                                    NumberAnimation { from: -4; to: 0; duration: 300; easing.type: Easing.InQuad }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -183,14 +423,16 @@ Page {
                     id: statusLabel
                     Layout.alignment: Qt.AlignHCenter
                     text: {
-                        if (isProcessing) return "正在处理..."
+                        if (isPlayingTts) return "正在播放回复..."
+                        if (isProcessing) return "正在思考..."
                         if (isRecording) return "正在聆听..."
+                        if (!canRecord) return "请等待回复完成..."
                         return "点击麦克风开始说话"
                     }
                     font.family: "Microsoft YaHei"
                     font.pointSize: 14
                     font.weight: Font.Medium
-                    color: isRecording ? "#007AFF" : "#666666"
+                    color: isRecording ? "#007AFF" : (isProcessing || isPlayingTts ? "#FF9800" : "#666666")
 
                     Behavior on color {
                         ColorAnimation { duration: 200 }
@@ -289,7 +531,8 @@ Page {
                                 }
 
                                 onClicked: {
-                                    if (isProcessing) return
+                                    // 如果正在处理或播放TTS，不允许操作
+                                    if (!canRecord || isProcessing || isPlayingTts) return
 
                                     if (isRecording) {
                                         // 停止录音
@@ -303,51 +546,6 @@ Page {
 
                             // 按钮阴影
                             layer.enabled: true
-                        }
-                    }
-
-                    // 音频波形动画（录音时显示）
-                    Row {
-                        id: audioWaveform
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.bottom: waveContainer.top
-                        anchors.bottomMargin: -30
-                        spacing: 4
-                        visible: isRecording
-                        opacity: isRecording ? 1 : 0
-
-                        Behavior on opacity {
-                            NumberAnimation { duration: 200 }
-                        }
-
-                        Repeater {
-                            model: 7
-                            Rectangle {
-                                id: waveBar
-                                property int barIndex: index
-                                width: 4
-                                height: 20
-                                radius: 2
-                                color: "#007AFF"
-                                anchors.verticalCenter: parent.verticalCenter
-
-                                SequentialAnimation on height {
-                                    running: isRecording
-                                    loops: Animation.Infinite
-                                    NumberAnimation {
-                                        from: 8
-                                        to: 8 + Math.random() * 32
-                                        duration: 150 + barIndex * 50
-                                        easing.type: Easing.InOutQuad
-                                    }
-                                    NumberAnimation {
-                                        from: 8 + Math.random() * 32
-                                        to: 8
-                                        duration: 150 + barIndex * 50
-                                        easing.type: Easing.InOutQuad
-                                    }
-                                }
-                            }
                         }
                     }
                 }
@@ -427,6 +625,7 @@ Page {
 
     // 开始录音函数
     function startRecording() {
+        if (!canRecord) return
         isRecording = true
         currentTranscript = ""
         // 调用C++层开始录音
@@ -437,6 +636,7 @@ Page {
     function stopRecording() {
         isRecording = false
         isProcessing = true
+        canRecord = false  // 禁止再次录音，直到回复完成
         // 调用C++层停止录音
         app.stopVoiceRecord()
     }
@@ -447,6 +647,25 @@ Page {
         currentTranscript = ""
         // 调用C++层停止录音但不发送
         app.stopVoiceRecord()
+    }
+
+    // 自动开始录音（TTS播放完成后调用）
+    function autoStartRecording() {
+        canRecord = true
+        // 延迟一小段时间后自动开始录音
+        autoRecordTimer.start()
+    }
+
+    // 自动录音定时器
+    Timer {
+        id: autoRecordTimer
+        interval: 500  // 延迟500ms
+        repeat: false
+        onTriggered: {
+            if (canRecord && !isProcessing && !isPlayingTts) {
+                startRecording()
+            }
+        }
     }
 
     // 添加用户消息
@@ -494,7 +713,15 @@ Page {
         // 接收LLM回复
         function onSignal_receive_llm(content) {
             isProcessing = false
+            isPlayingTts = true  // 开始播放TTS
             addAssistantMessage(content)
+        }
+        
+        // TTS播放完成
+        function onSignal_tts_playback_finished() {
+            isPlayingTts = false
+            // 自动开始下一轮录音
+            autoStartRecording()
         }
     }
 

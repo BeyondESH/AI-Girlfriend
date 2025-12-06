@@ -83,5 +83,6 @@
         <file>img/icon/x-close.svg</file>
         <file>img/icon/zhongyinhuyi.svg</file>
         <file>img/icon/favicon.ico</file>
+        <file>sample/xuan.wav</file>
     </qresource>
 </RCC>

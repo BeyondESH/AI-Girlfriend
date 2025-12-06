@@ -4,6 +4,7 @@
 #include <QIcon>
 #include <QQmlContext>
 #include "application.h"
+#include "configmgr.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
 
     Application application(&app);
     engine.rootContext()->setContextProperty("app", &application);
+    engine.rootContext()->setContextProperty("configMgr", &ConfigMgr::instance());
 
     QQuickStyle::setStyle("FluentWinUI3");
     // QQuickStyle::setStyle("Fusion");

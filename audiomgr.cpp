@@ -236,6 +236,7 @@ void AudioMgr::slot_tts_finished(const QByteArray &data)
         case QtAudio::IdleState:
             // Finished playing (no more data)
             stopAudioOutput();
+            emit signal_tts_playback_finished();  // 通知播放完成
             break;
 
         case QtAudio::StoppedState:

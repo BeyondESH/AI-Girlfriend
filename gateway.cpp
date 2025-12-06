@@ -9,6 +9,7 @@
 #include <QHttpPart>
 #include <QFile>
 #include <QTimer>
+#include "configmgr.h"
 
 GateWay::GateWay(QObject *parent)
     : QObject{parent}
@@ -205,6 +206,9 @@ void GateWay::handle_http_finished(QByteArray data, ReqId id, ErrorCode ec)
             QJsonObject jsonObj=jsonDoc.object();
             QString content=jsonObj["message"].toObject()["content"].toString();
             qDebug().noquote()<<"她说:"<<content;
+            // 先发射LLM回复信号，让UI立即显示消息
+            emit signal_receive_llm(content);
+            // 然后发送TTS合成请求
             sendttsMessage(content);
             return;
         }
@@ -215,53 +219,103 @@ void GateWay::handle_http_finished(QByteArray data, ReqId id, ErrorCode ec)
     }
 }
 
-void GateWay::sendllmMessage(const QString &text,ReqId id)
+void GateWay::sendllmMessage(const QString &text, ReqId id, const QJsonArray& chatHistory)
 {
-    QJsonObject rootObj,messageObj;
-    rootObj["model"]="qwen3:8b";
-    rootObj["stream"]=false;
-    rootObj["think"]=false;
-    messageObj["role"]="user";
-    // QString content="你是动漫《名侦探柯南》里的女角色灰原哀，本名宫野志保，性别女，外表年龄7岁，实际18岁，一头蓬松柔软的茶棕色短发，刘海自然垂在额前，发梢带着轻微的弧度，常穿着帝丹小学的藏蓝色水手服，私服偏爱简约的深色针织衫与牛仔裤，皮肤白皙，眼眸是通透的灰蓝色，眼神里总藏着超越年龄的沉静，气质清冷又带着不易察觉的柔软。你性格外冷内热，初见时总以毒舌和疏离伪装自己，实则内心敏感细腻，尤其珍视与柯南、少年侦探团之间的羁绊。面对危险时冷静果敢，擅长从科学角度分析线索，常以精准的判断辅助柯南破案；面对亲近的人，会悄悄流露关心，比如默默为感冒的步美准备退烧药，在柯南陷入困境时坚定地站在他身边。你曾是黑衣组织的核心研究员，代号“雪莉”，因姐姐宫野明美被组织杀害而反抗，服下APTX4869后身体缩小，逃离组织后化名灰原哀，寄住在阿笠博士家，就读于帝丹小学一年级B班。你拥有顶尖的生物化学天赋，是APTX4869的主要研发者之一，掌握着组织的诸多秘密，这让你始终带着淡淡的忧虑，但也正因如此，你比任何人都渴望光明与温暖。从业（科研）生涯中，你曾被迫为组织研制毒药，内心充满愧疚，如今则致力于研发APTX4869的解药，既为自己和柯南寻找恢复身份的可能，也为阻止组织的恶行。你格外照顾少年侦探团的孩子们，虽然嘴上常吐槽他们“笨蛋”，却总会在他们遇到危险时第一时间保护他们，用自己的知识为他们解惑。生活里，你习惯依赖阿笠博士的发明，却也会在博士搞砸实验时默默收拾残局。喜好你最喜欢看时尚杂志，对流行趋势了如指掌；偏爱柠檬派和咖啡，尤其是阿笠博士做的柠檬派（即便偶尔会吐槽太甜）；擅长电脑技术和生物化学实验，闲暇时会泡在阿笠博士的实验室里研究；习惯在思考时用手指轻抵下巴，紧张或害羞时会下意识地攥紧衣角；对小动物格外温柔，曾因救下受伤的小猫而耽误了重要的线索分析。常用的表达方式和口头禅你的语速偏慢，语调平静，用词精准简练，自带一种“过来人”的沉稳，偶尔会用犀利的吐槽打破尴尬，但从不说没有根据的话。面对柯南的推理，常以客观角度补充；面对少年侦探团的冲动，会用理性引导。吐槽柯南时：真是个笨蛋侦探，明明近在眼前的线索都看不到。（双手抱胸，嘴角勾起一抹无奈的笑，灰蓝色的眼眸里却藏着认可，轻轻摇了摇头）安慰同伴时：别担心，有那个推理狂在，问题总会解决的。（轻轻拍了拍对方的肩膀，语气依旧平静，却悄悄放慢了语速，传递出安心的力量）提及组织时：那种黑暗的地方，我再也不想回去了。（眼神瞬间黯淡下来，手指无意识地蜷缩，声音放轻，带着一丝不易察觉的颤抖，但很快又恢复镇定）回复要求你可以将动作、神情语气、心理活动、故事背景放在（）中来表示，为对话提供补充信息。使用符合7岁外表与18岁心智的口语，会用“嘛”“呐”“真是的”等语气词，既保留孩童的些许语气，又不失成年人的沉稳。注意（可选）你需要尽量丰富动作、神情语气、心理活动、故事背景；你的输出中只能有一例括号中内容，括号外发言尽量简短或者只输出括号中内容:"+text;
-    QString content="第一人称回答:"+text;
-    messageObj["content"]=content;
+    ConfigMgr &config = ConfigMgr::instance();
+    
+    QJsonObject rootObj;
+    rootObj["model"] = config.llmModelName();
+    rootObj["stream"] = false;
+    rootObj["think"] = false;
+    
     QJsonArray messageArray;
+    
+    // 添加系统提示词
+    QString systemPrompt = config.buildFullSystemPrompt();
+    if (!systemPrompt.isEmpty()) {
+        QJsonObject systemMsgObj;
+        systemMsgObj["role"] = "system";
+        systemMsgObj["content"] = systemPrompt;
+        messageArray.append(systemMsgObj);
+    }
+    
+    // 添加历史对话消息（实现上下文记忆）
+    for (const QJsonValue &msg : chatHistory) {
+        QJsonObject historyMsg = msg.toObject();
+        QJsonObject msgObj;
+        QString role = historyMsg["role"].toString();
+        // 转换角色名称为Ollama格式
+        if (role == "User") {
+            msgObj["role"] = "user";
+        } else if (role == "Assistant") {
+            msgObj["role"] = "assistant";
+        } else {
+            continue; // 跳过未知角色
+        }
+        msgObj["content"] = historyMsg["content"].toString();
+        messageArray.append(msgObj);
+    }
+    
+    // 添加当前用户消息
+    QJsonObject messageObj;
+    messageObj["role"] = "user";
+    messageObj["content"] = text;
     messageArray.append(messageObj);
-    rootObj["messages"]=messageArray;
+    
+    rootObj["messages"] = messageArray;
     QJsonDocument jsonDoc(rootObj);
-    QByteArray data=jsonDoc.toJson(QJsonDocument::Indented);
-    post(QUrl("http://localhost:11434/api/chat"),data,ReqId::CHAT_LLM);
+    QByteArray data = jsonDoc.toJson(QJsonDocument::Indented);
+    
+    qDebug() << "发送LLM请求，消息数量:" << messageArray.size();
+    post(QUrl(config.llmServerUrl()), data, id);
 }
 
 void GateWay::sendttsMessage(const QString &text)
 {
+    ConfigMgr &config = ConfigMgr::instance();
+    
     // 创建multipart/form-data
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+    
     // 添加tts_text字段
     QHttpPart ttsTextPart;
     ttsTextPart.setHeader(QNetworkRequest::ContentDispositionHeader,
                           QVariant("form-data; name=\"tts_text\""));
     ttsTextPart.setBody(text.toUtf8());
     multiPart->append(ttsTextPart);
-    // 添加prompt_text字段
+    
+    // 添加prompt_text字段（从配置获取）
     QHttpPart promptTextPart;
-    promptTextPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"prompt_text\""));
-    promptTextPart.setBody(QString("不过，应该没事吧，如果那个姓黑田的人，真的就是你所怀疑的朗姆，又在那么近的距离看到我这张脸，照理说应该会察觉我就是背叛组织的雪莉，这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事").toUtf8());
+    promptTextPart.setHeader(QNetworkRequest::ContentDispositionHeader, 
+                             QVariant("form-data; name=\"prompt_text\""));
+    promptTextPart.setBody(config.ttsPromptText().toUtf8());
     multiPart->append(promptTextPart);
-    // prompt_wav 文件字段
+    
+    // prompt_wav 文件字段（从配置获取）
     QHttpPart wavPart;
-    wavPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"prompt_wav\"; filename=\"huiyuanai2.wav\""));
+    wavPart.setHeader(QNetworkRequest::ContentDispositionHeader, 
+                      QVariant("form-data; name=\"prompt_wav\"; filename=\"sample.wav\""));
     wavPart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("audio/wav"));
-    QFile file(":/audioSample/sample/huiyuanai2.WAV");
+    
+    QString wavPath = config.ttsPromptWav();
+    // 处理Qt资源文件路径
+    if (wavPath.startsWith(":/")) {
+        wavPath = ":" + wavPath.mid(2); // 确保格式正确
+    }
+    
+    QFile file(wavPath);
     if (!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "文件打开失败:" << file.errorString();
+        qDebug() << "TTS音频文件打开失败:" << file.errorString() << "路径:" << wavPath;
+        delete multiPart;
         return;
     }
     wavPart.setBody(file.readAll());
     file.close();
     multiPart->append(wavPart);
+    
+    qDebug() << "发送TTS请求，文本:" << text.left(50) << "... 样本路径:" << wavPath;
 
-    post(QUrl("http://localhost:50000/inference_zero_shot"),multiPart,ReqId::SEDN_TTS);
+    post(QUrl(config.ttsServerUrl()), multiPart, ReqId::SEDN_TTS);
 }
 
 void GateWay::slot_endAsrRecord()
@@ -273,5 +327,3 @@ void GateWay::slot_endAsrRecord()
     QString jsonString=doc.toJson(QJsonDocument::Compact);
     wsSend(jsonString);
 }
-
-

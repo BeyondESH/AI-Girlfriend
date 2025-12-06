@@ -6,6 +6,7 @@
 #include <QUrl>
 #include <QNetworkAccessManager>
 #include <QTimer>
+#include <QJsonArray>
 
 enum ReqId{
     SEND_ASR,
@@ -22,9 +23,11 @@ enum ErrorCode{
 class GateWay : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(bool wsConnected READ wsConnected NOTIFY wsConnectedChanged)
 public:
     explicit GateWay(QObject *parent = nullptr);
     ~GateWay();
+    bool wsConnected() const { return _wsConnected; }
     void wsConnect(const QUrl &url);
     void wsConnectAsrServer(const QUrl &url=QUrl("ws://localhost:10096"));
     void wsSendPcmData(const QByteArray &pcmData);
@@ -33,13 +36,14 @@ public:
     void get(const QUrl & url,ReqId id);
     void post(const QUrl &url,QByteArray &data,ReqId id);
     void post(const QUrl &url,QHttpMultiPart *multiPart,ReqId id);
-    void sendllmMessage(const QString& text,ReqId id);
+    void sendllmMessage(const QString& text, ReqId id, const QJsonArray& chatHistory = QJsonArray());
     void sendttsMessage(const QString& text);
 signals:
     void signal_connectAsrWS();
     void signal_tts_finished(const QByteArray &data);
     void signal_receive_llm(const QString &context);
     void signal_asr_text(const QString &text, bool isFinal);
+    void wsConnectedChanged();
 public slots:
     void slot_handlePcmData(const QByteArray &pcmData);
     void handle_http_finished(QByteArray data,ReqId id,ErrorCode ec);

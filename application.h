@@ -2,12 +2,19 @@
 #define APPLICATION_H
 
 #include <QObject>
+#include <QJsonArray>
+#include <QJsonObject>
 #include "audiomgr.h"
 #include "gateway.h"
 
 class Application : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QJsonArray chatHistory READ chatHistory NOTIFY chatHistoryChanged)
+    Q_PROPERTY(QJsonArray conversationList READ conversationList NOTIFY conversationListChanged)
+    Q_PROPERTY(QString currentConversationId READ currentConversationId WRITE setCurrentConversationId NOTIFY currentConversationIdChanged)
+    Q_PROPERTY(QString audioRecognizeStatus READ audioRecognizeStatus NOTIFY audioRecognizeStatusChanged)
+    
 public:
     explicit Application(QObject *parent = nullptr);
     ~Application();
@@ -16,14 +23,60 @@ public:
     Q_INVOKABLE void startVoiceRecord();
     Q_INVOKABLE void stopVoiceRecord();
     Q_INVOKABLE void toggleVoiceRecord();
+    
+    // 历史对话管理
+    Q_INVOKABLE void createNewConversation();
+    Q_INVOKABLE void loadConversation(const QString &conversationId);
+    Q_INVOKABLE void deleteConversation(const QString &conversationId);
+    Q_INVOKABLE void addMessageToHistory(const QString &role, const QString &content);
+    Q_INVOKABLE void clearCurrentHistory();
+    Q_INVOKABLE QJsonArray getConversationList();
+    
+    // 服务器状态检测
+    Q_INVOKABLE void checkOllamaStatus();
+    Q_INVOKABLE void checkAsrStatus();
+    Q_INVOKABLE void checkTtsStatus();
+    
+    // 音频文件识别（用于语音克隆样本）
+    Q_INVOKABLE void recognizeAudioFile(const QString &filePath);
+    QString audioRecognizeStatus() const { return _audioRecognizeStatus; };
+    
+    QJsonArray chatHistory() const;
+    QJsonArray conversationList() const;
+    QString currentConversationId() const;
+    void setCurrentConversationId(const QString &id);
+    
 signals:
     void signal_receive_llm(const QString &content);
     void signal_asr_text(const QString &text, bool isFinal);
+    void signal_tts_playback_finished();  // TTS播放完成信号
+    void chatHistoryChanged();
+    void conversationListChanged();
+    void currentConversationIdChanged();
+    void ollamaStatusChanged(bool online, const QString &info);
+    void asrStatusChanged(bool online, const QString &info);
+    void ttsStatusChanged(bool online, const QString &info);
+    void audioRecognizeStatusChanged();
+    void audioRecognizeResult(const QString &text);
+    
 private slots:
     void on_pushButtonRecord_clicked();
+    
 private:
     AudioMgr* _audioMgr;
     GateWay* _gateWay;
+    
+    // 历史对话
+    QJsonArray _chatHistory;
+    QJsonArray _conversationList;
+    QString _currentConversationId;
+    QString _historyDir;
+    QString _audioRecognizeStatus = "就绪";
+    
+    void saveCurrentConversation();
+    void loadConversationList();
+    void saveConversationList();
+    QString generateConversationId();
 };
 
 #endif // APPLICATION_H

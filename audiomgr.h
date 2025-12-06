@@ -33,6 +33,7 @@ public slots:
 signals:
     void signal_handlePcmData(const QByteArray &pcmData);
     void signal_endAsrRecord();
+    void signal_tts_playback_finished();  // TTS播放完成信号
 private:
     QAudioSource *_audioSource;
     QIODevice * _ioDevice;
