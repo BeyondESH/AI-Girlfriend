@@ -47,6 +47,7 @@
    - 推荐使用 [Ollama](https://ollama.ai/)
    - 默认地址：`http://localhost:11434/api/chat`
    - 默认模型：`qwen3:8b`
+   - 注：应用使用兼容OpenAI格式的聊天API
 
 2. **语音识别服务（ASR）**
    - 支持FunASR或其他兼容的ASR服务
@@ -61,8 +62,12 @@
 ### 1. 克隆仓库
 
 ```bash
+# 克隆原始仓库
 git clone https://github.com/BeyondESH/AI-Girlfriend.git
 cd AI-Girlfriend
+
+# 或克隆你自己fork的仓库
+# git clone https://github.com/YOUR_USERNAME/AI-Girlfriend.git
 ```
 
 ### 2. 安装Qt和依赖
