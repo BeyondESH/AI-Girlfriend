@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/qt/qml/AI-Girlfriend/">
-    <file alias="res.qrc">D:/Gitee/AI-Girlfriend/res.qrc</file>
-  </qresource>
-</RCC>
-
