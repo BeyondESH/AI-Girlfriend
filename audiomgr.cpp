@@ -144,7 +144,7 @@ void AudioMgr::test()
     QFile *sourceFile = new QFile("C:/Users/19896/Downloads/response3.raw", this);
     sourceFile->open(QIODevice::ReadOnly);
     QAudioFormat format;
-    format.setSampleRate(22050);
+    format.setSampleRate(24000);
     format.setChannelCount(1);
     format.setSampleFormat(QAudioFormat::Int16);
 
@@ -180,7 +180,7 @@ void AudioMgr::test()
 QByteArray AudioMgr::createWavHeader(qint64 pcmDataSize)
 {
     QByteArray header;
-    qint32 sampleRate = 22050;
+    qint32 sampleRate = 24000;
     qint16 channels = 1;
     qint16 bitsPerSample = 16;
     qint32 byteRate = sampleRate * channels * bitsPerSample / 8;
@@ -220,7 +220,7 @@ void AudioMgr::slot_tts_finished(const QByteArray &data)
     buffer->open(QIODevice::ReadOnly);
 
     QAudioFormat format;
-    format.setSampleRate(22050);
+    format.setSampleRate(24000);
     format.setChannelCount(1);
     format.setSampleFormat(QAudioFormat::Int16);
 
