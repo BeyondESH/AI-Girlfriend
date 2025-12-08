@@ -27,6 +27,8 @@ class ConfigMgr : public QObject
     Q_PROPERTY(QString ttsPromptWav READ ttsPromptWav WRITE setTtsPromptWav NOTIFY ttsPromptWavChanged FINAL)
     Q_PROPERTY(int currentVoiceSample READ currentVoiceSample WRITE setCurrentVoiceSample NOTIFY currentVoiceSampleChanged FINAL)
     Q_PROPERTY(QString customVoiceName READ customVoiceName WRITE setCustomVoiceName NOTIFY customVoiceNameChanged FINAL)
+    Q_PROPERTY(QString customVoiceWav READ customVoiceWav WRITE setCustomVoiceWav NOTIFY customVoiceWavChanged FINAL)
+    Q_PROPERTY(QString customVoiceText READ customVoiceText WRITE setCustomVoiceText NOTIFY customVoiceTextChanged FINAL)
 
 public:
     static ConfigMgr& instance();
@@ -64,6 +66,13 @@ public:
     void setCurrentVoiceSample(int newCurrentVoiceSample);
     QString customVoiceName() const;
     void setCustomVoiceName(const QString &newCustomVoiceName);
+    QString customVoiceWav() const;
+    void setCustomVoiceWav(const QString &newCustomVoiceWav);
+    QString customVoiceText() const;
+    void setCustomVoiceText(const QString &newCustomVoiceText);
+    
+    // 应用当前选中的语音样本到 TTS 配置
+    Q_INVOKABLE void applyCurrentVoiceSample();
     
     // 构建完整的系统提示词
     Q_INVOKABLE QString buildFullSystemPrompt() const;
@@ -101,13 +110,15 @@ private:
     QString _ttsPromptWav;
     int _currentVoiceSample;
     QString _customVoiceName;
+    QString _customVoiceWav;    // 自定义样本文件路径
+    QString _customVoiceText;   // 自定义样本参考文本
 
     // 默认值
     static constexpr const char* DEFAULT_USER_NAME = "用户";
     static constexpr const char* DEFAULT_AI_NAME = "雅萱";
-    static constexpr const char* DEFAULT_ASR_URL = "ws://localhost:10096";
-    static constexpr const char* DEFAULT_LLM_URL = "http://localhost:11434/api/chat";
-    static constexpr const char* DEFAULT_TTS_URL = "http://localhost:50000/inference_zero_shot";
+    static constexpr const char* DEFAULT_ASR_URL = "ws://127.0.0.1:10096";
+    static constexpr const char* DEFAULT_LLM_URL = "http://127.0.0.1:11434/api/chat";
+    static constexpr const char* DEFAULT_TTS_URL = "http://127.0.0.1:50000/inference_zero_shot";
     static constexpr const char* DEFAULT_MODEL = "qwen3:8b";
     static constexpr const char* DEFAULT_TTS_PROMPT_TEXT = "不过，应该没事吧，如果那个姓黑田的人，真的就是你所怀疑的朗姆，又在那么近的距离看到我这张脸，照理说应该会察觉我就是背叛组织的雪莉，这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事";
     static constexpr const char* DEFAULT_TTS_PROMPT_WAV = ":/sample/huiyuanai2.WAV";
@@ -129,6 +140,8 @@ signals:
     void ttsPromptWavChanged();
     void currentVoiceSampleChanged();
     void customVoiceNameChanged();
+    void customVoiceWavChanged();
+    void customVoiceTextChanged();
 };
 
 #endif // CONFIGMGR_H

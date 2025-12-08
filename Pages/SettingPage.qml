@@ -20,10 +20,12 @@ Page {
         nameFilters: ["音频文件 (*.wav *.WAV *.mp3 *.MP3)"]
         onAccepted: {
             var filePath = selectedFile.toString().replace("file:///", "")
-            customWavPathField.text = filePath
-            configMgr.ttsPromptWav = filePath
+            // 保存到自定义样本的独立字段
+            configMgr.customVoiceWav = filePath
             configMgr.currentVoiceSample = -1 // 使用自定义样本
             voiceSampleCombo.currentIndex = 2
+            // 应用当前语音样本配置
+            configMgr.applyCurrentVoiceSample()
         }
     }
     
@@ -350,15 +352,13 @@ Page {
                             onCurrentIndexChanged: {
                                 if (currentIndex === 0) {
                                     configMgr.currentVoiceSample = 0
-                                    configMgr.ttsPromptWav = ":/sample/huiyuanai.WAV"
-                                    configMgr.ttsPromptText = "这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事"
                                 } else if (currentIndex === 1) {
                                     configMgr.currentVoiceSample = 1
-                                    configMgr.ttsPromptWav = ":/sample/huiyuanai2.WAV"
-                                    configMgr.ttsPromptText = "不过，应该没事吧，如果那个姓黑田的人，真的就是你所怀疑的朗姆，又在那么近的距离看到我这张脸，照理说应该会察觉我就是背叛组织的雪莉，这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事"
                                 } else {
                                     configMgr.currentVoiceSample = -1
                                 }
+                                // 应用当前语音样本配置
+                                configMgr.applyCurrentVoiceSample()
                             }
                         }
 
@@ -423,7 +423,7 @@ Page {
                             placeholderText: "点击浏览选择音频文件 (WAV/MP3)"
                             font.family: "Microsoft YaHei"
                             readOnly: true
-                            text: configMgr.currentVoiceSample === -1 ? configMgr.ttsPromptWav : ""
+                            text: configMgr.customVoiceWav
                         }
 
                         Button {
@@ -478,12 +478,19 @@ Page {
                     TextArea {
                         id: ttsPromptTextField
                         Layout.fillWidth: true
-                        Layout.preferredHeight: 100
+                        Layout.minimumHeight: 100
+                        Layout.preferredHeight: Math.max(100, implicitHeight)
                         placeholderText: "输入与语音样本对应的文字内容，或点击自动识别..."
                         font.family: "Microsoft YaHei"
                         wrapMode: TextArea.Wrap
-                        text: configMgr.ttsPromptText
-                        onTextChanged: configMgr.ttsPromptText = text
+                        text: configMgr.customVoiceText
+                        onTextChanged: {
+                            configMgr.customVoiceText = text
+                            // 同时应用到当前 TTS 配置
+                            if (configMgr.currentVoiceSample === -1) {
+                                configMgr.applyCurrentVoiceSample()
+                            }
+                        }
                         visible: voiceSampleCombo.currentIndex === 2
                         background: Rectangle {
                             color: "#F5F5F5"

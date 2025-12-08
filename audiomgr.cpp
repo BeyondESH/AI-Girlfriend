@@ -212,9 +212,13 @@ QAudio::State AudioMgr::state() const
 
 void AudioMgr::slot_tts_finished(const QByteArray &data)
 {
-    // QByteArray wavData = createWavHeader(data.size());
-    // wavData.append(data);
-
+    if (data.isEmpty()) {
+        qDebug() << "TTS 数据为空";
+        return;
+    }
+    
+    qDebug() << "TTS 数据大小:" << data.size();
+    
     QBuffer *buffer = new QBuffer;
     buffer->setData(data);
     buffer->open(QIODevice::ReadOnly);
@@ -227,32 +231,35 @@ void AudioMgr::slot_tts_finished(const QByteArray &data)
     QAudioDevice info(QMediaDevices::defaultAudioOutput());
     if (!info.isFormatSupported(format)) {
         qWarning() << "Raw audio format not supported by backend, cannot play audio.";
+        delete buffer;
         return;
     }
 
-    _audioSink=new QAudioSink(format, this);
-    connect(_audioSink, &QAudioSink::stateChanged,[this](QtAudio::State newState){
+    if (_audioSink) {
+        _audioSink->stop();
+        _audioSink->deleteLater();
+    }
+    
+    _audioSink = new QAudioSink(format, this);
+    connect(_audioSink, &QAudioSink::stateChanged,[this, buffer](QtAudio::State newState){
         switch (newState) {
         case QtAudio::IdleState:
             // Finished playing (no more data)
             stopAudioOutput();
+            delete buffer;
             emit signal_tts_playback_finished();  // 通知播放完成
             break;
 
         case QtAudio::StoppedState:
             // Stopped for other reasons
             if (_audioSink->error() != QtAudio::NoError) {
-                // Error handling
+                qWarning() << "Audio playback error";
             }
             break;
 
         default:
-            // ... other cases as appropriate
             break;
         }
     });
     _audioSink->start(buffer);
-
 }
-
-

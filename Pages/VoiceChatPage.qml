@@ -72,16 +72,19 @@ Page {
                         }
                     }
                     
-                    Component.onCompleted: {
-                        // 更新自定义样本名称
+                    // 同步配置
+                    function syncFromConfig() {
                         updateCustomName()
                         // 从配置加载当前选中的语音样本索引
-                        // -1 表示自定义样本，映射到 index 2
                         if (configMgr.currentVoiceSample === -1) {
                             currentIndex = 2
-                        } else {
+                        } else if (configMgr.currentVoiceSample >= 0 && configMgr.currentVoiceSample < 2) {
                             currentIndex = configMgr.currentVoiceSample
                         }
+                    }
+                    
+                    Component.onCompleted: {
+                        syncFromConfig()
                     }
                     
                     Connections {
@@ -89,21 +92,22 @@ Page {
                         function onCustomVoiceNameChanged() {
                             voiceSampleComboBox.updateCustomName()
                         }
+                        function onCurrentVoiceSampleChanged() {
+                            voiceSampleComboBox.syncFromConfig()
+                        }
                     }
                     
                     onCurrentIndexChanged: {
                         if (currentIndex >= 0 && currentIndex < voiceSampleModel.count) {
-                            var selectedValue = voiceSampleModel.get(currentIndex).value
                             if (currentIndex === 0) {
                                 configMgr.currentVoiceSample = 0
-                                configMgr.ttsPromptWav = ":/sample/huiyuanai.WAV"
                             } else if (currentIndex === 1) {
                                 configMgr.currentVoiceSample = 1
-                                configMgr.ttsPromptWav = ":/sample/huiyuanai2.WAV"
                             } else if (currentIndex === 2) {
                                 configMgr.currentVoiceSample = -1
-                                // 自定义样本使用已保存的路径，不覆盖
                             }
+                            // 应用当前语音样本配置
+                            configMgr.applyCurrentVoiceSample()
                         }
                     }
                     
@@ -147,22 +151,30 @@ Page {
                     }
                     
                     onClicked: {
-                        // 播放选中语音样本的预览
-                        var samplePath = voiceSampleModel.get(voiceSampleComboBox.currentIndex).value
-                        console.log("Preview voice:", voiceSampleComboBox.currentText, "Path:", samplePath)
-                        if (samplePath === "custom") {
-                            // 自定义样本使用configMgr中保存的路径
-                            var customPath = configMgr.ttsPromptWav
+                        var wavPath = ""
+                        if (voiceSampleComboBox.currentIndex === 0) {
+                            wavPath = "qrc:/sample/huiyuanai.WAV"
+                        } else if (voiceSampleComboBox.currentIndex === 1) {
+                            wavPath = "qrc:/sample/huiyuanai2.WAV"
+                        } else if (voiceSampleComboBox.currentIndex === 2) {
+                            // 自定义样本：使用 configMgr 中保存的路径
+                            var customPath = configMgr.customVoiceWav
                             console.log("自定义样本路径:", customPath)
                             // 检查是否是有效的本地文件路径（包含盘符如 D: 或 C:）
-                            if (customPath && customPath !== "" && customPath.length > 3 && customPath.charAt(1) === ':') {
-                                previewPlayer.source = "file:///" + customPath
-                                previewPlayer.play()
+                            if (customPath && customPath.length > 3 && customPath.charAt(1) === ':') {
+                                wavPath = "file:///" + customPath
+                            } else if (customPath && customPath.startsWith(":/")) {
+                                // 资源文件路径 :/ 转换为 qrc:/
+                                wavPath = "qrc" + customPath.substring(1)
                             } else {
                                 console.log("自定义样本路径为空或无效，请在设置页面选择文件")
+                                return
                             }
-                        } else {
-                            previewPlayer.source = "qrc" + samplePath.substring(1) // 转换 :/ 为 qrc:/
+                        }
+                        
+                        if (wavPath !== "") {
+                            console.log("播放:", wavPath)
+                            previewPlayer.source = wavPath
                             previewPlayer.play()
                         }
                     }
@@ -722,14 +734,32 @@ Page {
         // 接收ASR实时转写
         function onSignal_asr_text(text, isFinal) {
             if (isFinal) {
-                // 最终结果，添加用户消息
-                if (text.trim() !== "") {
-                    addUserMessage(text)
-                }
+                // 最终结果
                 currentTranscript = ""
+                if (text.trim() !== "") {
+                    // 有内容，添加用户消息，等待LLM回复
+                    addUserMessage(text)
+                } else {
+                    // 空消息，用户未说话，立即恢复可录音状态
+                    console.log("用户未说话，取消本次录音")
+                    isProcessing = false
+                    canRecord = true
+                }
             } else {
                 // 实时转写更新
                 currentTranscript = text
+            }
+        }
+
+        // 收到停止录音信号（ASR返回offline结果后）
+        function onSignal_stop_recording() {
+            if (isRecording) {
+                console.log("收到停止录音信号，自动停止录音")
+                isRecording = false
+                isProcessing = true
+                canRecord = false
+                // 调用C++层停止录音
+                app.stopVoiceRecord()
             }
         }
 
@@ -763,18 +793,7 @@ Page {
     // 组件加载完成
     Component.onCompleted: {
         console.log("VoiceChatPage loaded")
-        // 加载历史消息
-        var history = app.chatHistory
-        if (history.length > 0) {
-            for (var i = 0; i < history.length; i++) {
-                var msg = history[i]
-                var timestamp = Qt.formatDateTime(new Date(msg.timestamp), "hh:mm")
-                voiceChatMessageModel.append({
-                    "context": msg.content,
-                    "role": msg.role,
-                    "timestamp": timestamp
-                })
-            }
-        }
+        // 语音对话页面不加载历史消息，每次进入是新的语音会话
+        // 如果需要加载历史，应该有独立的语音对话历史
     }
 }

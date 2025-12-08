@@ -57,6 +57,7 @@ signals:
     void signal_receive_llm(const QString &content);
     void signal_asr_text(const QString &text, bool isFinal);
     void signal_tts_playback_finished();  // TTS播放完成信号
+    void signal_stop_recording();  // 通知停止录音
     void chatHistoryChanged();
     void conversationListChanged();
     void currentConversationIdChanged();
@@ -79,10 +80,14 @@ private:
     QString _currentConversationId;
     QString _historyDir;
     QString _audioRecognizeStatus = "就绪";
+    QString _fileRecognizeText;  // 累积的文件识别文本
 
     bool _ollamaOnline = false;
     bool _asrOnline = false;
     bool _ttsOnline = false;
+    
+    // 文件识别连接
+    QMetaObject::Connection _fileRecognizeConn;
     
     void saveCurrentConversation();
     void loadConversationList();

@@ -13,47 +13,48 @@
 
 GateWay::GateWay(QObject *parent)
     : QObject{parent}
-    ,_websocket(new QWebSocket)
+    ,_websocket(new QWebSocket(QString(), QWebSocketProtocol::VersionLatest, this))
     ,_networkAccessMgr(new QNetworkAccessManager(this))
     ,_wsConnected(false)
     ,_reconnectTimer(new QTimer(this))
+    ,_offlineProcessed(false)
+    ,_isFileRecognizing(false)
 {
     // 初始化重连定时器
     _reconnectTimer->setInterval(10000); // 10秒重连一次
+    _reconnectTimer->setSingleShot(true); // 单次触发，避免重复
     connect(_reconnectTimer, &QTimer::timeout, this, [this](){
-        if(!_wsConnected){
+        if(!_wsConnected && _websocket->state() == QAbstractSocket::UnconnectedState){
             qDebug() << "尝试重连ASR服务器...";
-            emit signal_connectAsrWS();
+            wsConnect(QUrl(ConfigMgr::instance().asrServerUrl()));
         }
     });
 
-    wsConnect(QUrl("ws://localhost:10096"));
-    QObject::connect(this,&GateWay::signal_connectAsrWS,this,[this](){
-        this->wsConnect(QUrl("ws://localhost:10096"));
-    },Qt::QueuedConnection);
-
-    // 初始启动定时器，如果未连接则会触发重连
-    if(!_wsConnected){
-        _reconnectTimer->start();
-    }
-
+    // 连接信号槽（先设置好再连接）
     QObject::connect(this->_websocket,&QWebSocket::connected,[this](){
         qDebug()<<"websocket连接成功";
         _wsConnected=true;
-        _reconnectTimer->stop(); // 连接成功停止定时器
+        emit wsConnectedChanged();
+        _reconnectTimer->stop();
     });
-    QObject::connect(_websocket,&QWebSocket::errorOccurred,[this](){
-        qDebug()<<"websocket出现错误:"<<_websocket->errorString();
+    
+    QObject::connect(_websocket,&QWebSocket::errorOccurred,[this](QAbstractSocket::SocketError error){
+        qDebug()<<"websocket出现错误:"<<error<<_websocket->errorString();
         _wsConnected=false;
+        emit wsConnectedChanged();
+        // 延迟重连
         if(!_reconnectTimer->isActive()){
-            _reconnectTimer->start(); // 出错时启动重连
+            _reconnectTimer->start();
         }
     });
+    
     QObject::connect(_websocket,&QWebSocket::disconnected,[this](){
         qDebug()<<"websocket断开连接";
         _wsConnected=false;
+        emit wsConnectedChanged();
+        // 延迟重连
         if(!_reconnectTimer->isActive()){
-            _reconnectTimer->start(); // 断开时启动重连
+            _reconnectTimer->start();
         }
     });
 
@@ -64,39 +65,119 @@ GateWay::GateWay(QObject *parent)
         QString mode=jsonObj["mode"].toString();
         QString content=jsonObj["text"].toString();
         
+        qDebug() << "ASR收到消息, mode:" << mode << "text:" << content;
+        
         // 发送实时转写信号（非最终结果）
         if(mode=="2pass-online" && !content.isEmpty()){
             emit signal_asr_text(content, false);
         }
         
+        // 处理离线识别结果（文件识别模式）
+        if(mode=="offline"){
+            emit signal_file_recognize_result(content);
+            qDebug().noquote()<<"文件识别结果:"<<content;
+            return;
+        }
+        
+        // 处理 2pass 离线结果（实时录音模式）
         if(mode!="2pass-offline"){
             return;
         }
+        
+        // 文件识别模式下，每次 2pass-offline 结果都要处理（累积）
+        if(_isFileRecognizing){
+            // 文件识别模式：发送信号让 Application 累积结果
+            emit signal_asr_text(content, true);
+            qDebug() << "文件识别累积结果:" << content;
+            return;
+        }
+        
+        // 实时录音模式：检查是否已经处理过 offline 结果
+        if(_offlineProcessed){
+            qDebug()<<"已处理过 offline 结果，跳过本次";
+            return;
+        }
+        _offlineProcessed = true;  // 标记为已处理
+        
+        // 发送停止录音信号（通知 UI 停止录音状态）
+        emit signal_stop_recording();
+        
         // 发送最终转写结果
         emit signal_asr_text(content, true);
         qDebug().noquote()<<"我说:"<<content;
-        sendllmMessage(content,ReqId::VOICE_LLM);
+        
+        // 发送信号让 Application 处理语音消息（这样可以访问完整的对话历史）
+        if(!content.trimmed().isEmpty()){
+            emit signal_voice_message_ready(content);
+        } else {
+            qDebug()<<"用户未说话，跳过LLM请求";
+        }
+    });
+    
+    // 延迟首次连接，确保事件循环已启动
+    QTimer::singleShot(100, this, [this](){
+        wsConnect(QUrl(ConfigMgr::instance().asrServerUrl()));
     });
 }
 
 GateWay::~GateWay()
 {
-    if(_websocket!=nullptr){
-        _websocket->deleteLater();
-        _websocket=nullptr;
+    _reconnectTimer->stop();
+    if(_websocket != nullptr){
+        _websocket->close();
     }
+    // websocket 已设置父对象，会自动删除
 }
 
 void GateWay::wsConnect(const QUrl &url)
 {
+    qDebug()<<"websocket准备连接:"<<url.toString()<<"当前状态:"<<_websocket->state();
+    
+    // 如果正在连接或已连接，不要重复操作
+    if(_websocket->state() == QAbstractSocket::ConnectingState) {
+        qDebug()<<"websocket正在连接中，跳过";
+        return;
+    }
+    
+    if(_websocket->state() == QAbstractSocket::ConnectedState) {
+        qDebug()<<"websocket已连接，跳过";
+        return;
+    }
+    
+    // 如果有未完成的连接，先关闭
+    if(_websocket->state() != QAbstractSocket::UnconnectedState) {
+        qDebug()<<"关闭现有连接...";
+        _websocket->abort();
+        // 等待状态变为未连接后再尝试
+        QTimer::singleShot(500, this, [this, url](){
+            if(_websocket->state() == QAbstractSocket::UnconnectedState) {
+                _websocket->open(url);
+            }
+        });
+        return;
+    }
+    
+    qDebug()<<"websocket开始连接:"<<url.toString();
     _websocket->open(url);
-    qDebug()<<"websocket连接中:"<<url.toDisplayString();
 }
 
 void GateWay::wsConnectAsrServer(const QUrl &url)
 {
     _websocket->open(url);
     qDebug()<<"websocket连接ASR服务器中:"<<url.toDisplayString();
+}
+
+void GateWay::resetAsrSession()
+{
+    _offlineProcessed = false;
+    _isFileRecognizing = false;
+    qDebug()<<"ASR会话已重置";
+}
+
+void GateWay::setFileRecognizeMode(bool isFileRecognize)
+{
+    _isFileRecognizing = isFileRecognize;
+    qDebug() << "文件识别模式:" << isFileRecognize;
 }
 
 void GateWay::wsSendPcmData(const QByteArray &pcmData)
@@ -168,10 +249,13 @@ void GateWay::post(const QUrl &url, QHttpMultiPart *multiPart, ReqId id)
     request.setHeader(QNetworkRequest::ContentTypeHeader,
                       "multipart/form-data; boundary=" + multiPart->boundary());
     QNetworkReply* reply=_networkAccessMgr->post(request,multiPart);
+    
+    // TTS 请求和其他请求使用相同的处理方式
     connect(reply,&QNetworkReply::finished,[reply,id,this](){
         if(reply->error()!=QNetworkReply::NoError){
             QString errorString=reply->errorString();
             handle_http_finished(errorString.toUtf8(),id,ErrorCode::ERROR_NETWORK);
+            reply->deleteLater();
             return;
         }
         QByteArray data=reply->readAll();

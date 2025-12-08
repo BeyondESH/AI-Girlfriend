@@ -199,6 +199,50 @@ void ConfigMgr::setCustomVoiceName(const QString &newCustomVoiceName)
     emit customVoiceNameChanged();
 }
 
+QString ConfigMgr::customVoiceWav() const
+{
+    return _customVoiceWav;
+}
+
+void ConfigMgr::setCustomVoiceWav(const QString &newCustomVoiceWav)
+{
+    if (_customVoiceWav == newCustomVoiceWav)
+        return;
+    _customVoiceWav = newCustomVoiceWav;
+    emit customVoiceWavChanged();
+}
+
+QString ConfigMgr::customVoiceText() const
+{
+    return _customVoiceText;
+}
+
+void ConfigMgr::setCustomVoiceText(const QString &newCustomVoiceText)
+{
+    if (_customVoiceText == newCustomVoiceText)
+        return;
+    _customVoiceText = newCustomVoiceText;
+    emit customVoiceTextChanged();
+}
+
+void ConfigMgr::applyCurrentVoiceSample()
+{
+    // 根据当前选中的样本索引，应用对应的 wav 和 text 到 TTS 配置
+    if (_currentVoiceSample == 0) {
+        _ttsPromptWav = ":/sample/huiyuanai.WAV";
+        _ttsPromptText = "这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事";
+    } else if (_currentVoiceSample == 1) {
+        _ttsPromptWav = ":/sample/huiyuanai2.WAV";
+        _ttsPromptText = "不过，应该没事吧，如果那个姓黑田的人，真的就是你所怀疑的朗姆，又在那么近的距离看到我这张脸，照理说应该会察觉我就是背叛组织的雪莉，这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事";
+    } else if (_currentVoiceSample == -1) {
+        // 自定义样本：使用独立存储的自定义样本数据
+        _ttsPromptWav = _customVoiceWav;
+        _ttsPromptText = _customVoiceText;
+    }
+    emit ttsPromptWavChanged();
+    emit ttsPromptTextChanged();
+}
+
 QString ConfigMgr::buildFullSystemPrompt() const
 {
     if (!_systemPrompt.isEmpty()) {
@@ -232,6 +276,8 @@ void ConfigMgr::saveConfig()
     _settings->setValue("ttsPromptWav", _ttsPromptWav);
     _settings->setValue("currentVoiceSample", _currentVoiceSample);
     _settings->setValue("customVoiceName", _customVoiceName);
+    _settings->setValue("customVoiceWav", _customVoiceWav);
+    _settings->setValue("customVoiceText", _customVoiceText);
     _settings->endGroup();
     
     _settings->sync();
@@ -257,12 +303,29 @@ void ConfigMgr::loadConfig()
     _ttsServerUrl = _settings->value("ttsServerUrl", DEFAULT_TTS_URL).toString();
     _settings->endGroup();
     
+    // 迁移旧配置：将 localhost 替换为 127.0.0.1（避免 IPv6 解析问题）
+    if(_asrServerUrl.contains("localhost")) {
+        _asrServerUrl.replace("localhost", "127.0.0.1");
+    }
+    if(_llmServerUrl.contains("localhost")) {
+        _llmServerUrl.replace("localhost", "127.0.0.1");
+    }
+    if(_ttsServerUrl.contains("localhost")) {
+        _ttsServerUrl.replace("localhost", "127.0.0.1");
+    }
+    
     _settings->beginGroup("TTS");
-    _ttsPromptText = _settings->value("ttsPromptText", DEFAULT_TTS_PROMPT_TEXT).toString();
-    _ttsPromptWav = _settings->value("ttsPromptWav", DEFAULT_TTS_PROMPT_WAV).toString();
     _currentVoiceSample = _settings->value("currentVoiceSample", 0).toInt();
     _customVoiceName = _settings->value("customVoiceName", "自定义语音").toString();
+    _customVoiceWav = _settings->value("customVoiceWav", "").toString();
+    _customVoiceText = _settings->value("customVoiceText", "").toString();
+    // 先加载当前 TTS 配置的默认值
+    _ttsPromptText = _settings->value("ttsPromptText", DEFAULT_TTS_PROMPT_TEXT).toString();
+    _ttsPromptWav = _settings->value("ttsPromptWav", DEFAULT_TTS_PROMPT_WAV).toString();
     _settings->endGroup();
+    
+    // 根据当前选中的样本索引应用对应的配置
+    applyCurrentVoiceSample();
 }
 
 void ConfigMgr::resetToDefault()
@@ -280,6 +343,8 @@ void ConfigMgr::resetToDefault()
     _ttsPromptWav = DEFAULT_TTS_PROMPT_WAV;
     _currentVoiceSample = 0;
     _customVoiceName = "自定义语音";
+    _customVoiceWav = "";
+    _customVoiceText = "";
     
     emit userNameChanged();
     emit userDescriptionChanged();
@@ -294,6 +359,8 @@ void ConfigMgr::resetToDefault()
     emit ttsPromptWavChanged();
     emit currentVoiceSampleChanged();
     emit customVoiceNameChanged();
+    emit customVoiceWavChanged();
+    emit customVoiceTextChanged();
     
     saveConfig();
 }
