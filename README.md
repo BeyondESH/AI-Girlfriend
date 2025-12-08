@@ -172,6 +172,8 @@ python webui.py --port 50000
 - **域名**: beyondesh.top
 - **应用名称**: 你的女孩
 
+<img src="https://1.beyondesh.top/wechat.jpg" style="zoom: 50%;" />
+
 ## 许可证
 
 本项目仅供学习和研究使用。
