@@ -207,6 +207,7 @@ void Application::checkOllamaStatus()
     QNetworkReply *reply = manager->get(request);
     connect(reply, &QNetworkReply::finished, this, [this, reply, manager]() {
         bool online = (reply->error() == QNetworkReply::NoError);
+        _ollamaOnline = online;
         QString info = online ? "Ollama 服务正常运行" : reply->errorString();
         
         if (online) {
@@ -225,6 +226,7 @@ void Application::checkAsrStatus()
 {
     // ASR 使用 WebSocket，检查连接状态
     bool online = _gateWay->wsConnected();
+    _asrOnline = online;
     emit asrStatusChanged(online, online ? "FunASR 服务连接正常" : "FunASR 服务未连接");
 }
 
@@ -237,6 +239,7 @@ void Application::checkTtsStatus()
     connect(reply, &QNetworkReply::finished, this, [this, reply, manager]() {
         bool online = (reply->error() == QNetworkReply::NoError || 
                       reply->error() == QNetworkReply::ContentNotFoundError);
+        _ttsOnline = online;
         QString info = online ? "CosyVoice 服务正常运行" : reply->errorString();
         emit ttsStatusChanged(online, info);
         reply->deleteLater();

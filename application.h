@@ -14,6 +14,9 @@ class Application : public QObject
     Q_PROPERTY(QJsonArray conversationList READ conversationList NOTIFY conversationListChanged)
     Q_PROPERTY(QString currentConversationId READ currentConversationId WRITE setCurrentConversationId NOTIFY currentConversationIdChanged)
     Q_PROPERTY(QString audioRecognizeStatus READ audioRecognizeStatus NOTIFY audioRecognizeStatusChanged)
+    Q_PROPERTY(bool ollamaOnline READ ollamaOnline NOTIFY ollamaStatusChanged)
+    Q_PROPERTY(bool asrOnline READ asrOnline NOTIFY asrStatusChanged)
+    Q_PROPERTY(bool ttsOnline READ ttsOnline NOTIFY ttsStatusChanged)
     
 public:
     explicit Application(QObject *parent = nullptr);
@@ -45,6 +48,10 @@ public:
     QJsonArray conversationList() const;
     QString currentConversationId() const;
     void setCurrentConversationId(const QString &id);
+
+    bool ollamaOnline() const { return _ollamaOnline; }
+    bool asrOnline() const { return _asrOnline; }
+    bool ttsOnline() const { return _ttsOnline; }
     
 signals:
     void signal_receive_llm(const QString &content);
@@ -72,6 +79,10 @@ private:
     QString _currentConversationId;
     QString _historyDir;
     QString _audioRecognizeStatus = "就绪";
+
+    bool _ollamaOnline = false;
+    bool _asrOnline = false;
+    bool _ttsOnline = false;
     
     void saveCurrentConversation();
     void loadConversationList();

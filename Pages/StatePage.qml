@@ -103,6 +103,10 @@ Page {
                     }
                 }
 
+                Item {
+                    Layout.fillWidth: true
+                }
+
                 Button {
                     text: "刷新"
                     font.family: "Microsoft YaHei"
@@ -177,6 +181,11 @@ Page {
                     }
                 }
 
+                Item {
+                    Layout.fillWidth: true
+                }
+
+
                 Button {
                     text: "刷新"
                     font.family: "Microsoft YaHei"
@@ -250,6 +259,11 @@ Page {
                         color: "#999999"
                     }
                 }
+
+                Item {
+                    Layout.fillWidth: true
+                }
+
 
                 Button {
                     text: "刷新"

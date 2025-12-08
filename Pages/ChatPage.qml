@@ -374,9 +374,32 @@ Page {
         }
     }
     
+    // 服务器状态警告对话框
+    Dialog {
+        id: serverStatusDialog
+        title: "服务未连接"
+        modal: true
+        anchors.centerIn: parent
+        standardButtons: Dialog.Ok
+        
+        Label {
+            text: "检测到部分服务未连接，请检查服务器状态。\n\n" +
+                  "Ollama: " + (app.ollamaOnline ? "在线" : "离线") + "\n" +
+                  "ASR: " + (app.asrOnline ? "在线" : "离线") + "\n" +
+                  "TTS: " + (app.ttsOnline ? "在线" : "离线")
+            font.family: "Microsoft YaHei"
+        }
+    }
+
     // 发送消息函数
     function sendMessage() {
         if (textArea.text.trim() === "") return
+        
+        // 检查服务器状态
+        if (!app.ollamaOnline || !app.asrOnline || !app.ttsOnline) {
+            serverStatusDialog.open()
+            return
+        }
         
         greetLabel.visible = false
         listView.visible = true
@@ -386,6 +409,23 @@ Page {
         page.signal_sendMessage(textArea.text)
         app.sendChatMessage(textArea.text)
         textArea.clear()
+    }
+    
+    Component.onCompleted: {
+        // 加载历史消息
+        var history = app.chatHistory
+        if (history.length > 0) {
+            greetLabel.visible = false
+            listView.visible = true
+            for (var i = 0; i < history.length; i++) {
+                var msg = history[i]
+                AddListModel.addChatMessage(listView.model, msg.content, msg.role)
+            }
+            // 滚动到底部
+            Qt.callLater(function() {
+                listView.positionViewAtEnd()
+            })
+        }
     }
     
     // 信号连接

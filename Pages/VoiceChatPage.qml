@@ -599,7 +599,7 @@ Page {
 
                         background: Rectangle {
                             radius: 25
-                            color: sendVoiceButton.pressed ? "#45A049" : "#4CAF50"
+                            color:  "#007AFF"
                         }
 
                         Behavior on opacity {
@@ -618,6 +618,23 @@ Page {
         }
     }
 
+    // 服务器状态警告对话框
+    Dialog {
+        id: serverStatusDialog
+        title: "服务未连接"
+        modal: true
+        anchors.centerIn: parent
+        standardButtons: Dialog.Ok
+        
+        Label {
+            text: "检测到部分服务未连接，请检查服务器状态。\n\n" +
+                  "Ollama: " + (app.ollamaOnline ? "在线" : "离线") + "\n" +
+                  "ASR: " + (app.asrOnline ? "在线" : "离线") + "\n" +
+                  "TTS: " + (app.ttsOnline ? "在线" : "离线")
+            font.family: "Microsoft YaHei"
+        }
+    }
+
     // 消息模型
     ListModel {
         id: voiceChatMessageModel
@@ -625,6 +642,12 @@ Page {
 
     // 开始录音函数
     function startRecording() {
+        // 检查服务器状态
+        if (!app.ollamaOnline || !app.asrOnline || !app.ttsOnline) {
+            serverStatusDialog.open()
+            return
+        }
+
         if (!canRecord) return
         isRecording = true
         currentTranscript = ""
@@ -740,5 +763,18 @@ Page {
     // 组件加载完成
     Component.onCompleted: {
         console.log("VoiceChatPage loaded")
+        // 加载历史消息
+        var history = app.chatHistory
+        if (history.length > 0) {
+            for (var i = 0; i < history.length; i++) {
+                var msg = history[i]
+                var timestamp = Qt.formatDateTime(new Date(msg.timestamp), "hh:mm")
+                voiceChatMessageModel.append({
+                    "context": msg.content,
+                    "role": msg.role,
+                    "timestamp": timestamp
+                })
+            }
+        }
     }
 }
