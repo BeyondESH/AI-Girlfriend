@@ -120,8 +120,8 @@ private:
     static constexpr const char* DEFAULT_LLM_URL = "http://127.0.0.1:11434/api/chat";
     static constexpr const char* DEFAULT_TTS_URL = "http://127.0.0.1:50000/inference_zero_shot";
     static constexpr const char* DEFAULT_MODEL = "qwen3:8b";
-    static constexpr const char* DEFAULT_TTS_PROMPT_TEXT = "不过，应该没事吧，如果那个姓黑田的人，真的就是你所怀疑的朗姆，又在那么近的距离看到我这张脸，照理说应该会察觉我就是背叛组织的雪莉，这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事";
-    static constexpr const char* DEFAULT_TTS_PROMPT_WAV = ":/sample/huiyuanai2.WAV";
+    static constexpr const char* DEFAULT_TTS_PROMPT_TEXT = "不过应该没问题吧，毕竟那个暗号，跟夏洛克福尔摩斯故事中出现的跳舞的小人暗号非常地相似，如果是拍下照片，目前正在观察的这位福尔摩斯迷，一定已经解开了，才对";
+    static constexpr const char* DEFAULT_TTS_PROMPT_WAV = ":/sample/huiyuanai.WAV";
     
     static const QString DEFAULT_SYSTEM_PROMPT;
     static const QString DEFAULT_AI_PERSONALITY;

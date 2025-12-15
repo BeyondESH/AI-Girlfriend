@@ -133,15 +133,6 @@ ApplicationWindow{
                 ToolTip.text: qsTr("选择大模型")
             }
 
-            Label{
-                id:stateLabel
-                Layout.alignment: Qt.AlignCenter
-                text:"雅萱正在输入..."
-                font.family: "Microsoft YaHei"
-                font.pointSize: 10
-                visible: false
-            }
-
             Item{
                 Layout.fillWidth: true
             }
@@ -364,10 +355,6 @@ ApplicationWindow{
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem: ChatPage {
-            onSignal_sendMessage: (text) => {
-                stateLabel.visible=true
-            }
-        }
+        initialItem: ChatPage {}
     }
 }

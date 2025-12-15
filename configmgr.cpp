@@ -230,7 +230,7 @@ void ConfigMgr::applyCurrentVoiceSample()
     // 根据当前选中的样本索引，应用对应的 wav 和 text 到 TTS 配置
     if (_currentVoiceSample == 0) {
         _ttsPromptWav = ":/sample/huiyuanai.WAV";
-        _ttsPromptText = "这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事";
+        _ttsPromptText = "不过应该没问题吧，毕竟那个暗号，跟夏洛克福尔摩斯故事中出现的跳舞的小人暗号非常地相似，如果是拍下照片，目前正在观察的这位福尔摩斯迷，一定已经解开了，才对";
     } else if (_currentVoiceSample == 1) {
         _ttsPromptWav = ":/sample/huiyuanai2.WAV";
         _ttsPromptText = "不过，应该没事吧，如果那个姓黑田的人，真的就是你所怀疑的朗姆，又在那么近的距离看到我这张脸，照理说应该会察觉我就是背叛组织的雪莉，这个时候，应该早就闯进了博士家才对，但是刚才博士传来的简讯，都是在说今天晚餐的事";
